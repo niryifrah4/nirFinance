@@ -35,6 +35,15 @@ function InvestmentIcon() {
     );
 }
 
+function PensionIcon() {
+    return (
+        <svg viewBox="0 0 24 24" className="h-7 w-7 stroke-current" fill="none" strokeWidth="1.8">
+            <path d="M12 3v18" />
+            <path d="M8 7.5c0-1.7 1.7-3 4-3s4 1.3 4 3-1.7 3-4 3-4 1.3-4 3 1.7 3 4 3 4-1.3 4-3" />
+        </svg>
+    );
+}
+
 function MortgageIcon() {
     return (
         <svg viewBox="0 0 24 24" className="h-7 w-7 stroke-current" fill="none" strokeWidth="1.8">
@@ -45,19 +54,34 @@ function MortgageIcon() {
     );
 }
 
-const icons = [FamilyIcon, SelfEmployedIcon, InvestmentIcon, MortgageIcon];
+const icons = [
+    FamilyIcon,
+    InvestmentIcon,
+    SelfEmployedIcon,
+    PensionIcon,
+    MortgageIcon,
+];
+
 const iconAccentClasses = [
     "text-[var(--lime)]",
     "text-[var(--orange)]",
     "text-[var(--lime)]",
     "text-[var(--orange)]",
+    "text-[var(--lime)]",
 ];
-const titleAccentClasses = ["text-white", "text-white", "text-white", "text-white"];
+
+const titleAccentClasses = [
+    "text-white",
+    "text-white",
+    "text-white",
+    "text-white",
+    "text-white",
+];
 
 export default function ServicesSection() {
     return (
         <SectionFrame id="services">
-            <div className="grid gap-5 md:grid-cols-2">
+            <div className="flex flex-wrap justify-center gap-5">
                 {siteContent.services.items.map((service, index) => {
                     const Icon = icons[index] ?? FamilyIcon;
                     const iconAccentClass = iconAccentClasses[index] ?? "text-[var(--lime)]";
@@ -66,7 +90,7 @@ export default function ServicesSection() {
                     return (
                         <article
                             key={service.title}
-                            className="group rounded-[1.75rem] border border-white/10 bg-black/10 p-6 text-center shadow-[0_16px_40px_rgba(0,0,0,0.14)] transition hover:-translate-y-1 hover:bg-white/[0.06]"
+                            className="group w-full rounded-[1.75rem] border border-white/10 bg-black/10 p-6 text-center shadow-[0_16px_40px_rgba(0,0,0,0.14)] transition hover:-translate-y-1 hover:bg-white/[0.06] md:w-[calc(50%-10px)] xl:w-[calc(33.333%-14px)]"
                             dir="rtl"
                         >
                             <div
@@ -75,7 +99,7 @@ export default function ServicesSection() {
                                 <Icon />
                             </div>
 
-                            <h3 className={`text-2xl font-black leading-[1.15] ${titleAccentClass}`}>
+                            <h3 className={`text-xl font-black leading-[1.15] sm:text-2xl ${titleAccentClass}`}>
                                 {service.title}
                             </h3>
 

@@ -1,8 +1,13 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { siteContent } from "../data/siteContent";
 
 export default function Header() {
     const [logoFailed, setLogoFailed] = useState(false);
+
+    const whatsappHref = useMemo(() => {
+        const message = encodeURIComponent(siteContent.header.whatsappMessage);
+        return `${siteContent.socialLinks.whatsapp}?text=${message}`;
+    }, []);
 
     return (
         <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4">
@@ -35,10 +40,17 @@ export default function Header() {
 
                         <div className="rounded-full bg-[linear-gradient(90deg,var(--lime),var(--orange),#ffffff,var(--lime))] bg-[length:200%_100%] p-[1.5px] animate-[shimmer_4s_linear_infinite] shadow-[0_12px_28px_rgba(0,0,0,0.18)]">
                             <a
-                                href="#contact"
-                                className="inline-flex min-h-[46px] items-center justify-center whitespace-nowrap rounded-full bg-[rgba(20,50,43,0.96)] px-6 text-sm font-bold text-white transition hover:bg-[rgba(16,40,34,0.98)] sm:px-7"
+                                href={whatsappHref}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="inline-flex min-h-[46px] flex-col items-center justify-center whitespace-nowrap rounded-full bg-[rgba(20,50,43,0.96)] px-5 py-2 text-center transition hover:bg-[rgba(16,40,34,0.98)] sm:px-6"
                             >
-                                השאירו פרטים
+                                <span className="text-sm font-bold leading-none text-white sm:text-[15px]">
+                                    {siteContent.header.buttonText}
+                                </span>
+                                <span className="mt-1 text-[11px] font-medium leading-none text-[var(--lime)] sm:text-xs">
+                                    {siteContent.header.buttonSubtext}
+                                </span>
                             </a>
                         </div>
                     </div>

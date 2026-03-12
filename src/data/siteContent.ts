@@ -16,13 +16,16 @@ export const siteContent = {
   header: {
     logoSrc: "/images/logo0nir.png",
     logoText: "ניר יפרח",
-    buttonText: "השארת פרטים",
+    buttonText: "לקביעת שיחת איפיון",
+    buttonSubtext: "ללא עלות",
+    whatsappMessage:
+      "היי ניר, הגעתי מהאתר ואשמח לקבוע שיחת איפיון ללא עלות.",
   },
 
   socialLinks: {
-  whatsapp: "https://wa.me/972542006874",
-  instagram: "https://www.instagram.com/niryifrah?igsh=cWQ0Z2JkdDdzcHQ1",
-  youtube: "https://www.youtube.com/@niryifrah",
+    whatsapp: "https://wa.me/972542006874",
+    instagram: "https://www.instagram.com/niryifrah?igsh=cWQ0Z2JkdDdzcHQ1",
+    youtube: "https://www.youtube.com/@niryifrah",
   },
 
   hero: {
@@ -30,14 +33,13 @@ export const siteContent = {
     description:
       "כל יחידה פיננסית, בין אם זו משפחה או יחיד, מנהלת לאורך חייה מיליונים. מעטים יודעים לעשות את זה נכון. לחיות טוב בהווה מבלי להתפשר על העתיד הכלכלי. לחצו Play וגלו ב־4 דקות איך להפסיק לרדוף אחרי הכסף ולהתחיל לנהל אותו.",
     primaryButton: "לצפייה בסרטון",
-    secondaryButton: "השאירו פרטים",
   },
 
   video: {
     title: "לעשות סדר בכסף, בצורה פשוטה וברורה",
     description:
       "הסרטון כאן כדי לתת תמונה בהירה, רגועה ומעשית על הדרך הנכונה לנהל כסף.",
-    src: "",
+    src: "https://res.cloudinary.com/dtjr9qzet/video/upload/v1773334171/2_ocxr95.mp4",
     poster: "",
   },
 
@@ -46,22 +48,27 @@ export const siteContent = {
       {
         title: "תכנון פיננסי למשפחות ויחידים",
         description:
-          "בניית תמונה מלאה, סדר ברור ותכנית אישית שמתאימה לחיים שלכם היום וגם להמשך.",
+          "כולל מיפוי פיננסי מלא ובניית תכנית כלכלית דינאמית שמותאמת למידות שלכם.",
+      },
+      {
+        title: "תכנון הון",
+        description:
+          "בניית אסטרטגיית השקעות ואלוקציית נכסים מותאמת ליעדים ולמטרות החיים שלכם.",
       },
       {
         title: "ליווי פיננסי לעצמאים",
         description:
-          "חיבור נכון בין החיים האישיים, העסק והכסף, כדי לקבל החלטות מתוך שליטה ולא מתוך לחץ.",
+          "תהליך מותאם לעצמאים שרוצים לקחת שליטה על המספרים בעסק.",
       },
       {
-        title: "בניית אסטרטגיית השקעות וניהול הון",
+        title: "ליווי פנסיוני",
         description:
-          "הגדרת מטרות, מיפוי אפשרויות ובניית דרך מסודרת להשקיע ולנהל הון בצורה נכונה.",
+          "את כל התהליכים מלווה סוכן בעל רישיון שבודק את התיק הפנסיוני ואת הביטוחים ורואה מה ניתן לשפר.",
       },
       {
         title: "משכנתאות ומימון",
         description:
-          "בחינה מדויקת של אפשרויות מימון, עם הסתכלות רחבה שמתאימה לכם ולא רק למספרים על הנייר.",
+          "תכנון המימון והמינוף בהתאם למטרות החיים.",
       },
     ] as ServiceItem[],
   },

@@ -45,13 +45,6 @@ export default function HeroSection() {
                             >
                                 {siteContent.hero.primaryButton}
                             </a>
-
-                            <a
-                                href="#contact"
-                                className="inline-flex min-h-[52px] items-center justify-center rounded-2xl bg-[var(--lime)] px-7 text-base font-bold text-[var(--bg)] shadow-[0_14px_35px_rgba(0,0,0,0.16)] transition hover:opacity-95"
-                            >
-                                {siteContent.hero.secondaryButton}
-                            </a>
                         </div>
                     </div>
                 </div>
