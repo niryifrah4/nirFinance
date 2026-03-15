@@ -1,0 +1,31 @@
+@font-face {
+  font-family: "Fb Tubic Sans";
+  src: url("/fonts/FbTubicSans/FbTubic-Sans-ExtraLight.otf") format("opentype");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fb Tubic Sans";
+  src: url("/fonts/FbTubicSans/FbTubic-Sans-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fb Tubic Sans";
+  src: url("/fonts/FbTubicSans/FbTubic-Sans-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fb Tubic Sans";
+  src: url("/fonts/FbTubicSans/FbTubic-Sans-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}

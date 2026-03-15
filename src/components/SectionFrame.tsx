@@ -30,7 +30,7 @@ export default function SectionFrame({
         "rounded-[calc(2rem-1px)] bg-white/5 p-6 backdrop-blur-sm sm:p-10 lg:p-12";
 
     const headingClasses = [
-        "text-3xl font-black leading-[1.08] sm:text-4xl",
+        "text-3xl font-bold leading-[1.08] sm:text-4xl",
         titleClassName || "text-white",
     ]
         .filter(Boolean)
@@ -45,7 +45,7 @@ export default function SectionFrame({
                             {title ? <h2 className={headingClasses}>{title}</h2> : null}
 
                             {description ? (
-                                <p className="mt-4 text-base leading-7 text-[var(--sand)] sm:text-lg sm:leading-8">
+                                <p className="mt-4 text-base font-normal leading-8 text-[var(--sand)] sm:text-lg">
                                     {description}
                                 </p>
                             ) : null}

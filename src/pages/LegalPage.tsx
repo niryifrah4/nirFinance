@@ -19,7 +19,7 @@ function getTabFromUrl(): LegalTabKey {
 function SectionBlock({ section }: { section: LegalSection }) {
     return (
         <section className="rounded-[1.5rem] border border-white/10 bg-white/[0.04] p-5 sm:p-6">
-            <h3 className="text-xl font-black text-white sm:text-2xl">{section.title}</h3>
+            <h3 className="text-xl font-bold text-white sm:text-2xl">{section.title}</h3>
 
             {section.paragraphs?.map((paragraph) => (
                 <p key={paragraph} className="mt-4 text-base leading-8 text-[var(--sand)]">
@@ -63,18 +63,17 @@ export default function LegalPage() {
                                 <div className="text-sm font-medium text-[var(--lime)]">
                                     עודכן לאחרונה: {legalContent.updatedAt}
                                 </div>
-                                <h1 className="mt-2 text-3xl font-black leading-tight text-white sm:text-4xl">
+                                <h1 className="mt-2 text-3xl font-bold leading-tight text-white sm:text-4xl">
                                     {legalContent.pageTitle}
                                 </h1>
                                 <p className="mt-4 max-w-3xl text-base leading-8 text-[var(--sand)]">
-                                    כאן תוכלו לעבור בין הצהרת הנגישות, מדיניות הפרטיות ותנאי
-                                    השימוש של האתר.
+                                    כאן תוכלו לעבור בין הצהרת הנגישות, מדיניות הפרטיות ותנאי השימוש של האתר.
                                 </p>
                             </div>
 
                             <a
                                 href="/"
-                                className="inline-flex min-h-[46px] items-center justify-center rounded-2xl border border-white/12 bg-white/[0.04] px-5 text-sm font-bold text-white transition hover:bg-white/[0.08]"
+                                className="inline-flex min-h-[46px] items-center justify-center rounded-2xl border border-white/12 bg-white/[0.04] px-5 text-sm font-medium text-white transition hover:bg-white/[0.08]"
                             >
                                 חזרה לדף הבית
                             </a>
@@ -89,7 +88,7 @@ export default function LegalPage() {
                                         key={tabKey}
                                         type="button"
                                         onClick={() => setActiveTab(tabKey)}
-                                        className={`inline-flex min-h-[48px] items-center justify-center rounded-2xl px-5 text-sm font-bold transition sm:text-base ${isActive
+                                        className={`inline-flex min-h-[48px] items-center justify-center rounded-2xl px-5 text-sm font-medium transition sm:text-base ${isActive
                                                 ? "bg-[var(--lime)] text-[var(--bg)]"
                                                 : "border border-white/12 bg-white/[0.04] text-white hover:bg-white/[0.08]"
                                             }`}
@@ -101,7 +100,7 @@ export default function LegalPage() {
                         </div>
 
                         <div className="rounded-[1.75rem] border border-white/10 bg-black/10 p-5 sm:p-6">
-                            <h2 className="text-2xl font-black text-white sm:text-3xl">
+                            <h2 className="text-2xl font-bold text-white sm:text-3xl">
                                 {activeContent.label}
                             </h2>
                             <p className="mt-4 text-base leading-8 text-[var(--sand)]">

@@ -70,14 +70,6 @@ const iconAccentClasses = [
     "text-[var(--lime)]",
 ];
 
-const titleAccentClasses = [
-    "text-white",
-    "text-white",
-    "text-white",
-    "text-white",
-    "text-white",
-];
-
 export default function ServicesSection() {
     return (
         <SectionFrame id="services">
@@ -85,7 +77,6 @@ export default function ServicesSection() {
                 {siteContent.services.items.map((service, index) => {
                     const Icon = icons[index] ?? FamilyIcon;
                     const iconAccentClass = iconAccentClasses[index] ?? "text-[var(--lime)]";
-                    const titleAccentClass = titleAccentClasses[index] ?? "text-white";
 
                     return (
                         <article
@@ -99,11 +90,11 @@ export default function ServicesSection() {
                                 <Icon />
                             </div>
 
-                            <h3 className={`text-xl font-black leading-[1.15] sm:text-2xl ${titleAccentClass}`}>
+                            <h3 className="text-[1.12rem] font-bold leading-[1.2] text-white sm:text-[1.35rem] sm:whitespace-nowrap">
                                 {service.title}
                             </h3>
 
-                            <p className="mt-4 text-base leading-7 text-[var(--sand)]">
+                            <p className="mt-4 text-base leading-8 text-[var(--sand)]">
                                 {service.description}
                             </p>
                         </article>

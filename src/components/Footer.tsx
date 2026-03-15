@@ -25,12 +25,17 @@ export default function Footer() {
                     dir="rtl"
                 >
                     <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2">
-                        <span>© {new Date().getFullYear()} | {siteContent.footer.text}</span>
+                        <span className="font-normal">
+                            © {new Date().getFullYear()} | {siteContent.footer.text}
+                        </span>
 
                         {legalLinks.map((link) => (
                             <div key={link.href} className="flex items-center gap-3">
                                 <span className="text-white/25">•</span>
-                                <a href={link.href} className="transition hover:text-white">
+                                <a
+                                    href={link.href}
+                                    className="font-medium transition hover:text-white"
+                                >
                                     {link.label}
                                 </a>
                             </div>

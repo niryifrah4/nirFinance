@@ -33,7 +33,7 @@ export default function AboutSection() {
                     ) : (
                         <div className="flex aspect-[4/5] w-full items-center justify-center rounded-[2rem] border border-dashed border-white/15 bg-black/10">
                             <div className="text-center" dir="rtl">
-                                <p className="text-2xl font-black text-white">כאן תיכנס התמונה</p>
+                                <p className="text-2xl font-bold text-white">כאן תיכנס התמונה</p>
                                 <p className="mt-2 text-sm text-[var(--sand)]">public/Nir.jpg</p>
                             </div>
                         </div>
@@ -41,38 +41,40 @@ export default function AboutSection() {
                 </div>
 
                 <div
-                    className="rounded-[2rem] border border-white/10 bg-black/10 p-6 text-center shadow-[0_16px_50px_rgba(0,0,0,0.14)] sm:p-8"
+                    className="rounded-[2rem] border border-white/10 bg-black/10 p-6 text-right shadow-[0_16px_50px_rgba(0,0,0,0.14)] sm:p-8"
                     dir="rtl"
                 >
-                    <p className="text-sm font-bold tracking-wide text-[var(--lime)]">
+                    <p className="text-sm font-medium tracking-wide text-[var(--lime)]">
                         {siteContent.about.eyebrow}
                     </p>
 
-                    <h2 className="mt-2 text-3xl font-black leading-[1.05] text-white sm:text-4xl">
+                    <h2 className="mt-2 text-3xl font-bold leading-[1.05] text-white sm:text-4xl">
                         {siteContent.about.name}
                     </h2>
 
-                    <div className="mt-5 flex flex-wrap items-center justify-center gap-2">
-                        {siteContent.about.badges.map((badge) => (
-                            <span
-                                key={badge}
-                                className="rounded-full border border-white/10 bg-white/6 px-4 py-2 text-sm font-medium text-[var(--sand)]"
-                            >
-                                {badge}
-                            </span>
-                        ))}
-                    </div>
+                    {siteContent.about.badges.length ? (
+                        <div className="mt-5 flex flex-wrap items-center justify-start gap-2">
+                            {siteContent.about.badges.map((badge) => (
+                                <span
+                                    key={badge}
+                                    className="rounded-full border border-white/10 bg-white/6 px-4 py-2 text-sm font-medium text-[var(--sand)]"
+                                >
+                                    {badge}
+                                </span>
+                            ))}
+                        </div>
+                    ) : null}
 
                     <div className="mt-6 space-y-4">
                         {siteContent.about.paragraphs.map((paragraph) => (
-                            <p key={paragraph} className="text-base leading-7 text-[var(--sand)] sm:text-lg">
+                            <p key={paragraph} className="text-base leading-8 text-[var(--sand)] sm:text-lg">
                                 {renderTextWithLineBreaks(paragraph)}
                             </p>
                         ))}
                     </div>
 
-                    <div className="mt-6 rounded-[1.5rem] border border-white/10 bg-white/6 p-5">
-                        <p className="text-lg font-semibold leading-7 text-white">
+                    <div className="mt-7 rounded-[1.5rem] border border-[rgba(173,254,122,0.28)] bg-[rgba(173,254,122,0.08)] p-5">
+                        <p className="text-lg font-bold leading-8 text-[var(--lime)] sm:text-[1.15rem]">
                             {renderTextWithLineBreaks(siteContent.about.quote)}
                         </p>
                     </div>
