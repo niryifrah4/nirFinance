@@ -2,7 +2,7 @@ import { useState } from "react";
 import { siteContent } from "../data/siteContent";
 
 const DISCOVERY_CALL_HREF =
-    "https://calendar.app.google/K94Ye7SEV1yEAaBB8";
+    "https://dub.sh/i9wJTqn";
 
 export default function Header() {
     const [logoFailed, setLogoFailed] = useState(false);
