@@ -20,8 +20,8 @@ export default function AboutSection() {
     const [imageFailed, setImageFailed] = useState(false);
 
     return (
-        <SectionFrame id="about">
-            <div className="grid items-center gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+        <SectionFrame id="about" variant="dark">
+            <div className="grid items-center gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12">
                 <div className="mx-auto w-full max-w-md">
                     {!imageFailed ? (
                         <img
@@ -40,10 +40,7 @@ export default function AboutSection() {
                     )}
                 </div>
 
-                <div
-                    className="rounded-[2rem] border border-white/10 bg-black/10 p-6 text-right shadow-[0_16px_50px_rgba(0,0,0,0.14)] sm:p-8"
-                    dir="rtl"
-                >
+                <div className="text-center lg:text-right" dir="rtl">
                     <p className="text-sm font-medium tracking-wide text-[var(--lime)]">
                         {siteContent.about.eyebrow}
                     </p>
@@ -53,11 +50,11 @@ export default function AboutSection() {
                     </h2>
 
                     {siteContent.about.badges.length ? (
-                        <div className="mt-5 flex flex-wrap items-center justify-start gap-2">
+                        <div className="mt-5 flex flex-wrap items-center justify-center gap-2 lg:justify-start">
                             {siteContent.about.badges.map((badge) => (
                                 <span
                                     key={badge}
-                                    className="rounded-full border border-white/10 bg-white/6 px-4 py-2 text-sm font-medium text-[var(--sand)]"
+                                    className="rounded-full bg-white/8 px-4 py-2 text-sm font-medium text-[var(--sand)]"
                                 >
                                     {badge}
                                 </span>
@@ -73,7 +70,7 @@ export default function AboutSection() {
                         ))}
                     </div>
 
-                    <div className="mt-7 rounded-[1.5rem] border border-[rgba(173,254,122,0.28)] bg-[rgba(173,254,122,0.08)] p-5">
+                    <div className="mt-8 border-t border-white/10 pt-6">
                         <p className="text-lg font-bold leading-8 text-[var(--lime)] sm:text-[1.15rem]">
                             {renderTextWithLineBreaks(siteContent.about.quote)}
                         </p>

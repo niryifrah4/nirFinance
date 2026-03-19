@@ -1,3 +1,4 @@
+import ScrollReveal from "../components/ScrollReveal";
 import { siteContent } from "../data/siteContent";
 
 function renderTextWithLineBreaks(text: string) {
@@ -21,13 +22,16 @@ export default function HeroSection() {
     const mobileTitle = titleParts.join(" | ");
 
     return (
-        <section id="top" className="px-4 pb-4 pt-28 sm:pt-32">
-            <div className="mx-auto max-w-6xl overflow-hidden rounded-[2.4rem] bg-[linear-gradient(135deg,rgba(173,254,122,0.2),rgba(255,255,255,0.08),rgba(255,165,59,0.18))] p-[1px] shadow-[0_30px_120px_rgba(0,0,0,0.22)]">
-                <div className="relative rounded-[calc(2.4rem-1px)] bg-white/5 px-6 py-16 backdrop-blur-sm sm:px-10 sm:py-20 lg:px-16">
-                    <div className="pointer-events-none absolute left-[-4rem] top-10 h-36 w-36 rounded-full bg-[rgba(173,254,122,0.08)] blur-3xl" />
-                    <div className="pointer-events-none absolute bottom-0 right-[-3rem] h-40 w-40 rounded-full bg-[rgba(255,165,59,0.07)] blur-3xl" />
+        <section
+            id="top"
+            className="overflow-hidden bg-[linear-gradient(180deg,#1d4339_0%,#17352e_100%)] px-4 pb-16 pt-28 sm:pb-20 sm:pt-32 lg:pb-24"
+        >
+            <div className="relative mx-auto max-w-6xl">
+                <div className="pointer-events-none absolute left-[-4rem] top-10 h-36 w-36 rounded-full bg-[rgba(173,254,122,0.08)] blur-3xl" />
+                <div className="pointer-events-none absolute bottom-0 right-[-3rem] h-40 w-40 rounded-full bg-[rgba(255,165,59,0.08)] blur-3xl" />
 
-                    <div className="relative mx-auto max-w-4xl text-center" dir="rtl">
+                <ScrollReveal className="relative mx-auto max-w-4xl text-center" >
+                    <div dir="rtl">
                         <div className="mx-auto mb-6 h-[2px] w-24 rounded-full bg-gradient-to-l from-[var(--orange)] via-[var(--lime)] to-white/30" />
 
                         <h1 className="text-[1.9rem] font-bold leading-[1.15] tracking-[-0.02em] text-white sm:hidden">
@@ -52,7 +56,7 @@ export default function HeroSection() {
                             </a>
                         </div>
                     </div>
-                </div>
+                </ScrollReveal>
             </div>
         </section>
     );

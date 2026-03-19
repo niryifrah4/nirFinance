@@ -1,4 +1,5 @@
 import { useState, type ChangeEvent, type FormEvent } from "react";
+import ScrollReveal from "../components/ScrollReveal";
 import { siteContent } from "../data/siteContent";
 
 type FormValues = {
@@ -116,21 +117,21 @@ export default function ContactSection() {
     };
 
     return (
-        <section id="contact" className="scroll-mt-28 px-4 py-4 sm:py-5">
-            <div className="mx-auto max-w-6xl rounded-[2rem] bg-[linear-gradient(135deg,rgba(173,254,122,0.2),rgba(255,255,255,0.08),rgba(255,165,59,0.18))] p-[1px] shadow-[0_24px_90px_rgba(0,0,0,0.25)]">
-                <div className="rounded-[calc(2rem-1px)] bg-[linear-gradient(180deg,rgba(10,22,18,0.92),rgba(16,48,40,0.96))] p-5 backdrop-blur-sm sm:p-8">
+        <section id="contact" className="scroll-mt-28 bg-[#f6f3eb]">
+            <div className="mx-auto max-w-6xl px-4 py-16 sm:py-20 lg:py-24">
+                <ScrollReveal>
                     <form onSubmit={handleSubmit} dir="rtl">
-                        <div className="mb-6 text-center">
-                            <div className="inline-flex items-center justify-center gap-2 text-[var(--lime)]">
+                        <div className="mb-8 text-center">
+                            <div className="inline-flex items-center justify-center gap-2 text-[#1d4339]">
                                 <GiftIcon />
                                 <span className="text-sm font-medium tracking-wide">מתנה קטנה ממני</span>
                             </div>
 
-                            <h2 className="mt-3 text-3xl font-bold leading-[1.05] text-white sm:text-4xl">
+                            <h2 className="mt-3 text-3xl font-bold leading-[1.05] text-[#16342d] sm:text-4xl">
                                 {siteContent.contact.title}
                             </h2>
 
-                            <div className="mt-4 space-y-2 text-base leading-7 text-[var(--sand)]">
+                            <div className="mt-4 space-y-2 text-base leading-7 text-[#49655c]">
                                 {siteContent.contact.descriptionLines.map((line) => (
                                     <p key={line}>{line}</p>
                                 ))}
@@ -149,8 +150,8 @@ export default function ContactSection() {
                                     value={formValues.name}
                                     onChange={handleChange}
                                     required
-                                    placeholder="שם מלא"
-                                    className="h-14 w-full rounded-2xl border border-white/10 bg-white/6 px-4 text-white outline-none transition focus:border-[var(--lime)]"
+                                    placeholder="השם המלא שלך"
+                                    className="h-14 w-full rounded-2xl border border-[#9cb0a6] bg-white px-4 text-[#16342d] outline-none transition placeholder:text-[#6f857b] focus:border-[var(--lime)]"
                                 />
                             </div>
 
@@ -165,8 +166,8 @@ export default function ContactSection() {
                                     value={formValues.phone}
                                     onChange={handleChange}
                                     required
-                                    placeholder="טלפון"
-                                    className="h-14 w-full rounded-2xl border border-white/10 bg-white/6 px-4 text-white outline-none transition focus:border-[var(--lime)]"
+                                    placeholder="טלפון לחזרה"
+                                    className="h-14 w-full rounded-2xl border border-[#9cb0a6] bg-white px-4 text-[#16342d] outline-none transition placeholder:text-[#6f857b] focus:border-[var(--lime)]"
                                 />
                             </div>
 
@@ -181,15 +182,15 @@ export default function ContactSection() {
                                     value={formValues.email}
                                     onChange={handleChange}
                                     required
-                                    placeholder="מייל"
-                                    className="h-14 w-full rounded-2xl border border-white/10 bg-white/6 px-4 text-white outline-none transition focus:border-[var(--lime)]"
+                                    placeholder="כתובת מייל"
+                                    className="h-14 w-full rounded-2xl border border-[#9cb0a6] bg-white px-4 text-[#16342d] outline-none transition placeholder:text-[#6f857b] focus:border-[var(--lime)]"
                                 />
                             </div>
 
                             <button
                                 type="submit"
                                 disabled={status.type === "loading"}
-                                className="inline-flex h-14 items-center justify-center gap-2 rounded-2xl bg-[var(--lime)] px-6 text-base font-bold text-[var(--bg)] transition hover:opacity-95 disabled:cursor-not-allowed disabled:opacity-70"
+                                className="inline-flex h-14 items-center justify-center gap-2 rounded-2xl bg-[#1d4339] px-6 text-base font-bold text-white transition hover:opacity-95 disabled:cursor-not-allowed disabled:opacity-70"
                             >
                                 <SendIcon />
                                 <span>{status.type === "loading" ? "שולח..." : siteContent.contact.buttonText}</span>
@@ -199,17 +200,17 @@ export default function ContactSection() {
                         {status.type !== "idle" ? (
                             <div
                                 className={`mt-4 rounded-2xl px-4 py-3 text-center text-sm font-medium ${status.type === "success"
-                                        ? "bg-[rgba(173,254,122,0.12)] text-[var(--lime)]"
-                                        : status.type === "error"
-                                            ? "bg-[rgba(255,165,59,0.12)] text-[var(--orange)]"
-                                            : "bg-white/8 text-white"
+                                    ? "bg-[rgba(173,254,122,0.18)] text-[#285343]"
+                                    : status.type === "error"
+                                        ? "bg-[rgba(255,165,59,0.16)] text-[#8b5a18]"
+                                        : "bg-[#e9ede7] text-[#16342d]"
                                     }`}
                             >
                                 {status.message}
                             </div>
                         ) : null}
                     </form>
-                </div>
+                </ScrollReveal>
             </div>
         </section>
     );

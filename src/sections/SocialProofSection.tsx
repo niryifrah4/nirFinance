@@ -45,25 +45,22 @@ export default function SocialProofSection() {
     };
 
     return (
-        <SectionFrame id="social-proof">
+        <SectionFrame id="social-proof" variant="light">
             <div className="relative mx-auto max-w-5xl">
-                <div className="pointer-events-none absolute left-0 top-1/2 hidden h-40 w-40 -translate-y-1/2 rounded-full bg-[rgba(173,254,122,0.08)] blur-3xl md:block" />
-                <div className="pointer-events-none absolute right-0 top-1/2 hidden h-40 w-40 -translate-y-1/2 rounded-full bg-[rgba(255,165,59,0.08)] blur-3xl md:block" />
-
-                <div className="relative rounded-[2rem] border border-white/10 bg-black/10 p-4 shadow-[0_20px_70px_rgba(0,0,0,0.18)] sm:p-6">
+                <div className="rounded-[2rem] border border-[#d7ddd5] bg-white p-4 shadow-[0_20px_70px_rgba(22,52,45,0.08)] sm:p-6">
                     <div className="flex justify-center">
-                        <div className="w-full max-w-sm rounded-[2rem] border border-white/10 bg-[#103028] p-2 shadow-[0_14px_45px_rgba(0,0,0,0.22)]">
+                        <div className="w-full max-w-sm rounded-[2rem] border border-[#d7ddd5] bg-[#f8f6ef] p-2 shadow-[0_14px_45px_rgba(22,52,45,0.08)]">
                             {failedImages[activeItem.src] ? (
                                 <div
-                                    className="flex aspect-[9/16] items-center justify-center rounded-[1.5rem] bg-[rgba(255,255,255,0.04)] px-6 text-center"
+                                    className="flex aspect-[9/16] items-center justify-center rounded-[1.5rem] bg-[#eef1ec] px-6 text-center"
                                     dir="rtl"
                                 >
-                                    <p className="text-base font-medium leading-7 text-[var(--sand)]">
+                                    <p className="text-base font-medium leading-7 text-[#49655c]">
                                         התמונה לא נטענה. בדוק שהקובץ נמצא בנתיב שהוגדר ב־siteContent.
                                     </p>
                                 </div>
                             ) : (
-                                <div className="flex aspect-[9/16] items-center justify-center overflow-hidden rounded-[1.5rem] bg-[#0d241f]">
+                                <div className="flex aspect-[9/16] items-center justify-center overflow-hidden rounded-[1.5rem] bg-white">
                                     <img
                                         key={activeItem.src}
                                         src={activeItem.src}
@@ -84,17 +81,17 @@ export default function SocialProofSection() {
                                 type="button"
                                 onClick={() => setActiveIndex(index)}
                                 className={`overflow-hidden rounded-xl border transition ${index === activeIndex
-                                        ? "border-[var(--lime)] opacity-100"
-                                        : "border-white/10 opacity-65 hover:opacity-100"
+                                    ? "border-[var(--lime)] opacity-100"
+                                    : "border-[#d7ddd5] opacity-65 hover:opacity-100"
                                     }`}
                                 aria-label={`מעבר לתמונה ${index + 1}`}
                             >
                                 {failedImages[item.src] ? (
-                                    <div className="flex h-14 w-10 items-center justify-center bg-white/5 text-[10px] text-white/70">
+                                    <div className="flex h-14 w-10 items-center justify-center bg-[#eef1ec] text-[10px] text-[#49655c]">
                                         SP
                                     </div>
                                 ) : (
-                                    <div className="flex h-14 w-10 items-center justify-center bg-[#0d241f]">
+                                    <div className="flex h-14 w-10 items-center justify-center bg-white">
                                         <img
                                             src={item.src}
                                             alt={item.alt}
@@ -112,11 +109,10 @@ export default function SocialProofSection() {
                         <button
                             type="button"
                             onClick={previousSlide}
-                            className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/6 text-white transition hover:bg-white/10"
+                            className="flex h-11 w-11 items-center justify-center rounded-full border border-[#d7ddd5] bg-white text-[#16342d] transition hover:bg-[#eef1ec]"
                             aria-label="הקודם"
                         >
                             <ArrowLeftIcon />
-                            
                         </button>
 
                         <div className="flex items-center gap-2">
@@ -127,8 +123,8 @@ export default function SocialProofSection() {
                                     onClick={() => setActiveIndex(index)}
                                     aria-label={`מעבר לתמונה ${index + 1}`}
                                     className={`h-2.5 rounded-full transition ${index === activeIndex
-                                            ? "w-8 bg-[var(--lime)]"
-                                            : "w-2.5 bg-white/25 hover:bg-white/45"
+                                        ? "w-8 bg-[#16342d]"
+                                        : "w-2.5 bg-[#b4c0b9] hover:bg-[#8ea196]"
                                         }`}
                                 />
                             ))}
@@ -137,7 +133,7 @@ export default function SocialProofSection() {
                         <button
                             type="button"
                             onClick={nextSlide}
-                            className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/6 text-white transition hover:bg-white/10"
+                            className="flex h-11 w-11 items-center justify-center rounded-full border border-[#d7ddd5] bg-white text-[#16342d] transition hover:bg-[#eef1ec]"
                             aria-label="הבא"
                         >
                             <ArrowRightIcon />

@@ -1,10 +1,14 @@
 import type { ReactNode } from "react";
+import ScrollReveal from "./ScrollReveal";
+
+type SectionVariant = "dark" | "light";
 
 type SectionFrameProps = {
     id: string;
     title?: string;
     description?: string;
     children: ReactNode;
+    variant?: SectionVariant;
     containerClassName?: string;
     contentClassName?: string;
     titleClassName?: string;
@@ -15,37 +19,36 @@ export default function SectionFrame({
     title,
     description,
     children,
+    variant = "dark",
     containerClassName = "",
     contentClassName = "",
     titleClassName = "",
 }: SectionFrameProps) {
-    const outerClasses = [
-        "mx-auto max-w-6xl rounded-[2rem] bg-[linear-gradient(135deg,rgba(173,254,122,0.2),rgba(255,255,255,0.08),rgba(255,165,59,0.18))] p-[1px] shadow-[0_20px_80px_rgba(0,0,0,0.18)]",
-        containerClassName,
-    ]
-        .filter(Boolean)
-        .join(" ");
+    const isDark = variant === "dark";
 
-    const innerClasses =
-        "rounded-[calc(2rem-1px)] bg-white/5 p-6 backdrop-blur-sm sm:p-10 lg:p-12";
+    const sectionClasses = isDark
+        ? "bg-[linear-gradient(180deg,#1d4339_0%,#17352e_100%)] text-white"
+        : "bg-[#f6f3eb] text-[#16342d]";
 
     const headingClasses = [
         "text-3xl font-bold leading-[1.08] sm:text-4xl",
-        titleClassName || "text-white",
+        titleClassName || (isDark ? "text-white" : "text-[#16342d]"),
     ]
         .filter(Boolean)
         .join(" ");
 
+    const descriptionClasses = isDark ? "text-[var(--sand)]" : "text-[#49655c]";
+
     return (
-        <section id={id} className="scroll-mt-28 px-4 py-4 sm:py-5">
-            <div className={outerClasses}>
-                <div className={innerClasses}>
+        <section id={id} className={`scroll-mt-28 ${sectionClasses}`}>
+            <div className={["mx-auto max-w-6xl px-4 py-16 sm:py-20 lg:py-24", containerClassName].filter(Boolean).join(" ")}>
+                <ScrollReveal>
                     {(title || description) && (
-                        <div className="mx-auto mb-8 max-w-3xl text-center" dir="rtl">
+                        <div className="mx-auto mb-10 max-w-3xl text-center" dir="rtl">
                             {title ? <h2 className={headingClasses}>{title}</h2> : null}
 
                             {description ? (
-                                <p className="mt-4 text-base font-normal leading-8 text-[var(--sand)] sm:text-lg">
+                                <p className={`mt-4 text-base font-normal leading-8 sm:text-lg ${descriptionClasses}`}>
                                     {description}
                                 </p>
                             ) : null}
@@ -53,7 +56,7 @@ export default function SectionFrame({
                     )}
 
                     <div className={contentClassName}>{children}</div>
-                </div>
+                </ScrollReveal>
             </div>
         </section>
     );

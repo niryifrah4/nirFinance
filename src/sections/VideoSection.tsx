@@ -59,8 +59,8 @@ export default function VideoSection() {
     };
 
     return (
-        <SectionFrame id="video" title={title} description={description}>
-            <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-black/10 shadow-[0_18px_60px_rgba(0,0,0,0.16)]">
+        <SectionFrame id="video" title={title} description={description} variant="light">
+            <div className="overflow-hidden rounded-[2rem] border border-[#d7ddd5] bg-white shadow-[0_18px_60px_rgba(22,52,45,0.08)]">
                 {src ? (
                     <div className="relative aspect-video w-full overflow-hidden bg-black">
                         <video
@@ -88,17 +88,11 @@ export default function VideoSection() {
                                 </span>
                             </button>
                         ) : null}
-
-                        <div className="pointer-events-none absolute left-[10%] top-[18%] h-28 w-28 rounded-full bg-[rgba(173,254,122,0.08)] blur-3xl" />
-                        <div className="pointer-events-none absolute bottom-[10%] right-[12%] h-28 w-28 rounded-full bg-[rgba(255,165,59,0.08)] blur-3xl" />
                     </div>
                 ) : (
-                    <div className="relative aspect-video w-full overflow-hidden bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(0,0,0,0.12))]">
-                        <div className="pointer-events-none absolute left-[10%] top-[18%] h-28 w-28 rounded-full bg-[rgba(173,254,122,0.08)] blur-3xl" />
-                        <div className="pointer-events-none absolute bottom-[10%] right-[12%] h-28 w-28 rounded-full bg-[rgba(255,165,59,0.08)] blur-3xl" />
-
+                    <div className="relative aspect-video w-full overflow-hidden bg-[linear-gradient(180deg,rgba(22,52,45,0.04),rgba(22,52,45,0.1))]">
                         <div className="relative flex h-full items-center justify-center">
-                            <div className="flex h-20 w-20 items-center justify-center rounded-full border border-white/15 bg-white/8 text-white shadow-[0_16px_40px_rgba(0,0,0,0.22)]">
+                            <div className="flex h-20 w-20 items-center justify-center rounded-full border border-[#d7ddd5] bg-white text-[#16342d] shadow-[0_16px_40px_rgba(22,52,45,0.12)]">
                                 <PlayIcon />
                             </div>
                         </div>

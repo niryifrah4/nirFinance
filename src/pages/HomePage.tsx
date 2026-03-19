@@ -7,7 +7,7 @@ import VideoSection from "../sections/VideoSection";
 
 export default function HomePage() {
     return (
-        <main className="pb-6">
+        <main>
             <HeroSection />
             <VideoSection />
             <ServicesSection />
