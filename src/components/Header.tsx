@@ -10,8 +10,8 @@ export default function Header() {
     return (
         <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4">
             <div className="mx-auto max-w-6xl">
-                <div className="rounded-[1.5rem] bg-[linear-gradient(135deg,rgba(173,254,122,0.22),rgba(255,255,255,0.08),rgba(255,165,59,0.2))] p-[1px] shadow-[0_18px_50px_rgba(0,0,0,0.18)]">
-                    <div className="flex flex-row-reverse items-center justify-between rounded-[calc(1.5rem-1px)] bg-[rgba(20,50,43,0.86)] px-4 py-3 backdrop-blur-xl sm:px-6">
+                <div className="rounded-[1.5rem] border border-black/8 bg-white p-[1px] shadow-[0_18px_50px_rgba(0,0,0,0.12)]">
+                    <div className="flex flex-row-reverse items-center justify-between rounded-[calc(1.5rem-1px)] bg-white px-4 py-3 sm:px-6">
                         <a
                             href="#top"
                             className="flex min-h-[44px] items-center"
@@ -26,10 +26,10 @@ export default function Header() {
                                 />
                             ) : (
                                 <div dir="rtl" className="text-right">
-                                    <div className="text-lg font-bold leading-none text-white sm:text-xl">
+                                    <div className="text-lg font-bold leading-none text-[#14322b] sm:text-xl">
                                         {siteContent.header.logoText}
                                     </div>
-                                    <div className="mt-1 text-xs font-medium text-[var(--lime)] sm:text-sm">
+                                    <div className="mt-1 text-xs font-medium text-[#1d4339] sm:text-sm">
                                         תכנון פיננסי
                                     </div>
                                 </div>

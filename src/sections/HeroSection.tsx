@@ -30,10 +30,8 @@ export default function HeroSection() {
                 <div className="pointer-events-none absolute left-[-4rem] top-10 h-36 w-36 rounded-full bg-[rgba(173,254,122,0.08)] blur-3xl" />
                 <div className="pointer-events-none absolute bottom-0 right-[-3rem] h-40 w-40 rounded-full bg-[rgba(255,165,59,0.08)] blur-3xl" />
 
-                <ScrollReveal className="relative mx-auto max-w-4xl text-center" >
+                <ScrollReveal className="relative mx-auto max-w-4xl text-center">
                     <div dir="rtl">
-                        <div className="mx-auto mb-6 h-[2px] w-24 rounded-full bg-gradient-to-l from-[var(--orange)] via-[var(--lime)] to-white/30" />
-
                         <h1 className="text-[1.9rem] font-bold leading-[1.15] tracking-[-0.02em] text-white sm:hidden">
                             {mobileTitle}
                         </h1>
@@ -46,15 +44,6 @@ export default function HeroSection() {
                         <p className="mx-auto mt-6 max-w-3xl text-base leading-8 text-[var(--sand)] sm:text-lg">
                             {renderTextWithLineBreaks(siteContent.hero.description)}
                         </p>
-
-                        <div className="mt-9 flex flex-row flex-wrap items-center justify-center gap-3">
-                            <a
-                                href="#video"
-                                className="inline-flex min-h-[52px] items-center justify-center rounded-2xl border border-white/15 bg-[rgba(10,22,18,0.78)] px-7 text-base font-medium text-white shadow-[0_14px_35px_rgba(0,0,0,0.18)] transition hover:bg-[rgba(10,22,18,0.9)]"
-                            >
-                                {siteContent.hero.primaryButton}
-                            </a>
-                        </div>
                     </div>
                 </ScrollReveal>
             </div>

@@ -241,14 +241,14 @@ function ServiceIcon({
             <img
                 src={src}
                 alt={alt}
-                className="mx-auto h-28 w-28 object-contain sm:h-32 sm:w-32"
+                className="mx-auto h-20 w-20 object-contain sm:h-24 sm:w-24"
                 loading="lazy"
                 onError={() => setFailed(true)}
             />
         );
     }
 
-    return <Fallback className="mx-auto h-28 w-28 sm:h-32 sm:w-32" />;
+    return <Fallback className="mx-auto h-20 w-20 sm:h-24 sm:w-24" />;
 }
 
 const desktopPlacement = [
