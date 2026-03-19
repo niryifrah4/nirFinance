@@ -151,7 +151,7 @@ export default function ContactSection() {
                                     onChange={handleChange}
                                     required
                                     placeholder="השם המלא שלך"
-                                    className="h-14 w-full rounded-2xl border border-[#9cb0a6] bg-white px-4 text-[#16342d] outline-none transition placeholder:text-[#6f857b] focus:border-[var(--lime)]"
+                                    className="h-14 w-full rounded-2xl border border-[#9cb0a6] bg-white px-4 text-[#16342d] outline-none transition placeholder:text-[#3f544d] focus:border-[var(--lime)]"
                                 />
                             </div>
 
@@ -167,7 +167,7 @@ export default function ContactSection() {
                                     onChange={handleChange}
                                     required
                                     placeholder="טלפון לחזרה"
-                                    className="h-14 w-full rounded-2xl border border-[#9cb0a6] bg-white px-4 text-[#16342d] outline-none transition placeholder:text-[#6f857b] focus:border-[var(--lime)]"
+                                    className="h-14 w-full rounded-2xl border border-[#9cb0a6] bg-white px-4 text-[#16342d] outline-none transition placeholder:text-[#3f544d] focus:border-[var(--lime)]"
                                 />
                             </div>
 
@@ -183,7 +183,7 @@ export default function ContactSection() {
                                     onChange={handleChange}
                                     required
                                     placeholder="כתובת מייל"
-                                    className="h-14 w-full rounded-2xl border border-[#9cb0a6] bg-white px-4 text-[#16342d] outline-none transition placeholder:text-[#6f857b] focus:border-[var(--lime)]"
+                                    className="h-14 w-full rounded-2xl border border-[#9cb0a6] bg-white px-4 text-[#16342d] outline-none transition placeholder:text-[#] focus:border-[var(--lime)]"
                                 />
                             </div>
 
