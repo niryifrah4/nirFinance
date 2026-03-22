@@ -99,6 +99,12 @@ export default function ContactSection() {
                 throw new Error(result.message || "משהו השתבש בשליחת הטופס.");
             }
 
+            const fbq = (window as Window & {
+                fbq?: (...args: unknown[]) => void;
+            }).fbq;
+
+            fbq?.("track", "Lead");
+
             setStatus({
                 type: "success",
                 message: "הפרטים נשלחו בהצלחה. ניר יחזור אליכם בהקדם.",
@@ -128,8 +134,13 @@ export default function ContactSection() {
                             </div>
 
                             <h2 className="mt-3 text-3xl font-bold leading-[1.05] text-[#16342d] sm:text-4xl">
-                                {siteContent.contact.title}
+                                השאירו פרטים לקביעת שיחת אפיון ללא עלות
                             </h2>
+
+                            <div className="mt-3 space-y-1 text-base font-semibold leading-7 text-[#1d4339] sm:text-lg">
+                                <p>בונוס מתנה ממני</p>
+                                <p>הצ׳ק ליסט לניהול פיננסי המלא במתנה!</p>
+                            </div>
 
                             <div className="mt-4 space-y-2 text-base leading-7 text-[#49655c]">
                                 {siteContent.contact.descriptionLines.map((line) => (
@@ -183,7 +194,7 @@ export default function ContactSection() {
                                     onChange={handleChange}
                                     required
                                     placeholder="כתובת מייל"
-                                    className="h-14 w-full rounded-2xl border border-[#9cb0a6] bg-white px-4 text-[#16342d] outline-none transition placeholder:text-[#] focus:border-[var(--lime)]"
+                                    className="h-14 w-full rounded-2xl border border-[#9cb0a6] bg-white px-4 text-[#16342d] outline-none transition placeholder:text-[#3f544d] focus:border-[var(--lime)]"
                                 />
                             </div>
 
@@ -200,10 +211,10 @@ export default function ContactSection() {
                         {status.type !== "idle" ? (
                             <div
                                 className={`mt-4 rounded-2xl px-4 py-3 text-center text-sm font-medium ${status.type === "success"
-                                    ? "bg-[rgba(173,254,122,0.18)] text-[#285343]"
-                                    : status.type === "error"
-                                        ? "bg-[rgba(255,165,59,0.16)] text-[#8b5a18]"
-                                        : "bg-[#e9ede7] text-[#16342d]"
+                                        ? "bg-[rgba(173,254,122,0.18)] text-[#285343]"
+                                        : status.type === "error"
+                                            ? "bg-[rgba(255,165,59,0.16)] text-[#8b5a18]"
+                                            : "bg-[#e9ede7] text-[#16342d]"
                                     }`}
                             >
                                 {status.message}

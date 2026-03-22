@@ -1,6 +1,9 @@
 import ScrollReveal from "../components/ScrollReveal";
 import { siteContent } from "../data/siteContent";
 
+const highlightedSentence =
+    "לחצו פליי וגלו ב־5 דקות איך אתם צריכים להסתכל על ניהול הכסף שלכם.";
+
 function renderTextWithLineBreaks(text: string) {
     const sentences = text
         .split(/(?<=\.)\s*/g)
@@ -20,6 +23,10 @@ export default function HeroSection() {
     const firstLine = titleParts[0] ?? siteContent.hero.title;
     const secondLine = titleParts[1] ?? "";
     const mobileTitle = titleParts.join(" | ");
+
+    const baseDescription = siteContent.hero.description
+        .replace(highlightedSentence, "")
+        .trim();
 
     return (
         <section
@@ -42,7 +49,11 @@ export default function HeroSection() {
                         </h1>
 
                         <p className="mx-auto mt-6 max-w-3xl text-base leading-8 text-[var(--sand)] sm:text-lg">
-                            {renderTextWithLineBreaks(siteContent.hero.description)}
+                            {renderTextWithLineBreaks(baseDescription)}
+                        </p>
+
+                        <p className="mx-auto mt-5 max-w-3xl text-lg font-bold leading-8 text-[var(--lime)] sm:text-2xl sm:leading-10">
+                            {highlightedSentence}
                         </p>
                     </div>
                 </ScrollReveal>

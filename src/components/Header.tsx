@@ -1,9 +1,6 @@
 import { useState } from "react";
 import { siteContent } from "../data/siteContent";
 
-const DISCOVERY_CALL_HREF =
-    "https://dub.sh/i9wJTqn";
-
 export default function Header() {
     const [logoFailed, setLogoFailed] = useState(false);
 
@@ -37,9 +34,7 @@ export default function Header() {
                         </a>
 
                         <a
-                            href={DISCOVERY_CALL_HREF}
-                            target="_blank"
-                            rel="noreferrer"
+                            href="#contact"
                             className="inline-flex min-h-[48px] flex-col items-center justify-center whitespace-nowrap rounded-full bg-[var(--lime)] px-5 py-2 text-center shadow-[0_14px_30px_rgba(173,254,122,0.22)] transition hover:-translate-y-0.5 hover:bg-[#c2ff9a] sm:px-6"
                         >
                             <span className="text-sm font-bold leading-none text-[#14322b] sm:text-[15px]">
