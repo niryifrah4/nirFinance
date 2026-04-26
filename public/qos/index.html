@@ -344,7 +344,7 @@
   <div class="intro-emoji">💡</div>
   <div class="intro-tag">שאלון חינמי — 2 דקות</div>
   <h1 class="intro-title">כמה אתם <span class="lime">באמת שולטים</span><br>בפיננסים שלכם?</h1>
-  <p class="intro-sub">10 שאלות שחושפות את התמונה האמיתית. קבלו ניקוד אישי ותבינו איפה אתם עומדים.</p>
+  <p class="intro-sub">11 שאלות שחושפות את התמונה האמיתית. קבלו ניקוד אישי ותבינו איפה אתם עומדים.</p>
 
   <div class="intro-form">
     <label for="userName">מה שמך?</label>
@@ -359,14 +359,14 @@
   </div>
 
   <button class="btn-start" onclick="startQuiz()">התחילו את הבדיקה ←</button>
-  <p class="q-count-preview">10 שאלות · תוצאה מיידית · ללא עלות</p>
+  <p class="q-count-preview">11 שאלות · תוצאה מיידית · ללא עלות</p>
 </div>
 
 <!-- ══════════ QUIZ SCREEN ══════════ -->
 <div id="quizScreen">
   <div class="prog-wrap">
     <div class="prog-meta">
-      <span class="prog-lbl" id="qLabel">שאלה 1 מתוך 10</span>
+      <span class="prog-lbl" id="qLabel">שאלה 1 מתוך 11</span>
       <span class="prog-cnt" id="qScore">0 נק׳ מצטבר</span>
     </div>
     <div class="prog-bar"><div class="prog-fill" id="progFill" style="width:10%"></div></div>
@@ -522,6 +522,15 @@
         ['חלקי — יש תכנית כללית אבל לא מפורטת', 5],
         ['לא — יש מטרות בראש אבל אין תכנית', 2],
         ['לא — אין לי מטרות מוגדרות', 0],
+      ]
+    },
+    {
+      text: 'האם אתם מרגישים מספיק בטוחים מבחינה פיננסית?',
+      options: [
+        ['כן — אני רגוע ויציב', 10],
+        ['ברוב הזמן — עם כמה חששות', 5],
+        ['לא ממש — יש חרדה פיננסית', 2],
+        ['בכלל לא — זה מקור לחץ קבוע אצלי', 0],
       ]
     },
     {
