@@ -396,16 +396,16 @@
 <div id="leadScreen">
   <div class="lead-card">
     <div class="lead-teaser">
-      <div class="lead-teaser-icon">🔒</div>
-      <h2>התוצאה שלך מוכנה!</h2>
-      <p>השאירו פרטים וקבלו את הניקוד האישי שלכם — כולל ניתוח מה לשפר קודם.</p>
+      <div class="lead-teaser-icon">🎁</div>
+      <h2>הניקוד שלך מוכן!</h2>
+      <p>הכניסו מייל וקבלו <strong style="color:var(--lime)">את הצ'ק ליסט הפיננסי המלא</strong> במתנה — יחד עם הניתוח האישי שלכם.</p>
     </div>
     <div class="lead-form">
-      <input type="tel" id="lPhone" placeholder="טלפון לחזרה" autocomplete="tel">
-      <input type="email" id="lEmail" placeholder="כתובת מייל" autocomplete="email">
-      <button class="btn-reveal" id="revealBtn" onclick="submitLead()">גלו את הניקוד שלכם ←</button>
+      <input type="email" id="lEmail" placeholder="כתובת המייל שלך" autocomplete="email">
+      <input type="tel" id="lPhone" placeholder="טלפון (לא חובה)" autocomplete="tel">
+      <button class="btn-reveal" id="revealBtn" onclick="submitLead()">שלחו לי את הצ׳ק ליסט + הניקוד ←</button>
     </div>
-    <p class="lead-privacy">הפרטים שמורים אצלי בלבד 🔒</p>
+    <p class="lead-privacy">הפרטים שמורים אצלי בלבד 🔒 · הצ'ק ליסט יגיע למייל תוך דקה</p>
   </div>
 </div>
 
@@ -425,6 +425,13 @@
       <p id="ctaText"></p>
       <a href="/#contact" class="btn-cta-main">קבעו שיחת אפיון חינם עם ניר ←</a>
     </div>
+  </div>
+
+  <div style="text-align:center; margin-top:16px; margin-bottom:8px;">
+    <a href="/CheckList26.pdf" target="_blank"
+       style="display:inline-block; padding:13px 28px; background:rgba(173,254,122,0.12); border:1.5px solid rgba(173,254,122,0.3); color:var(--lime); border-radius:12px; font-weight:700; font-size:15px; text-decoration:none;">
+      🎁 הורד את הצ׳ק ליסט הפיננסי
+    </a>
   </div>
 
   <div class="share-row">
@@ -634,45 +641,70 @@
   }
 
   async function submitLead() {
-    const phone = document.getElementById('lPhone').value.trim();
     const email = document.getElementById('lEmail').value.trim();
-    if (!phone || !email) { alert('אנא הכניסו טלפון ומייל'); return; }
+    const phone = document.getElementById('lPhone').value.trim();
+    if (!email) { alert('אנא הכניסו כתובת מייל'); return; }
 
-    leadPhone = phone;
     leadEmail = email;
+    leadPhone = phone;
 
     const btn = document.getElementById('revealBtn');
     btn.textContent = 'שולח...';
     btn.disabled = true;
 
-    // Build answers summary
     const scoreMax = questions.length * 10;
     const pct = Math.round((totalScore / scoreMax) * 100);
 
     let summary = '';
     questions.forEach((q, i) => {
       const ans = answers[i];
-      summary += `שאלה ${i+1}: ${q.text}\n→ תשובה: ${ans ? ans.text : '—'} (${ans ? ans.score : 0} נק׳)\n\n`;
+      summary += `ש${i+1}: ${q.text} | תשובה: ${ans ? ans.text : '—'} (${ans ? ans.score : 0} נק׳)\n`;
     });
 
-    const data = new FormData();
-    data.append('שם', userName);
-    data.append('עיסוק', userEmp);
-    data.append('טלפון', phone);
-    data.append('מייל', email);
-    data.append('ניקוד', `${pct}% (${totalScore}/${scoreMax})`);
-    data.append('פירוט תשובות', summary);
-    data.append('_subject', `📋 שאלון חדש — ${userName} | ניקוד ${pct}% — ניר יפרח CFP`);
-    data.append('_captcha', 'false');
-    data.append('_template', 'table');
+    const checklistUrl = 'https://niryifrahcfp.co.il/CheckList26.pdf';
+
+    // ── 1. שליחה לניר עם כל פרטי הליד ──
+    const dataToNir = new FormData();
+    dataToNir.append('שם', userName);
+    dataToNir.append('עיסוק', userEmp);
+    dataToNir.append('מייל', email);
+    dataToNir.append('טלפון', phone || '—');
+    dataToNir.append('ניקוד', `${pct}% (${totalScore}/${scoreMax})`);
+    dataToNir.append('תשובות', summary);
+    dataToNir.append('_subject', `📋 ליד חדש מהשאלון — ${userName} | ניקוד ${pct}%`);
+    dataToNir.append('_captcha', 'false');
+    dataToNir.append('_template', 'table');
+
+    // ── 2. מייל auto-reply ללקוח עם הצ'ק ליסט ──
+    const dataToUser = new FormData();
+    dataToUser.append('name', userName);
+    dataToUser.append('email', email);
+    dataToUser.append('_subject', `הצ׳ק ליסט הפיננסי שלך מניר יפרח CFP 🎁`);
+    dataToUser.append('_captcha', 'false');
+    dataToUser.append('_template', 'box');
+    dataToUser.append('_replyto', email);
+    dataToUser.append('message',
+      `שלום ${userName}!\n\n` +
+      `תודה שמילאת את השאלון — קיבלת ניקוד של ${pct}%.\n\n` +
+      `🎁 הנה הצ׳ק ליסט הפיננסי המלא שהבטחתי:\n${checklistUrl}\n\n` +
+      `לחצו על הקישור להורדה.\n\n` +
+      `אם תרצו לדבר על התוצאות ולהבין מה לשפר — אשמח לשיחת אפיון קצרה ללא עלות.\n\n` +
+      `ניר יפרח CFP\nniryifrahcfp.co.il`
+    );
 
     try {
-      const res = await fetch('https://formsubmit.co/ajax/a8cb2c9c9e2127e13dce32b01b07692e', {
+      // שליחה לניר
+      await fetch('https://formsubmit.co/ajax/a8cb2c9c9e2127e13dce32b01b07692e', {
         method: 'POST',
         headers: { 'Accept': 'application/json' },
-        body: data
+        body: dataToNir
       });
-      // Show result regardless
+      // שליחה ללקוח
+      await fetch('https://formsubmit.co/ajax/' + encodeURIComponent(email), {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: dataToUser
+      }).catch(() => {}); // לא קריטי אם נכשל
     } catch(_) {}
 
     showResult(pct);
