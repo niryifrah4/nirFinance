@@ -923,7 +923,6 @@
 
 <!-- ══════════ NAV ══════════ -->
 <nav>
-  <a href="#top" class="nav-logo">ניר יפרח <span style="color:var(--lime);">CFP</span></a>
   <div class="nav-links">
     <a href="#video">הסרטון</a>
     <a href="#about">עלי</a>
@@ -940,7 +939,7 @@
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <div class="hero-eyebrow">תכנון פיננסי אישי ומשפחתי · CFP מוסמך</div>
+    <div class="hero-eyebrow">תכנון פיננסי אישי ומשפחתי</div>
     <h1 class="hero-h">
       אתם מנהלים עסק<br>
       של מליונים.<br>
@@ -1341,6 +1340,7 @@
         <form onsubmit="submitLead(event)">
           <input type="text" id="leadName" placeholder="השם המלא שלך" required class="f-input">
           <input type="tel" id="leadPhone" placeholder="טלפון לחזרה" required class="f-input">
+          <input type="email" id="leadEmail" placeholder="כתובת מייל" required class="f-input">
           <button type="submit" class="f-btn">שלחו פרטים ←</button>
           <p class="f-note">הפרטים שלכם נשמרים אצלי בלבד ולא יועברו לאף גורם חיצוני</p>
           <div class="f-success" id="formSuccess">✓ תודה! ניר יחזור אליכם בהקדם 🙌</div>
@@ -1400,14 +1400,42 @@
     if (!isOpen) item.classList.add('open');
   }
 
-  /* ─── Lead form ─── */
-  function submitLead(e) {
+  /* ─── Lead form — sends to niryifrah4@gmail.com via formsubmit.co ─── */
+  async function submitLead(e) {
     e.preventDefault();
+    const btn   = e.target.querySelector('.f-btn');
     const name  = document.getElementById('leadName').value.trim();
     const phone = document.getElementById('leadPhone').value.trim();
-    console.log('Lead captured:', { name, phone });
-    e.target.querySelector('.f-btn').style.display = 'none';
-    document.getElementById('formSuccess').style.display = 'block';
+    const email = document.getElementById('leadEmail').value.trim();
+
+    btn.textContent = 'שולח...';
+    btn.disabled = true;
+
+    const data = new FormData();
+    data.append('שם',    name);
+    data.append('טלפון', phone);
+    data.append('מייל',  email);
+    data.append('_subject', 'ליד חדש מהאתר – ניר יפרח CFP');
+    data.append('_captcha', 'false');
+    data.append('_template', 'table');
+
+    try {
+      const res = await fetch('https://formsubmit.co/ajax/niryifrah4@gmail.com', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: data
+      });
+      if (res.ok) {
+        btn.style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+      } else {
+        btn.textContent = 'שגיאה — נסו שוב';
+        btn.disabled = false;
+      }
+    } catch (err) {
+      btn.textContent = 'שגיאה — נסו שוב';
+      btn.disabled = false;
+    }
   }
 </script>
 </body>
