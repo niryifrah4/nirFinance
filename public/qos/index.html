@@ -7,6 +7,18 @@
   <meta property="og:title" content="בדקו כמה אתם שולטים בפיננסים שלכם">
   <meta property="og:description" content="שאלון קצר של 2 דקות שחושף את התמונה האמיתית של המצב הפיננסי שלכם">
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <!-- Meta Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init','952357363915643');
+    fbq('track','PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=952357363915643&ev=PageView&noscript=1"/></noscript>
   <style>
     :root {
       --forest:   #1d4339;
@@ -707,6 +719,7 @@
       }).catch(() => {}); // לא קריטי אם נכשל
     } catch(_) {}
 
+    if (typeof fbq === 'function') fbq('track', 'Lead');
     showResult(pct);
   }
 
