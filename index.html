@@ -25,6 +25,7 @@
       background: #fff;
       color: var(--forest);
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
     /* ══════════════════════════════
@@ -70,6 +71,7 @@
     .hero {
       position: relative;
       min-height: 100vh;
+      min-height: 100dvh; /* iOS Safari — dynamic viewport, no address-bar overflow */
       display: flex;
       align-items: center;
       padding: 120px 80px 80px;
@@ -790,16 +792,18 @@
         padding: 0 20px;
         justify-content: space-between;
       }
-      .nav-logo { display: none; }
+      .nav-logo { display: block; }
       .nav-links { gap: 0; }
       .nav-links a:not(.nav-cta) { display: none; }
       .nav-cta { padding: 8px 16px; font-size: 14px; }
 
       /* Hero */
-      .hero { padding: 100px 20px 60px; align-items: flex-end; }
-      .hero-content { max-width: 100%; }
-      h1.hero-h { font-size: clamp(38px, 10vw, 50px); letter-spacing: -1.5px; margin-bottom: 20px; }
-      .hero-sub { font-size: 17px; margin-bottom: 36px; max-width: 100%; }
+      .hero { padding: 90px 24px 60px; align-items: center; }
+      .hero-content { max-width: 100%; text-align: center; }
+      .hero-eyebrow { text-align: center; }
+      h1.hero-h { font-size: clamp(36px, 9.5vw, 50px); letter-spacing: -1.5px; margin-bottom: 20px; text-align: center; }
+      .hero-sub { font-size: 17px; margin: 0 auto 36px; max-width: 100%; text-align: center; }
+      .hero-overlay { background: linear-gradient(to bottom, rgba(13,32,25,0.55) 0%, rgba(13,32,25,0.82) 55%, rgba(13,32,25,0.72) 100%); }
       .btn-primary { font-size: 15px; padding: 15px 28px; display: block; text-align: center; }
 
       /* Trust bar */
