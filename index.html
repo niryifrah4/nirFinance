@@ -260,6 +260,9 @@
       background: var(--lime);
       padding: 2px 12px; border-radius: 6px;
       font-size: 24px;
+      font-weight: 900;
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
     }
 
     /* ══════════════════════════════
@@ -879,11 +882,11 @@
       .faq-a { font-size: 14px; }
 
       /* Contact */
-      .contact { padding: 40px 20px; }
-      .contact-inner { grid-template-columns: 1fr; gap: 32px; }
-      .contact-h { font-size: clamp(42px, 11vw, 60px); letter-spacing: -2px; }
-      .contact-desc { font-size: 15px; }
-      .contact .lime-side { border-right: none; padding-right: 0; text-align: center; display: block; }
+      .contact { padding: 36px 20px; }
+      .contact-inner { grid-template-columns: 1fr; gap: 20px; }
+      .contact-h { font-size: clamp(40px, 11vw, 58px); letter-spacing: -2px; margin-bottom: 10px; }
+      .contact-desc { font-size: 15px; margin-bottom: 0; }
+      .contact .lime-side { border-right: none; padding-right: 0; text-align: center; display: block; margin-bottom: 8px; }
       .contact-content { text-align: center; }
       .form-box { padding: 24px 20px; }
       .form-box-title { font-size: 16px; margin-bottom: 20px; }
@@ -955,7 +958,7 @@
       <span style="color:var(--lime);">המשפחה שלכם.</span>
     </h1>
     <p class="hero-sub">
-      <span style="font-size:16px; font-weight:400; color:rgba(255,255,255,0.5); display:block; margin-bottom:10px;">השאלה היא:</span>
+      <span style="font-size:15px; font-weight:700; color:rgba(255,255,255,0.75); display:block; margin-bottom:10px; letter-spacing:1px; text-transform:uppercase;">השאלה היא:</span>
       <span style="font-size:18px; font-weight:900; color:#fff; line-height:1.3; background:var(--orange); padding: 4px 10px; border-radius:5px; box-decoration-break:clone; -webkit-box-decoration-break:clone;">האם יש לכם תכנית?<br>או שהכל מנוהל על סמך תחושת בטן?</span>
     </p>
     <a href="#video" class="btn-primary">&#9654; צפו בסרטון · 5 דקות שישנו לכם את החשיבה</a>
@@ -1115,7 +1118,7 @@
       </div>
     </div>
     <p class="what-close">
-      וכל זה <em>מבלי להתפשר על חיים טובים גם בהווה.</em>
+      וכל זה <em>מבלי להתפשר<br>על חיים טובים גם בהווה.</em>
     </p>
   </div>
 </section>
