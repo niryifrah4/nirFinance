@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>מודעות — ניר יפרח CFP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Heebo', sans-serif;
+      direction: rtl;
+      background: #f0f0f0;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 22px;
+      color: #333;
+      margin-bottom: 40px;
+      font-weight: 700;
+    }
+
+    .ads-row {
+      display: flex;
+      gap: 32px;
+      justify-content: center;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .ad-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .ad-label {
+      font-size: 13px;
+      font-weight: 700;
+      color: #666;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* ── AD CARD ── */
+    .ad {
+      width: 320px;
+      height: 568px; /* 9:16 story ratio */
+      border-radius: 18px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+    }
+
+    /* ══ AD 1 — כסף שלך עובד? ══ */
+    .ad1 {
+      background: #102a22;
+    }
+    .ad1 .photo-circle {
+      position: absolute;
+      top: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 220px;
+      height: 270px;
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      background: rgba(173,254,122,0.12);
+      overflow: hidden;
+      border: 2px solid rgba(173,254,122,0.2);
+    }
+    .ad1 .photo-circle img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      filter: grayscale(20%);
+    }
+
+    /* Floating tags */
+    .tag {
+      position: absolute;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 6px 13px;
+      border-radius: 999px;
+      white-space: nowrap;
+      backdrop-filter: blur(8px);
+    }
+    .tag-lime {
+      background: rgba(173,254,122,0.15);
+      border: 1px solid rgba(173,254,122,0.4);
+      color: #adfe7a;
+    }
+    .tag-white {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.85);
+    }
+    .tag-orange {
+      background: rgba(255,123,58,0.15);
+      border: 1px solid rgba(255,123,58,0.4);
+      color: #ff7b3a;
+    }
+
+    /* Bottom copy block */
+    .ad-copy {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 22px 22px 26px;
+    }
+    .ad-copy-sub {
+      font-size: 13px;
+      font-weight: 400;
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+    .ad-copy-main {
+      font-size: 22px;
+      font-weight: 900;
+      line-height: 1.2;
+      margin-bottom: 18px;
+    }
+    .ad-btn {
+      display: inline-block;
+      font-family: 'Heebo', sans-serif;
+      font-size: 15px;
+      font-weight: 900;
+      padding: 11px 24px;
+      border-radius: 10px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .btn-lime { background: #adfe7a; color: #102a22; }
+    .btn-white { background: #fff; color: #102a22; }
+    .btn-forest { background: #102a22; color: #adfe7a; }
+
+    /* ══ AD 1 specifics ══ */
+    .ad1 .ad-copy {
+      background: linear-gradient(to top, rgba(16,42,34,1) 70%, transparent);
+    }
+    .ad1 .ad-copy-sub { color: rgba(255,255,255,0.55); }
+    .ad1 .ad-copy-main { color: #fff; }
+
+    /* ══ AD 2 — אתם מנהלים עסק ══ */
+    .ad2 { background: #e8e2d2; }
+    .ad2 .photo-circle {
+      position: absolute;
+      top: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 230px;
+      height: 290px;
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      background: rgba(16,42,34,0.08);
+      overflow: hidden;
+      border: 2px solid rgba(16,42,34,0.12);
+    }
+    .ad2 .photo-circle img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+    .ad2 .ad-copy {
+      background: linear-gradient(to top, #e8e2d2 80%, transparent);
+    }
+    .ad2 .ad-copy-sub { color: rgba(16,42,34,0.55); }
+    .ad2 .ad-copy-main { color: #102a22; }
+    .tag-forest {
+      background: rgba(16,42,34,0.08);
+      border: 1px solid rgba(16,42,34,0.2);
+      color: #102a22;
+    }
+
+    /* ══ AD 3 — 50K ══ */
+    .ad3 { background: #102a22; }
+    .ad3 .photo-bg {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 65%;
+      overflow: hidden;
+    }
+    .ad3 .photo-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      filter: grayscale(30%) brightness(0.75);
+    }
+    .ad3 .photo-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 65%;
+      background: linear-gradient(to bottom, rgba(16,42,34,0.2), rgba(16,42,34,0.7));
+    }
+    .ad3 .big-number {
+      position: absolute;
+      top: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 72px;
+      font-weight: 900;
+      color: #adfe7a;
+      line-height: 1;
+      text-align: center;
+      text-shadow: 0 4px 24px rgba(0,0,0,0.4);
+      white-space: nowrap;
+    }
+    .ad3 .big-number span {
+      display: block;
+      font-size: 18px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 4px;
+    }
+    .ad3 .ad-copy {
+      background: linear-gradient(to top, rgba(16,42,34,1) 75%, transparent);
+    }
+    .ad3 .ad-copy-sub { color: rgba(255,255,255,0.55); }
+    .ad3 .ad-copy-main { color: #fff; }
+
+    /* Logo watermark */
+    .ad-logo {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      font-size: 11px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 1px;
+    }
+    .ad-logo.dark { color: rgba(16,42,34,0.4); }
+  </style>
+</head>
+<body>
+
+<h1>מודעות מטא — ניר יפרח CFP</h1>
+
+<div class="ads-row">
+
+  <!-- ══ AD 1 ══ -->
+  <div class="ad-wrap">
+    <div class="ad-label">מודעה 1 · "הכסף שלך ישן?"</div>
+    <div class="ad ad1">
+      <div class="ad-logo">NIR YIFRAH CFP</div>
+
+      <!-- Photo -->
+      <div class="photo-circle">
+        <img src="/DSC03313-Enhanced-NR-Edit.jpg" alt="ניר יפרח">
+      </div>
+
+      <!-- Floating tags -->
+      <div class="tag tag-white" style="top:170px; right:14px;">💤 כסף בעו״ש</div>
+      <div class="tag tag-lime" style="top:220px; left:10px;">📊 בלי תכנית</div>
+      <div class="tag tag-orange" style="top:270px; right:18px;">❓ לאן הכסף הולך?</div>
+
+      <!-- Copy -->
+      <div class="ad-copy">
+        <div class="ad-copy-sub">רוב המשפחות לא יודעות כמה כסף הולך לאיבוד כל חודש.</div>
+        <div class="ad-copy-main">כמה <span style="color:#adfe7a;">אתם</span> מפסידים?</div>
+        <span class="ad-btn btn-lime">גלו עכשיו ←</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ AD 2 ══ -->
+  <div class="ad-wrap">
+    <div class="ad-label">מודעה 2 · "עסק של מליונים"</div>
+    <div class="ad ad2">
+      <div class="ad-logo dark">NIR YIFRAH CFP</div>
+
+      <!-- Photo -->
+      <div class="photo-circle">
+        <img src="/Nir.jpg" alt="ניר יפרח">
+      </div>
+
+      <!-- Floating tags -->
+      <div class="tag tag-forest" style="top:160px; right:10px;">🏠 משכנתא</div>
+      <div class="tag tag-forest" style="top:205px; left:10px;">👶 חינוך ילדים</div>
+      <div class="tag tag-forest" style="top:255px; right:14px;">📈 השקעות</div>
+      <div class="tag tag-forest" style="top:298px; left:18px;">🧓 פנסיה</div>
+
+      <!-- Copy -->
+      <div class="ad-copy">
+        <div class="ad-copy-sub">אתם מנהלים עסק של מליונים.</div>
+        <div class="ad-copy-main">יש לכם <span style="color:#102a22; background:#adfe7a; padding:0 8px; border-radius:5px;">תכנית?</span></div>
+        <span class="ad-btn btn-forest">לשאלון החינמי ←</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ AD 3 ══ -->
+  <div class="ad-wrap">
+    <div class="ad-label">מודעה 3 · "50,000 ₪ מחר"</div>
+    <div class="ad ad3">
+      <div class="ad-logo">NIR YIFRAH CFP</div>
+
+      <!-- Full bleed photo -->
+      <div class="photo-bg">
+        <img src="/DSC02977-Edit-2.jpg" alt="ניר יפרח">
+      </div>
+      <div class="photo-overlay"></div>
+
+      <!-- Big number -->
+      <div class="big-number">
+        <span>אם מחר תצטרכו</span>
+        50K ₪
+      </div>
+
+      <!-- Floating tags -->
+      <div class="tag tag-orange" style="top:230px; right:16px;">🚨 קרן חירום?</div>
+      <div class="tag tag-white" style="top:275px; left:16px;">😰 תחושת בטן</div>
+
+      <!-- Copy -->
+      <div class="ad-copy">
+        <div class="ad-copy-sub">מה היה קורה? בדקו את הציון הפיננסי שלכם.</div>
+        <div class="ad-copy-main">הגיע הזמן <span style="color:#adfe7a;">לדעת</span> איפה אתם עומדים.</div>
+        <span class="ad-btn btn-lime">לשאלון ←</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
