@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>צ'ק ליסט פרישה — ניר יפרח</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+@page { size: A4; margin: 1.2cm 1cm; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Heebo', 'Arial', sans-serif;
+  direction: rtl;
+  color: #1a202c;
+  background: white;
+  line-height: 1.5;
+}
+
+.page { max-width: 100%; padding: 0; }
+
+/* HEADER */
+.header {
+  background: #102a22;
+  color: white;
+  padding: 28px 30px 24px;
+  position: relative;
+  overflow: hidden;
+}
+.header::before {
+  content: "";
+  position: absolute;
+  top: -60px; left: -60px;
+  width: 220px; height: 220px;
+  background: rgba(173,254,122,0.06);
+  border-radius: 50%;
+}
+.header::after {
+  content: "";
+  position: absolute;
+  bottom: -40px; right: -40px;
+  width: 160px; height: 160px;
+  background: rgba(173,254,122,0.04);
+  border-radius: 50%;
+}
+.header h1 {
+  font-size: 28pt;
+  font-weight: 900;
+  margin-bottom: 5px;
+  letter-spacing: -0.5px;
+  position: relative;
+}
+.header h1 span { color: #adfe7a; }
+.header .subtitle {
+  font-size: 12pt;
+  opacity: 0.85;
+  font-weight: 500;
+  position: relative;
+}
+.header .tagline {
+  margin-top: 12px;
+  font-size: 10.5pt;
+  font-style: italic;
+  opacity: 0.7;
+  border-right: 3px solid rgba(173,254,122,0.45);
+  padding-right: 12px;
+  position: relative;
+}
+
+/* SECTIONS */
+.section {
+  padding: 14px 28px 12px;
+  border-bottom: 1px solid #e2e8f0;
+}
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  font-size: 14pt;
+  font-weight: 800;
+  color: #102a22;
+}
+.dot {
+  width: 11px; height: 11px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+.dot.red    { background: #e8372a; }
+.dot.orange { background: #ff7b3a; }
+.dot.green  { background: #adfe7a; border: 1px solid rgba(16,42,34,0.2); }
+.dot.purple { background: #102a22; }
+
+/* CHECKLIST ITEMS */
+.item {
+  display: flex;
+  gap: 12px;
+  padding: 8px 0;
+  align-items: flex-start;
+}
+.checkbox {
+  flex-shrink: 0;
+  width: 21px; height: 21px;
+  border: 2px solid #102a22;
+  border-radius: 4px;
+  margin-top: 2px;
+  background: white;
+}
+.item-content { flex: 1; }
+.item-title {
+  font-size: 11.5pt;
+  font-weight: 800;
+  color: #102a22;
+  margin-bottom: 2px;
+}
+.item-desc {
+  font-size: 10pt;
+  color: #4a5568;
+  line-height: 1.5;
+}
+
+.highlight {
+  background: #fef3c7;
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-weight: 700;
+  color: #92400e;
+}
+.warning {
+  background: #fee2e2;
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-weight: 700;
+  color: #991b1b;
+}
+.success {
+  background: rgba(173,254,122,0.3);
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-weight: 700;
+  color: #102a22;
+}
+
+/* BOTTOM QUOTE */
+.bottom-quote {
+  text-align: center;
+  font-size: 10pt;
+  color: #64748b;
+  font-style: italic;
+  padding: 12px 30px;
+  background: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+}
+
+/* FOOTER */
+.footer {
+  background: #102a22;
+  padding: 16px 30px;
+}
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.brand-name {
+  font-size: 16pt;
+  font-weight: 900;
+  color: #adfe7a;
+  letter-spacing: -0.5px;
+}
+.brand-title {
+  font-size: 9.5pt;
+  color: rgba(255,255,255,0.55);
+  margin-top: 2px;
+}
+.disclaimer {
+  font-size: 8pt;
+  color: rgba(255,255,255,0.35);
+  text-align: left;
+  max-width: 50%;
+  line-height: 1.4;
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- HEADER -->
+<div class="header">
+  <h1>צ'ק ליסט <span>פרישה</span></h1>
+  <div class="subtitle">מה לעשות לפני שאתה חותם על משהו</div>
+  <div class="tagline">החלטות שתקבל ב-30 הימים הראשונים — ילוו אותך לעשור הבא.</div>
+</div>
+
+<!-- SECTION 1 -->
+<div class="section">
+  <div class="section-title">
+    <span class="dot red"></span>
+    <span>השבוע הראשון</span>
+  </div>
+
+  <div class="item">
+    <div class="checkbox"></div>
+    <div class="item-content">
+      <div class="item-title">אל תחתום על "כתב סילוק"</div>
+      <div class="item-desc">חתימה על ויתורים לפני בדיקה — מהטעויות היקרות ביותר. גם אם המעסיק לוחץ.</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="checkbox"></div>
+    <div class="item-content">
+      <div class="item-title">דרוש מכתב פיטורים בכתב</div>
+      <div class="item-desc">חיוני לאישור זכאות לדמי אבטלה. בקש בפורמט רשמי, חתום, על נייר חברה.</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="checkbox"></div>
+    <div class="item-content">
+      <div class="item-title">בקש טופס 161 מהמעסיק</div>
+      <div class="item-desc">הטופס המרכזי שמתאר את הפיצויים, השכר האחרון והוותק שלך. בלעדיו אי אפשר להמשיך.</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="checkbox"></div>
+    <div class="item-content">
+      <div class="item-title">הירשם בלשכת התעסוקה מיד</div>
+      <div class="item-desc">פוטרת ביוזמת המעסיק? מגיעים לך דמי אבטלה <span class="success">מהיום הראשון</span>. עד 300 ימים (≈18 חודשים).</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 2 -->
+<div class="section">
+  <div class="section-title">
+    <span class="dot orange"></span>
+    <span>ההחלטה הגורלית — מה עושים עם הפיצויים?</span>
+  </div>
+
+  <div class="item">
+    <div class="checkbox"></div>
+    <div class="item-content">
+      <div class="item-title">אופציה 1: משיכה עכשיו</div>
+      <div class="item-desc">פטור ממס עד <span class="highlight">13,750 ₪ × שנות ותק</span>. החלק שמעל — חייב במס לפי שיעור שולי.</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="checkbox"></div>
+    <div class="item-content">
+      <div class="item-title">אופציה 2: רצף פיצויים (תיקון 173)</div>
+      <div class="item-desc">דחיית המס למעסיק הבא. <span class="warning">חובה</span> להתחיל לעבוד בתוך שנה ולהמשיך להפקיד פיצויים. צובר ותק לפטור עתידי.</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="checkbox"></div>
+    <div class="item-content">
+      <div class="item-title">אופציה 3: רצף קצבה</div>
+      <div class="item-desc">השארת הפיצויים בקופה לקצבה עתידית. <span class="success">היתרון:</span> המרת פיצויים להון פטור ללא פקטור 1.35 (חוסך הרבה במיסוי הקצבה).</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 3 -->
+<div class="section">
+  <div class="section-title">
+    <span class="dot purple"></span>
+    <span>אם המס יוצא גבוה — פריסה</span>
+  </div>
+
+  <div class="item">
+    <div class="checkbox"></div>
+    <div class="item-content">
+      <div class="item-title">פריסה אחורה</div>
+      <div class="item-desc">עד 6 שנים אחורה (לא יותר מתקופת העבודה). מקטין את שיעור המס הממוצע.</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="checkbox"></div>
+    <div class="item-content">
+      <div class="item-title">פריסה קדימה</div>
+      <div class="item-desc">דורש <span class="highlight">ותק 6+ שנים</span>. שנה לכל 4 שנות עבודה (עד 6 שנים). פרשת ב-1.10+ אפשר להזיז ללא ויתור.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 4 -->
+<div class="section">
+  <div class="section-title">
+    <span class="dot green"></span>
+    <span>4 דברים שאסור לפספס</span>
+  </div>
+
+  <div class="item">
+    <div class="checkbox"></div>
+    <div class="item-content">
+      <div class="item-title">תיקון 21: זכות משיכת פיצויים</div>
+      <div class="item-desc">אם המעסיק לא משחרר את הפיצויים — אחרי <span class="highlight">4 חודשים</span> מסיום העבודה תוכל למשוך גם ללא אישור.</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="checkbox"></div>
+    <div class="item-content">
+      <div class="item-title">בדוק את הכיסויים הביטוחיים</div>
+      <div class="item-desc">ביטוח חיים ואכ"ע בקרן הפנסיה — עלולים להיפסק כשמפסיקים להפקיד. בדוק עם הקרן את הסטטוס.</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="checkbox"></div>
+    <div class="item-content">
+      <div class="item-title">קרן השתלמות</div>
+      <div class="item-desc">בדוק אם הקרן נזילה (6+ שנים), משיכה לפי תנאי, או אופציה ל<span class="success">השלכת ותק</span> למעסיק הבא.</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="checkbox"></div>
+    <div class="item-content">
+      <div class="item-title">סעיף 14 — מי מקבל את הרווחים?</div>
+      <div class="item-desc">אם חל עליך, רווחים והפסדים על הפיצויים שייכים לך, אבל המעסיק <span class="warning">לא משלים</span> פערים. זה משנה את גובה הפיצויים בפועל.</div>
+    </div>
+  </div>
+</div>
+
+<!-- QUOTE -->
+<div class="bottom-quote">
+  "ההחלטות שתקבל היום — ילוו אותך 30 שנה קדימה. שווה לקרוא לאט."
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="brand-name">ניר יפרח</div>
+      <div class="brand-title">תכנון פיננסי אישי ומשפחתי</div>
+    </div>
+    <div class="disclaimer">
+      התוכן הינו מידע כללי בלבד ואינו מהווה ייעוץ פיננסי או מס.<br>
+      להחלטות אישיות — מומלץ להתייעץ עם בעל רישיון.
+    </div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>
