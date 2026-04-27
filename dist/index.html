@@ -1,0 +1,1471 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ניר יפרח CFP — תכנון פיננסי אישי ומשפחתי</title>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    /* ── BRAND TOKENS ── */
+    :root {
+      --forest:   #102a22;
+      --lime:     #adfe7a;
+      --orange:   #ff7b3a;
+      --sage:     #b8c9a8;
+      --cream:    #e8e2d2;
+      --offwhite: #f5f1e8;
+      --dark:     #0d2019;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Heebo', Arial, sans-serif;
+      direction: rtl;
+      background: #fff;
+      color: var(--forest);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ══════════════════════════════
+       NAV
+    ══════════════════════════════ */
+    nav {
+      position: fixed; top: 0; right: 0; left: 0; z-index: 200;
+      background: rgba(16,42,34,0.96);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(173,254,122,0.08);
+      height: 68px;
+      display: flex; align-items: center; justify-content: center;
+      padding: 0 60px;
+    }
+    .nav-logo {
+      display: none;
+      font-size: 15px; font-weight: 700;
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 30px; align-items: center; }
+    .nav-links a {
+      color: rgba(255,255,255,0.72);
+      font-size: 15px; font-weight: 500;
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: #fff; }
+    .nav-cta {
+      background: var(--lime) !important;
+      color: var(--forest) !important;
+      font-weight: 700 !important;
+      padding: 9px 22px;
+      border-radius: 8px;
+      transition: opacity .2s !important;
+    }
+    .nav-cta:hover { opacity: 0.86 !important; }
+
+    /* ══════════════════════════════
+       HERO
+    ══════════════════════════════ */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100dvh; /* iOS Safari — dynamic viewport, no address-bar overflow */
+      display: flex;
+      align-items: center;
+      padding: 120px 80px 80px;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: url('/DSC02977-Edit-2.jpg') center 40% / cover no-repeat;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        to left,
+        rgba(13,32,25,0.88) 40%,
+        rgba(13,32,25,0.45) 100%
+      );
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      max-width: 640px;
+    }
+    .hero-eyebrow {
+      font-size: 12px; font-weight: 700; letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--lime); opacity: 0.9;
+      margin-bottom: 24px;
+    }
+    h1.hero-h {
+      font-size: clamp(50px, 5.5vw, 82px);
+      font-weight: 900;
+      line-height: 1.0;
+      letter-spacing: -2px;
+      color: #fff;
+      margin-bottom: 28px;
+    }
+    .hero-sub {
+      font-size: 21px; font-weight: 400;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.6;
+      margin-bottom: 48px;
+      max-width: 500px;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--lime);
+      color: var(--forest);
+      font-family: 'Heebo', sans-serif;
+      font-size: 17px; font-weight: 900;
+      padding: 17px 40px;
+      border-radius: 10px;
+      text-decoration: none;
+      border: none; cursor: pointer;
+      transition: opacity .2s;
+    }
+    .btn-primary:hover { opacity: 0.87; }
+    .hero-scroll-arrow {
+      position: absolute; bottom: 36px; left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,0.35);
+      font-size: 26px;
+      animation: bob 2s ease-in-out infinite;
+      cursor: pointer; text-decoration: none;
+    }
+    @keyframes bob {
+      0%,100% { transform: translateX(-50%) translateY(0); }
+      50%      { transform: translateX(-50%) translateY(9px); }
+    }
+
+    /* ══════════════════════════════
+       TRUST BAR
+    ══════════════════════════════ */
+    .trust-bar {
+      background: var(--forest);
+      padding: 30px 80px;
+    }
+    .trust-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 24px;
+    }
+    .trust-item { display: flex; align-items: center; gap: 14px; }
+    .trust-num {
+      font-size: 32px; font-weight: 900;
+      color: var(--lime); line-height: 1;
+    }
+    .trust-label {
+      font-size: 14px; font-weight: 400;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.4;
+    }
+    .trust-sep {
+      width: 1px; height: 36px;
+      background: rgba(255,255,255,0.1);
+      flex-shrink: 0;
+    }
+
+    /* ══════════════════════════════
+       SHARED SECTION HELPERS
+    ══════════════════════════════ */
+    .section-tag {
+      display: inline-block;
+      font-size: 11px; font-weight: 900; letter-spacing: 4px;
+      padding: 5px 16px; border-radius: 6px;
+      margin-bottom: 16px;
+      background: var(--forest); color: var(--lime);
+    }
+    .section-tag.onforest {
+      background: rgba(173,254,122,0.15);
+      color: var(--lime);
+      border: 1px solid rgba(173,254,122,0.28);
+    }
+    .section-h2 {
+      font-size: clamp(34px, 3.8vw, 54px);
+      font-weight: 900;
+      line-height: 1.06;
+      letter-spacing: -1.5px;
+    }
+    .section-p {
+      font-size: 18px; font-weight: 400;
+      line-height: 1.65;
+      color: rgba(22,52,45,0.6);
+      margin-top: 14px;
+    }
+    .section-p.white { color: rgba(255,255,255,0.62); }
+
+    /* ══════════════════════════════
+       WHAT IS FINANCIAL PLANNING
+    ══════════════════════════════ */
+    .what-section {
+      background: var(--cream);
+      padding: 100px 80px;
+    }
+    .what-inner { max-width: 1200px; margin: 0 auto; }
+    .what-statement {
+      font-size: clamp(28px, 3.2vw, 46px);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      color: var(--forest);
+      max-width: 820px;
+      margin-bottom: 18px;
+    }
+    .what-sub {
+      font-size: 19px; font-weight: 400;
+      color: rgba(22,52,45,0.6);
+      line-height: 1.65;
+      max-width: 720px;
+      margin-bottom: 56px;
+    }
+    .what-pillars {
+      display: grid; grid-template-columns: repeat(5,1fr);
+      gap: 16px;
+    }
+    .pillar {
+      background: #fff;
+      border-radius: 14px;
+      padding: 28px 22px;
+      text-align: center;
+    }
+    .pillar-icon { width: 52px; height: 52px; margin: 0 auto 16px; display: block; }
+    .pillar-title {
+      font-size: 15px; font-weight: 700;
+      color: var(--forest); line-height: 1.35;
+    }
+    .what-callout {
+      font-size: clamp(36px, 4.5vw, 64px);
+      font-weight: 900;
+      color: var(--forest);
+      line-height: 1.05;
+      letter-spacing: -2px;
+      margin-bottom: 16px;
+      border-right: 5px solid var(--lime);
+      padding-right: 22px;
+    }
+    .what-close {
+      margin-top: 48px;
+      font-size: 22px; font-weight: 700;
+      color: var(--forest);
+      line-height: 1.5;
+      padding-top: 40px;
+      border-top: 1.5px solid rgba(22,52,45,0.12);
+    }
+    .what-close em {
+      font-style: normal;
+      color: var(--forest);
+      background: var(--lime);
+      padding: 2px 12px; border-radius: 6px;
+      font-size: 24px;
+    }
+
+    /* ══════════════════════════════
+       ABOUT / אני מאמין
+    ══════════════════════════════ */
+    .about-section {
+      background: var(--forest);
+      padding: 100px 80px;
+    }
+    .about-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 420px 1fr;
+      gap: 72px; align-items: center;
+    }
+    .about-photo {
+      width: 100%; aspect-ratio: 4/5;
+      object-fit: cover; object-position: center top;
+      border-radius: 22px;
+      box-shadow: 0 28px 64px rgba(0,0,0,0.35);
+    }
+    .about-eyebrow {
+      font-size: 12px; font-weight: 700; letter-spacing: 4px;
+      text-transform: uppercase; color: var(--lime);
+      margin-bottom: 10px;
+    }
+    .about-name {
+      font-size: clamp(34px, 3.5vw, 50px);
+      font-weight: 900; color: #fff;
+      letter-spacing: -1.5px; line-height: 1.0;
+      margin-bottom: 16px;
+    }
+    .about-badges {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      margin-bottom: 28px;
+    }
+    .about-badge {
+      font-size: 12px; font-weight: 700;
+      padding: 6px 16px; border-radius: 999px;
+      border: 1px solid rgba(173,254,122,0.3);
+      background: rgba(173,254,122,0.08);
+      color: var(--lime);
+    }
+    .about-paras { display: flex; flex-direction: column; gap: 14px; }
+    .about-para {
+      font-size: 17px; color: rgba(255,255,255,0.68);
+      line-height: 1.7;
+    }
+    .about-para.highlight {
+      font-size: 19px; font-weight: 700;
+      color: var(--lime); line-height: 1.6;
+    }
+    .about-quote {
+      margin-top: 32px;
+      padding: 22px 24px;
+      border-right: 3px solid var(--lime);
+      background: rgba(255,255,255,0.04);
+      border-radius: 0 10px 10px 0;
+      font-size: 16px; font-style: italic;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+    }
+
+    /* ══════════════════════════════
+       FAQ
+    ══════════════════════════════ */
+    .faq-section {
+      background: var(--offwhite);
+      padding: 100px 80px;
+    }
+    .faq-inner { max-width: 860px; margin: 0 auto; }
+    .faq-head { text-align: center; margin-bottom: 52px; }
+    .faq-list { display: flex; flex-direction: column; }
+    .faq-item {
+      border-bottom: 1.5px solid rgba(22,52,45,0.1);
+    }
+    .faq-q {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 24px 0;
+      cursor: pointer;
+      font-size: 18px; font-weight: 700; color: var(--forest);
+      gap: 16px;
+      user-select: none;
+    }
+    .faq-q:hover { color: rgba(22,52,45,0.8); }
+    .faq-arrow {
+      font-size: 20px; flex-shrink: 0;
+      transition: transform .25s;
+      color: var(--forest); opacity: 0.5;
+    }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); opacity: 1; color: var(--lime); }
+    .faq-item.open .faq-q { color: var(--forest); }
+    .faq-a {
+      display: none;
+      font-size: 16px; color: rgba(22,52,45,0.68);
+      line-height: 1.75;
+      padding-bottom: 24px;
+    }
+    .faq-item.open .faq-a { display: block; }
+
+    /* ══════════════════════════════
+       VIDEO SECTION
+    ══════════════════════════════ */
+    .video-section {
+      background: var(--forest);
+      padding: 100px 80px;
+    }
+    .video-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 72px;
+      align-items: center;
+    }
+    .video-text .section-h2 { color: #fff; }
+    .video-text .section-p { margin-bottom: 36px; }
+    .video-checks {
+      list-style: none;
+      display: flex; flex-direction: column; gap: 14px;
+    }
+    .video-checks li {
+      display: flex; align-items: flex-start; gap: 11px;
+      font-size: 16px; color: rgba(255,255,255,0.78);
+      line-height: 1.5;
+    }
+    .video-checks li::before {
+      content: '✓';
+      color: var(--lime); font-weight: 900; font-size: 14px;
+      flex-shrink: 0; margin-top: 2px;
+    }
+    /* Player */
+    .player-wrap {
+      position: relative;
+      border-radius: 18px; overflow: hidden;
+      box-shadow: 0 28px 70px rgba(0,0,0,0.55);
+      aspect-ratio: 16/9;
+      background: #000;
+      cursor: pointer;
+    }
+    .player-wrap video {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: none;
+    }
+    .player-overlay {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 16px;
+    }
+    .player-thumb {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .play-btn {
+      position: relative; z-index: 2;
+      width: 82px; height: 82px;
+      background: var(--orange);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 28px; color: #fff;
+      padding-left: 4px;
+      transition: transform .2s, box-shadow .2s;
+      box-shadow: 0 8px 28px rgba(255,123,58,0.45);
+    }
+    .player-wrap:hover .play-btn {
+      transform: scale(1.1);
+      box-shadow: 0 12px 36px rgba(255,123,58,0.6);
+    }
+    .play-duration {
+      position: relative; z-index: 2;
+      font-size: 14px; font-weight: 600;
+      color: rgba(255,255,255,0.82);
+      letter-spacing: 0.5px;
+    }
+
+    /* ══════════════════════════════
+       SERVICES
+    ══════════════════════════════ */
+    .services {
+      background: var(--sage);
+      padding: 100px 0;
+    }
+    .services-head {
+      text-align: center;
+      padding: 0 80px;
+      margin-bottom: 52px;
+    }
+    .services-head .section-h2 { color: var(--forest); }
+    .services-head .section-p {
+      margin: 14px auto 0;
+      text-align: center;
+      max-width: 560px;
+    }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 22px;
+      padding: 0 80px;
+      max-width: 1280px; margin: 0 auto;
+    }
+    .svc-card {
+      background: var(--cream);
+      border-radius: 16px;
+      padding: 40px 34px;
+    }
+    .svc-icon { font-size: 34px; margin-bottom: 16px; }
+    .svc-title {
+      font-size: 21px; font-weight: 900;
+      color: var(--forest); margin-bottom: 10px;
+    }
+    .svc-desc {
+      font-size: 15px; color: rgba(22,52,45,0.68);
+      line-height: 1.65;
+    }
+
+    /* ══════════════════════════════
+       PLANS / TRACKS
+    ══════════════════════════════ */
+    .plans-section {
+      background: var(--sage);
+      padding: 100px 80px;
+    }
+    .plans-inner { max-width: 1200px; margin: 0 auto; }
+    .plans-head { text-align: center; margin-bottom: 52px; }
+    .plans-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 22px;
+    }
+    .plan-card {
+      border-radius: 20px;
+      border: 1.5px solid rgba(22,52,45,0.12);
+      padding: 36px 30px;
+      display: flex; flex-direction: column;
+      background: var(--cream);
+      opacity: 0.62;
+    }
+    .plan-card.active {
+      background: var(--forest);
+      border-color: var(--forest);
+      opacity: 1;
+      box-shadow: 0 24px 60px rgba(22,52,45,0.24);
+    }
+    .plan-badge {
+      display: inline-flex; align-self: flex-start;
+      font-size: 11px; font-weight: 800; letter-spacing: 2px;
+      padding: 5px 14px; border-radius: 999px;
+      margin-bottom: 20px;
+      background: rgba(22,52,45,0.1);
+      color: rgba(22,52,45,0.42);
+    }
+    .plan-card.active .plan-badge {
+      background: var(--lime); color: var(--forest);
+    }
+    .plan-num {
+      font-size: 11px; font-weight: 900; letter-spacing: 4px;
+      text-transform: uppercase;
+      color: rgba(22,52,45,0.38); margin-bottom: 6px;
+    }
+    .plan-card.active .plan-num { color: rgba(173,254,122,0.65); }
+    .plan-title {
+      font-size: 22px; font-weight: 900;
+      color: var(--forest); margin-bottom: 20px;
+    }
+    .plan-card.active .plan-title { color: #fff; }
+    .plan-divider {
+      height: 1px; background: rgba(22,52,45,0.1); margin-bottom: 20px;
+    }
+    .plan-card.active .plan-divider { background: rgba(255,255,255,0.12); }
+    .plan-features {
+      list-style: none; flex: 1;
+      display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px;
+    }
+    .plan-features li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 15px; line-height: 1.5; color: rgba(22,52,45,0.52);
+    }
+    .plan-card.active .plan-features li { color: rgba(255,255,255,0.80); }
+    .plan-features li::before {
+      content: '✓'; font-weight: 900; font-size: 13px;
+      flex-shrink: 0; margin-top: 2px; color: rgba(22,52,45,0.25);
+    }
+    .plan-card.active .plan-features li::before { color: var(--lime); }
+    .plan-cta {
+      display: block; width: 100%;
+      background: var(--lime); color: var(--forest);
+      font-family: 'Heebo', sans-serif; font-weight: 900; font-size: 16px;
+      padding: 15px; border: none; border-radius: 10px;
+      text-align: center; text-decoration: none; cursor: pointer;
+      transition: opacity .2s;
+    }
+    .plan-cta:hover { opacity: 0.86; }
+    .plan-cta-soon {
+      display: block; width: 100%; background: transparent;
+      color: rgba(22,52,45,0.28);
+      font-family: 'Heebo', sans-serif; font-weight: 700; font-size: 15px;
+      padding: 15px;
+      border: 1.5px solid rgba(22,52,45,0.12);
+      border-radius: 10px; text-align: center;
+    }
+
+    /* ══════════════════════════════
+       HOW IT WORKS
+    ══════════════════════════════ */
+    .how {
+      background: var(--offwhite);
+      padding: 100px 80px;
+    }
+    .how-inner { max-width: 1200px; margin: 0 auto; }
+    .how-head { text-align: center; margin-bottom: 56px; }
+    .steps-row {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 48px;
+    }
+    .step { text-align: center; }
+    .step-circle {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 58px; height: 58px; border-radius: 50%;
+      background: var(--forest); color: var(--lime);
+      font-size: 22px; font-weight: 900;
+      margin: 0 auto 22px;
+    }
+    .step-title {
+      font-size: 21px; font-weight: 900;
+      color: var(--forest); margin-bottom: 10px;
+    }
+    .step-desc {
+      font-size: 15px; color: rgba(22,52,45,0.65);
+      line-height: 1.65;
+    }
+
+    /* ══════════════════════════════
+       TESTIMONIALS
+    ══════════════════════════════ */
+    .testimonials {
+      background: #fff;
+      padding: 100px 80px;
+    }
+    .testimonials-inner { max-width: 1200px; margin: 0 auto; }
+    .testimonials-head { text-align: center; margin-bottom: 52px; }
+    .t-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 22px;
+    }
+    .t-card {
+      background: var(--offwhite);
+      border-radius: 16px;
+      padding: 36px 30px;
+    }
+    .t-result-tag {
+      display: inline-block;
+      font-size: 11px; font-weight: 800; letter-spacing: 2px;
+      padding: 4px 14px; border-radius: 999px;
+      background: var(--forest); color: var(--lime);
+      margin-bottom: 16px;
+    }
+    .t-quote {
+      font-size: 16px; color: rgba(22,52,45,0.82);
+      line-height: 1.7; margin-bottom: 24px;
+    }
+    .t-author-row { display: flex; align-items: center; gap: 12px; }
+    .t-avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--sage); flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 17px; font-weight: 900; color: var(--forest);
+    }
+    .t-name { font-size: 15px; font-weight: 700; color: var(--forest); }
+    .t-role { font-size: 13px; color: rgba(22,52,45,0.48); margin-top: 2px; }
+
+    /* ══════════════════════════════
+       LIME SIDE BAR — on the side of text
+    ══════════════════════════════ */
+    .lime-side {
+      display: inline-block;
+      border-right: 4px solid var(--lime);
+      padding-right: 22px;
+      text-align: right;
+    }
+
+    /* ══════════════════════════════
+       CONTACT
+    ══════════════════════════════ */
+    .contact {
+      background: var(--forest);
+      padding: 100px 80px;
+      overflow: hidden;
+    }
+    .contact-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 420px;
+      gap: 72px; align-items: center;
+    }
+    .contact-content {
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .contact-h {
+      font-size: clamp(60px, 6.5vw, 96px);
+      font-weight: 900; color: #fff;
+      line-height: 1.0; letter-spacing: -3px;
+      margin-bottom: 20px;
+    }
+    .contact-h .lime { color: var(--lime); }
+    .contact-desc {
+      font-size: 17px; color: rgba(255,255,255,0.58);
+      line-height: 1.65; margin-bottom: 28px;
+    }
+    .contact-checks { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .contact-checks li {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 15px; color: rgba(255,255,255,0.72);
+    }
+    .contact-checks .ck { color: var(--lime); font-weight: 900; font-size: 14px; }
+
+    /* Bonus box */
+    .bonus-box {
+      background: rgba(173,254,122,0.07);
+      border: 1px solid rgba(173,254,122,0.22);
+      border-radius: 14px;
+      padding: 20px 22px;
+      margin-bottom: 28px;
+      display: flex; gap: 14px; align-items: flex-start;
+    }
+    .bonus-icon { font-size: 26px; flex-shrink: 0; margin-top: 2px; }
+    .bonus-label {
+      font-size: 10px; font-weight: 900; letter-spacing: 3px;
+      color: var(--lime); text-transform: uppercase; margin-bottom: 5px;
+    }
+    .bonus-title {
+      font-size: 17px; font-weight: 900; color: #fff;
+      margin-bottom: 10px; line-height: 1.3;
+    }
+    .bonus-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .bonus-tag {
+      font-size: 12px; font-weight: 700;
+      padding: 4px 12px; border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.6);
+    }
+
+
+    /* Form box */
+    .form-box {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 32px 30px;
+    }
+    .form-box-title {
+      font-size: 19px; font-weight: 900; color: #fff;
+      margin-bottom: 26px; line-height: 1.4;
+    }
+    .f-input {
+      width: 100%; padding: 16px 18px;
+      margin-bottom: 14px;
+      border: 1.5px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      font-family: 'Heebo', sans-serif; font-size: 16px;
+      background: rgba(255,255,255,0.07);
+      color: #fff; direction: rtl;
+      outline: none;
+      transition: border-color .2s, background .2s;
+    }
+    .f-input::placeholder { color: rgba(255,255,255,0.32); }
+    .f-input:focus {
+      border-color: var(--lime);
+      background: rgba(255,255,255,0.10);
+    }
+    .f-btn {
+      width: 100%; background: var(--lime);
+      color: var(--forest);
+      font-family: 'Heebo', sans-serif;
+      font-weight: 900; font-size: 17px;
+      padding: 17px; border: none; border-radius: 10px;
+      cursor: pointer; transition: opacity .2s;
+      margin-top: 2px;
+    }
+    .f-btn:hover { opacity: 0.86; }
+    .f-note {
+      font-size: 12px; color: rgba(255,255,255,0.28);
+      text-align: center; margin-top: 14px; line-height: 1.5;
+    }
+    .f-success {
+      display: none;
+      background: rgba(173,254,122,0.1);
+      border: 1px solid rgba(173,254,122,0.3);
+      color: var(--lime);
+      border-radius: 10px; padding: 16px;
+      text-align: center; font-size: 16px; font-weight: 700;
+      margin-top: 12px;
+    }
+
+    /* ══════════════════════════════
+       FOOTER
+    ══════════════════════════════ */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 38px 80px;
+      display: flex; align-items: center;
+      justify-content: space-between;
+    }
+    .footer-logo {
+      font-size: 15px; font-weight: 700;
+      color: rgba(255,255,255,0.45);
+    }
+    .footer-logo span { color: var(--lime); }
+    .footer-copy { font-size: 13px; color: rgba(255,255,255,0.28); }
+    .footer-links { display: flex; gap: 22px; }
+    .footer-links a {
+      font-size: 13px; color: rgba(255,255,255,0.38);
+      text-decoration: none; transition: color .2s;
+    }
+    .footer-links a:hover { color: rgba(255,255,255,0.65); }
+
+    /* ══════════════════════════════
+       RESPONSIVE — mobile-first
+    ══════════════════════════════ */
+
+    /* ── Tablet: hide nav text links, keep CTA ── */
+    @media (max-width: 900px) {
+      nav { padding: 0 20px; }
+      .nav-links a:not(.nav-cta) { display: none; }
+    }
+
+    /* ── Mobile: ≤ 768px ── */
+    @media (max-width: 768px) {
+
+      /* Nav — show logo + CTA only */
+      nav {
+        padding: 0 20px;
+        justify-content: space-between;
+      }
+      .nav-logo { display: block; }
+      .nav-links { gap: 0; }
+      .nav-links a:not(.nav-cta) { display: none; }
+      .nav-cta { padding: 8px 16px; font-size: 14px; }
+
+      /* Hero */
+      .hero { padding: 90px 24px 60px; align-items: center; }
+      .hero-content { max-width: 100%; text-align: center; }
+      .hero-eyebrow { text-align: center; }
+      h1.hero-h { font-size: clamp(36px, 9.5vw, 50px); letter-spacing: -1.5px; margin-bottom: 20px; text-align: center; }
+      .hero-sub { font-size: 17px; margin: 0 auto 36px; max-width: 100%; text-align: center; }
+      .hero-overlay { background: linear-gradient(to bottom, rgba(13,32,25,0.55) 0%, rgba(13,32,25,0.82) 55%, rgba(13,32,25,0.72) 100%); }
+      .btn-primary { font-size: 15px; padding: 15px 28px; display: block; text-align: center; }
+
+      /* Trust bar */
+      .trust-bar { padding: 20px; }
+      .trust-inner {
+        flex-wrap: wrap; gap: 16px;
+        justify-content: flex-start;
+      }
+      .trust-sep { display: none; }
+      .trust-num { font-size: 20px !important; white-space: normal !important; }
+      .trust-label { font-size: 12px; }
+      .trust-item { flex: 0 0 calc(50% - 8px); }
+
+      /* Video */
+      .video-section { padding: 40px 20px; }
+      .video-inner { grid-template-columns: 1fr; gap: 24px; }
+      .video-text .section-h2 { font-size: clamp(28px, 8vw, 38px); }
+      .video-text .section-p { font-size: 16px; }
+      .lime-side { border-right-width: 3px; padding-right: 16px; }
+
+      /* What */
+      .what-section { padding: 40px 20px; }
+      .what-statement { font-size: clamp(24px, 7vw, 32px); }
+      .what-sub { font-size: 16px; margin-bottom: 24px; }
+      .what-pillars { grid-template-columns: repeat(2,1fr); gap: 10px; }
+      .pillar { padding: 18px 12px; }
+      .pillar-icon { width: 36px; height: 36px; margin-bottom: 8px; }
+      .pillar-title { font-size: 13px; }
+      .what-callout { font-size: clamp(26px, 7.5vw, 36px); border-right-width: 4px; padding-right: 14px; }
+      .what-close {
+        font-size: 20px; font-weight: 900;
+        margin-top: 32px; padding-top: 28px;
+        text-align: center;
+        display: block;
+      }
+      .what-close em { font-size: 20px; display: inline; }
+
+      /* About */
+      .about-section { padding: 40px 20px; }
+      .about-inner { grid-template-columns: 1fr; gap: 24px; }
+      .about-photo { max-width: 220px; margin: 0 auto; display: block; }
+      .about-name { font-size: clamp(28px, 8vw, 38px); margin-bottom: 12px; }
+      .about-para { font-size: 15px; line-height: 1.65; }
+      .about-para.highlight { font-size: 16px; }
+
+      /* Services */
+      .services { padding: 40px 0; }
+      .services-head { padding: 0 20px; margin-bottom: 28px; }
+      .services-grid { grid-template-columns: 1fr; padding: 0 20px; gap: 14px; }
+      .svc-card { padding: 24px 20px; }
+      .svc-title { font-size: 18px; }
+
+      /* How */
+      .how { padding: 40px 20px; }
+      .how-head { margin-bottom: 28px; }
+      .steps-row { grid-template-columns: 1fr; gap: 22px; }
+      .step-title { font-size: 18px; }
+      .step-circle { width: 50px; height: 50px; font-size: 20px; margin-bottom: 14px; }
+
+      /* Plans */
+      .plans-section { padding: 40px 20px; }
+      .plans-grid { grid-template-columns: 1fr; gap: 14px; }
+      .plan-card { padding: 24px 20px; }
+
+      /* Testimonials */
+      .testimonials { padding: 40px 20px; }
+      .t-grid { grid-template-columns: 1fr; gap: 14px; }
+      .t-quote { font-size: 15px; }
+
+      /* FAQ */
+      .faq-section { padding: 40px 20px; }
+      .faq-q { font-size: 15px; padding: 16px 0; }
+      .faq-a { font-size: 14px; }
+
+      /* Contact */
+      .contact { padding: 40px 20px; }
+      .contact-inner { grid-template-columns: 1fr; gap: 32px; }
+      .contact-h { font-size: clamp(42px, 11vw, 60px); letter-spacing: -2px; }
+      .contact-desc { font-size: 15px; }
+      .contact .lime-side { border-right: none; padding-right: 0; text-align: center; display: block; }
+      .contact-content { text-align: center; }
+      .form-box { padding: 24px 20px; }
+      .form-box-title { font-size: 16px; margin-bottom: 20px; }
+      .f-input { padding: 14px 16px; font-size: 15px; }
+      .f-btn { font-size: 16px; padding: 15px; }
+      .bonus-box { padding: 16px 18px; }
+      .bonus-title { font-size: 15px; }
+
+      /* Section headings */
+      .section-h2 { font-size: clamp(28px, 8vw, 38px); }
+      .section-p { font-size: 16px; }
+
+      /* Footer */
+      footer {
+        padding: 24px 20px;
+        flex-direction: column; gap: 12px; text-align: center;
+      }
+      .footer-links { flex-wrap: wrap; justify-content: center; gap: 14px; }
+    }
+
+    /* ── Very small screens: ≤ 380px ── */
+    @media (max-width: 380px) {
+      h1.hero-h { font-size: 36px; }
+      .trust-item { flex: 0 0 100%; }
+      .what-pillars { grid-template-columns: 1fr; }
+    }
+  </style>
+  <script>
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ?
+        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+      n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '952357363915643');
+    fbq('track', 'PageView');
+  </script>
+</head>
+<body>
+
+<!-- ══════════ NAV ══════════ -->
+<nav>
+  <div class="nav-links">
+    <a href="#video">הסרטון</a>
+    <a href="#about">עלי</a>
+    <a href="#how">איך זה עובד</a>
+    <a href="#plans">מסלולים</a>
+    <a href="#testimonials">המלצות</a>
+    <a href="#faq">שאלות</a>
+    <a href="#contact" class="nav-cta">השאירו פרטים</a>
+  </div>
+</nav>
+
+<!-- ══════════ HERO ══════════ -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">תכנון פיננסי אישי ומשפחתי</div>
+    <h1 class="hero-h">
+      אתם מנהלים עסק<br>
+      של מליונים.<br>
+      קוראים לו<br>
+      <span style="color:var(--lime);">המשפחה שלכם.</span>
+    </h1>
+    <p class="hero-sub">
+      <span style="font-size:16px; font-weight:400; color:rgba(255,255,255,0.5); display:block; margin-bottom:10px;">השאלה היא:</span>
+      <span style="font-size:22px; font-weight:900; color:#fff; line-height:1.25; background:var(--orange); padding: 4px 10px; border-radius:5px; box-decoration-break:clone; -webkit-box-decoration-break:clone;">האם יש לכם תכנית?<br>או שהכל מנוהל על סמך תחושת בטן?</span>
+    </p>
+    <a href="#video" class="btn-primary">&#9654; צפו בסרטון · 5 דקות שישנו את הכיוון</a>
+  </div>
+  <a href="#video" class="hero-scroll-arrow">↓</a>
+</section>
+
+<!-- ══════════ TRUST BAR ══════════ -->
+<div class="trust-bar">
+  <div class="trust-inner">
+    <div class="trust-item">
+      <div class="trust-num">CFP</div>
+      <div class="trust-label">מתכנן פיננסי<br>מוסמך בינלאומי</div>
+    </div>
+    <div class="trust-sep"></div>
+    <div class="trust-item">
+      <div class="trust-num" style="font-size:20px; white-space:nowrap;">משכנתאות</div>
+      <div class="trust-label">יועץ משכנתאות<br>ומימון</div>
+    </div>
+    <div class="trust-sep"></div>
+    <div class="trust-item">
+      <div class="trust-num" style="font-size:18px; white-space:nowrap;">כלכלת המשפחה</div>
+      <div class="trust-label">יועץ לכלכלת<br>המשפחה</div>
+    </div>
+    <div class="trust-sep"></div>
+    <div class="trust-item">
+      <div class="trust-num">100%</div>
+      <div class="trust-label">אובייקטיבי<br>ללא עמלות</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ VIDEO SECTION ══════════ -->
+<section class="video-section" id="video">
+  <div class="video-inner">
+    <!-- Text side -->
+    <div class="video-text">
+      <div class="lime-side">
+        <h2 class="section-h2">5 דקות שיחסכו לכם <span style="color:var(--lime);">שנים</span></h2>
+      </div>
+      <p class="section-p white">בסרטון הקצר הזה תבינו מה עומד מאחורי תכנון פיננסי נכון, ולמה רוב האנשים מפספסים את הדברים הבסיסיים.</p>
+      <ul class="video-checks">
+        <li>מה זה בכלל תכנון פיננסי ולמה זה שונה מביטוח ופנסיה</li>
+        <li>מה אנחנו בונים ביחד ומה לא</li>
+        <li>למה מוקדם תמיד עדיף על מאוחר</li>
+        <li>הצעד הראשון שכל אחד יכול לעשות עכשיו</li>
+      </ul>
+    </div>
+    <!-- Video player -->
+    <div>
+      <div class="player-wrap" id="videoWrap">
+        <video id="mainVideo"
+          src="https://res.cloudinary.com/dtjr9qzet/video/upload/v1773334171/2_ocxr95.mp4"
+          poster="https://res.cloudinary.com/dtjr9qzet/video/upload/so_0/v1773334171/2_ocxr95.jpg"
+          preload="metadata"
+          playsinline
+          controls>
+        </video>
+        <div class="player-overlay" id="videoOverlay">
+          <img class="player-thumb"
+            src="https://res.cloudinary.com/dtjr9qzet/video/upload/so_0/v1773334171/2_ocxr95.jpg"
+            alt="סרטון היכרות — ניר יפרח CFP"
+            onerror="this.style.display='none'">
+          <div class="play-btn" style="direction:ltr;">&#9654;</div>
+          <span class="play-duration">5 דקות · לחצו לצפייה</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ WHAT IS FINANCIAL PLANNING ══════════ -->
+<section class="what-section" id="what">
+  <div class="what-inner">
+    <h2 class="what-statement" style="margin-bottom: 18px;">
+      תכנון פיננסי זה לא רק דיבורים<br>על תשואות וריבית דריבית.
+    </h2>
+    <div class="what-callout">זו תכנית חיים שלמה.</div>
+    <p class="what-sub">שמתחשבת בכם, במטרות שלכם, ובאיך שאתם רוצים לחיות.</p>
+    <div class="what-pillars">
+      <div class="pillar">
+        <!-- Cash flow icon -->
+        <svg class="pillar-icon" viewBox="0 0 96 96" fill="none">
+          <rect x="12" y="34" width="72" height="28" rx="6" stroke="#102a22" stroke-width="3.5" stroke-linecap="round"/>
+          <circle cx="48" cy="48" r="9" stroke="#adfe7a" stroke-width="3.5"/>
+          <path d="M22 34V26" stroke="#adfe7a" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M74 34V26" stroke="#adfe7a" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M32 22h32" stroke="#adfe7a" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M22 62v8" stroke="#102a22" stroke-opacity=".3" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M74 62v8" stroke="#102a22" stroke-opacity=".3" stroke-width="3.5" stroke-linecap="round"/>
+        </svg>
+        <div class="pillar-title">ניהול תזרים מזומנים</div>
+      </div>
+      <div class="pillar">
+        <!-- Growth chart icon -->
+        <svg class="pillar-icon" viewBox="0 0 96 96" fill="none">
+          <path d="M16 72h64" stroke="#102a22" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M24 72V52" stroke="#102a22" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M40 72V40" stroke="#102a22" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M56 72V30" stroke="#adfe7a" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M72 72V20" stroke="#adfe7a" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M48 20l8-8 8 8" stroke="#adfe7a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="pillar-title">מגוון השקעות</div>
+      </div>
+      <div class="pillar">
+        <!-- Target / goal icon -->
+        <svg class="pillar-icon" viewBox="0 0 96 96" fill="none">
+          <circle cx="48" cy="48" r="30" stroke="#102a22" stroke-width="3.5"/>
+          <circle cx="48" cy="48" r="18" stroke="#adfe7a" stroke-width="3.5"/>
+          <circle cx="48" cy="48" r="6" fill="#adfe7a"/>
+          <path d="M48 18v-6" stroke="#102a22" stroke-opacity=".3" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M78 48h6" stroke="#102a22" stroke-opacity=".3" stroke-width="3.5" stroke-linecap="round"/>
+        </svg>
+        <div class="pillar-title">צביעת כסף לפי יעדים ומטרות</div>
+      </div>
+      <div class="pillar">
+        <!-- Leverage / scale icon -->
+        <svg class="pillar-icon" viewBox="0 0 96 96" fill="none">
+          <path d="M48 24v48" stroke="#102a22" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M20 72h56" stroke="#102a22" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M16 44l-6 14h28L32 44" stroke="#adfe7a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M80 36l-6 14H46l6-14" stroke="#102a22" stroke-opacity=".45" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M20 44h56" stroke="#adfe7a" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="48" cy="24" r="4" fill="#adfe7a"/>
+        </svg>
+        <div class="pillar-title">מעקב נכון אחרי מינוף</div>
+      </div>
+      <div class="pillar">
+        <!-- Shield + people icon -->
+        <svg class="pillar-icon" viewBox="0 0 96 96" fill="none">
+          <path d="M48 14L18 26v22c0 16 12 28 30 34 18-6 30-18 30-34V26L48 14Z" stroke="#102a22" stroke-width="3.5" stroke-linejoin="round"/>
+          <path d="M36 46a7 7 0 1 0 0-14 7 7 0 0 0 0 14Z" stroke="#adfe7a" stroke-width="3" stroke-linecap="round"/>
+          <path d="M60 46a7 7 0 1 0 0-14 7 7 0 0 0 0 14Z" stroke="#adfe7a" stroke-width="3" stroke-linecap="round"/>
+          <path d="M22 64c2-9 9-14 18-14" stroke="#adfe7a" stroke-width="3" stroke-linecap="round"/>
+          <path d="M56 50c9 0 16 5 18 14" stroke="#adfe7a" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        <div class="pillar-title">ניהול סיכונים</div>
+      </div>
+      <div class="pillar">
+        <svg class="pillar-icon" viewBox="0 0 96 96" fill="none">
+          <rect x="20" y="36" width="56" height="36" rx="10" stroke="#102a22" stroke-width="3.5"/>
+          <path d="M36 36V28a12 12 0 0 1 24 0v8" stroke="#adfe7a" stroke-width="3.5" stroke-linecap="round"/>
+          <circle cx="48" cy="54" r="6" fill="#adfe7a"/>
+          <path d="M34 72v6M62 72v6" stroke="#102a22" stroke-width="3.5" stroke-linecap="round"/>
+        </svg>
+        <div class="pillar-title">תכנון פנסיוני</div>
+      </div>
+      <div class="pillar">
+        <svg class="pillar-icon" viewBox="0 0 96 96" fill="none">
+          <path d="M16 64h64" stroke="#102a22" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M48 20v8" stroke="#adfe7a" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M28 64a20 20 0 0 1 40 0" stroke="#adfe7a" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M22 42l6 4M74 42l-6 4" stroke="#102a22" stroke-opacity=".4" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        <div class="pillar-title">תכנון פרישה</div>
+      </div>
+    </div>
+    <p class="what-close">
+      וכל זה <em>מבלי להתפשר על חיים טובים גם בהווה.</em>
+    </p>
+  </div>
+</section>
+
+<!-- ══════════ ABOUT / אני מאמין ══════════ -->
+<section class="about-section" id="about">
+  <div class="about-inner">
+    <!-- Photo -->
+    <div>
+      <img src="/DSC03313-Enhanced-NR-Edit.jpg"
+           alt="ניר יפרח"
+           class="about-photo">
+    </div>
+    <!-- Text -->
+    <div>
+      <div class="about-eyebrow">נעים מאוד!</div>
+      <div class="about-name">ניר יפרח</div>
+      <div class="about-paras">
+        <p class="about-para">בן 33, נשוי לשי, אבא לרני ונועם. בעשור האחרון הקמתי שני חדרי כושר ומסעדה. ניהלתי כסף בפועל, לא בתיאוריה.</p>
+        <p class="about-para">כשהבנתי שאנשים קרובים אליי חולמים על משהו אחד ומקבלים החלטות אחרות לגמרי רק על סמך תחושת בטן, יצאתי ללמוד ולקבל הסמכת CFP, יועץ לכלכלת המשפחה ויועץ משכנתאות.</p>
+        <p class="about-para">אני משקיע בעצמי: בשוק ההון ובנדל״ן עם תכנית ברורה, ומנצל כל ענף וכל אפיק בהתאם למטרות וליכולת.</p>
+        <p class="about-para">פיננסים זה לא רק מספרים. לפני המספרים יש אנשים, יש מטרות, יש חלומות. אני מתרגם בין השניים.</p>
+        <p class="about-para highlight">לרוב המשפחות יש את אותן מטרות: הבית, החינוך, הפנסיה, החופש. אבל לרוב המשפחות אין את הידע ואת הכלים להרכיב את כל העולם הפיננסי לתכנית ברורה, וכאן בדיוק אני נכנס לתמונה.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ HOW IT WORKS ══════════ -->
+<section class="how" id="how">
+  <div class="how-inner">
+    <div class="how-head">
+      <span class="section-tag">תהליך העבודה</span>
+      <h2 class="section-h2" style="margin-top:8px;">שלושה צעדים פשוטים</h2>
+    </div>
+    <div class="steps-row">
+      <div class="step">
+        <div class="step-circle">1</div>
+        <div class="step-title">שיחת אפיון</div>
+        <div class="step-desc">30 דקות בוידאו. מבינים מאיפה אתם מתחילים, לאן אתם רוצים להגיע ואיך אני יכול לעזור. ללא התחייבות.</div>
+      </div>
+      <div class="step">
+        <div class="step-circle">2</div>
+        <div class="step-title">מיפוי ובניית תכנית</div>
+        <div class="step-desc">אני עובר על כל מה שיש: הכנסות, הוצאות, חסכונות, ביטוחים, פנסיה, הלוואות, ובונה תמונה אחת ברורה.</div>
+      </div>
+      <div class="step">
+        <div class="step-circle">3</div>
+        <div class="step-title">ליווי שוטף</div>
+        <div class="step-desc">התוכנית לא יושבת במגירה. אנחנו נפגשים, בודקים, מעדכנים. החיים משתנים, התוכנית מתעדכנת.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PLANS ══════════ -->
+<section class="plans-section" id="plans">
+  <div class="plans-inner">
+    <div class="plans-head">
+      <span class="section-tag">בחרו את הדרך שמתאימה לכם</span>
+      <h2 class="section-h2" style="margin-top:8px;">המסלולים שלנו</h2>
+    </div>
+    <div class="plans-grid">
+
+      <!-- מסלול 3 — active -->
+      <div class="plan-card active">
+        <span class="plan-badge">פעיל</span>
+        <p class="plan-num">מסלול 3</p>
+        <h3 class="plan-title">הליווי המלא</h3>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li>5 מפגשים פרונטליים / זום</li>
+          <li>מיפוי פיננסי מלא</li>
+          <li>בניית תכנית טווח ארוך ותכנון הון</li>
+          <li>סקירה ופגישה עם סוכן פנסיוני</li>
+          <li>גישה למערכת התכנון</li>
+          <li>גישה לקהילה ולקורס הדיגיטלי</li>
+        </ul>
+        <a href="#contact" class="plan-cta">קבע שיחת אפיון</a>
+      </div>
+
+      <!-- מסלול 2 -->
+      <div class="plan-card">
+        <span class="plan-badge">בקרוב</span>
+        <p class="plan-num">מסלול 2</p>
+        <h3 class="plan-title">מתכננים ביחד</h3>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li>קורס תכנון פיננסי מלא</li>
+          <li>גישה למערכת התכנון</li>
+          <li>2 מפגשים פרונטליים / זום</li>
+          <li>גישה לקהילה</li>
+        </ul>
+        <div class="plan-cta-soon">בקרוב</div>
+      </div>
+
+      <!-- מסלול 1 -->
+      <div class="plan-card">
+        <span class="plan-badge">בקרוב</span>
+        <p class="plan-num">מסלול 1</p>
+        <h3 class="plan-title">מתכננים לבד</h3>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li>קורס תכנון פיננסי מלא</li>
+          <li>גישה למערכת התכנון</li>
+          <li>גישה לקהילה</li>
+        </ul>
+        <div class="plan-cta-soon">בקרוב</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ TESTIMONIALS ══════════ -->
+<section class="testimonials" id="testimonials">
+  <div class="testimonials-inner">
+    <div class="testimonials-head">
+      <span class="section-tag">לקוחות אמיתיים · מילים שלהם</span>
+      <h2 class="section-h2" style="margin-top:8px;">מי שכבר עשה את הצעד</h2>
+    </div>
+    <div class="t-grid">
+      <div class="t-card">
+        <div class="t-result-tag">זוג נשוי + 2</div>
+        <div class="t-quote">״תודה אחי על כל הסבלנות והנכונות בתהליך. תודה שאתה קיים. תודה שאתה גם חבר וגם איש מקצוע. אנחנו לא לוקחים כלום כמובן מאליו. וכיף לנו שטוב כמוך הגיע אלינו.״</div>
+        <div class="t-author-row">
+          <div class="t-avatar">א</div>
+          <div>
+            <div class="t-name">אלעד ונעמה אלקובי</div>
+            <div class="t-role">מהנדס בחברת נדל״ן</div>
+          </div>
+        </div>
+      </div>
+      <div class="t-card">
+        <div class="t-result-tag">עצמאית · ליווי אישי</div>
+        <div class="t-quote">״קיבלתי הודעה מהבנק שיש לי 9,341 ש״ח שכלל לא ידעתי עליהם. שלדעתי 10 שנים זה לא היה המצב, תמיד היה מינוס. אז זה לגמרי שלך! ואני מאחלת לכולם שיכירו אותך.״</div>
+        <div class="t-author-row">
+          <div class="t-avatar">ש</div>
+          <div>
+            <div class="t-name">שני אזולאי</div>
+            <div class="t-role">תרפיסטית</div>
+          </div>
+        </div>
+      </div>
+      <div class="t-card">
+        <div class="t-result-tag">זוג נשוי + 2</div>
+        <div class="t-quote">״למדנו המון, מרגישים יותר מסופקים שגם אנחנו דואגים לעתיד שלנו ושל הילדים שלנו. וגם יודעים בדיוק מה הולך לנו בבנק: הכנסות, הוצאות, והשקעות. תודה רבה לך על הכל.״</div>
+        <div class="t-author-row">
+          <div class="t-avatar">א</div>
+          <div>
+            <div class="t-name">אורי ושירה יצחקי כהן</div>
+            <div class="t-role">עצמאי + עובדת סוציאלית</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FAQ ══════════ -->
+<section class="faq-section" id="faq">
+  <div class="faq-inner">
+    <div class="faq-head">
+      <span class="section-tag">שאלות ותשובות</span>
+      <h2 class="section-h2" style="margin-top:8px;">מה שכולם שואלים</h2>
+    </div>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>כמה עולה ייעוץ פיננסי?</span>
+          <span class="faq-arrow">↓</span>
+        </div>
+        <div class="faq-a">
+          שיחת האפיון הראשונה היא ללא התחייבות. לאחריה, אם תחליטו להמשיך, נתאים ביחד את המסגרת המתאימה לצרכים שלכם. כל עלות היא שקופה ומוסכמת מראש.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>למה לא לפנות לסוכן ביטוח או לבנק?</span>
+          <span class="faq-arrow">↓</span>
+        </div>
+        <div class="faq-a">
+          סוכני ביטוח ויועצי בנק מרוויחים עמלות על המוצרים שהם מוכרים לכם, מה שיוצר ניגוד עניינים מובנה. אני מתוגמל רק על ידכם, ולכן היעוץ שלי הוא אובייקטיבי לחלוטין. אני לא מוכר מוצרים. אני בונה תכנית.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>האם הייעוץ מתאים לי גם אם אין לי חסכונות גדולים?</span>
+          <span class="faq-arrow">↓</span>
+        </div>
+        <div class="faq-a">
+          בהחלט. תכנון פיננסי הוא לא רק לעשירים. הוא בדיוק הכלי שעוזר לאנשים להגיע לשם. לעיתים קרובות, אלה שמתחילים מוקדם עם תכנית נכונה מגיעים הרחק יותר מאלה שמחכים לרגע "הנכון".
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>מה ההבדל בין מתכנן פיננסי CFP לכל איש פיננסים אחר?</span>
+          <span class="faq-arrow">↓</span>
+        </div>
+        <div class="faq-a">
+          רוב אנשי הפיננסים (סוכן ביטוח, יועץ בנק, יועץ פנסיוני) מוסמכים לתחום אחד בלבד, ומתוגמלים על מכירת מוצרים. כלומר: יש להם ניגוד עניינים מובנה.<br><br>
+          CFP (Certified Financial Planner) היא ההסמכה הבינלאומית הנחשבת ביותר בתחום. היא מחייבת הכשרה מקיפה בכל ההיבטים: השקעות, פנסיה, ביטוח, מיסוי, תכנון ירושה וניהול תזרים, ועמידה בקוד אתי מחמיר. CFP עובד רק מטעמכם, לא מטעם חברת ביטוח או בנק. הוא לא מוכר מוצרים. הוא בונה תכנית.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>כמה זמן לוקח התהליך כולו?</span>
+          <span class="faq-arrow">↓</span>
+        </div>
+        <div class="faq-a">
+          שיחת האפיון לוקחת כ-30 דקות. לאחריה, התהליך המלא (מיפוי, בניית תכנית וליווי שוטף) לוקח בדרך כלל כחמישה חודשים עד חצי שנה, בהתאם למסלול שתבחרו.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>מה צריך להביא לשיחת האפיון הראשונה?</span>
+          <span class="faq-arrow">↓</span>
+        </div>
+        <div class="faq-a">
+          שום דבר. שיחת האפיון היא שיחה חופשית. אנחנו מבינים יחד מאיפה אתם מתחילים, מה חשוב לכם ומה מעסיק אתכם. אין צורך בניירת, במספרים מדויקים, או בהכנה מראש.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CONTACT ══════════ -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+
+    <!-- RIGHT (RTL-first): headline -->
+    <div class="contact-content">
+      <div class="lime-side" style="margin-bottom: 20px;">
+        <h2 class="contact-h">בואו <span class="lime">נדבר</span></h2>
+      </div>
+      <p class="contact-desc">אחזור אליכם לקביעת שיחת אפיון. 30 דקות, ללא התחייבות.</p>
+    </div>
+
+    <!-- LEFT (RTL-second): Form + Bonus -->
+    <div>
+      <!-- Form -->
+      <div class="form-box" style="margin-bottom: 16px;">
+        <div class="form-box-title">השאירו פרטים ואחזור אליכם לקביעת שיחת אפיון</div>
+        <form onsubmit="submitLead(event)">
+          <input type="text" id="leadName" placeholder="השם המלא שלך" required class="f-input">
+          <input type="tel" id="leadPhone" placeholder="טלפון לחזרה" required class="f-input">
+          <input type="email" id="leadEmail" placeholder="כתובת מייל" required class="f-input">
+          <button type="submit" class="f-btn">שלחו פרטים ←</button>
+          <p class="f-note">הפרטים שלכם נשמרים אצלי בלבד ולא יועברו לאף גורם חיצוני</p>
+          <div class="f-success" id="formSuccess">✓ תודה! ניר יחזור אליכם בהקדם 🙌</div>
+        </form>
+      </div>
+
+      <!-- Bonus — separate -->
+      <div class="bonus-box" style="margin-bottom: 0;">
+        <div class="bonus-icon">🎁</div>
+        <div>
+          <div class="bonus-label">בונוס מתנה</div>
+          <div class="bonus-title">הצ׳ק ליסט הפיננסי המלא<br>לניהול חיים כלכליים בריאים</div>
+          <div class="bonus-tags">
+            <span class="bonus-tag">התנהלות כלכלית</span>
+            <span class="bonus-tag">בנקים ואשראי</span>
+            <span class="bonus-tag">פנסיה וביטוחים</span>
+            <span class="bonus-tag">השקעות</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <div class="footer-copy">© 2025 ניר יפרח · כל הזכויות שמורות</div>
+  <div class="footer-links">
+    <a href="#">מדיניות פרטיות</a>
+    <a href="#">תנאי שימוש</a>
+    <a href="#contact">צור קשר</a>
+  </div>
+</footer>
+
+<script>
+  /* ─── Video player ─── */
+  const videoWrap    = document.getElementById('videoWrap');
+  const videoOverlay = document.getElementById('videoOverlay');
+  const mainVideo    = document.getElementById('mainVideo');
+
+  mainVideo.style.display = 'none';
+
+  videoWrap.addEventListener('click', () => {
+    videoOverlay.style.display = 'none';
+    mainVideo.style.display    = 'block';
+    mainVideo.play();
+  });
+
+  /* ─── FAQ accordion ─── */
+  function toggleFaq(qEl) {
+    const item = qEl.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    // close all
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    // open clicked (unless it was already open)
+    if (!isOpen) item.classList.add('open');
+  }
+
+  /* ─── Lead form — sends to niryifrah4@gmail.com via formsubmit.co ─── */
+  async function submitLead(e) {
+    e.preventDefault();
+    const btn   = e.target.querySelector('.f-btn');
+    const name  = document.getElementById('leadName').value.trim();
+    const phone = document.getElementById('leadPhone').value.trim();
+    const email = document.getElementById('leadEmail').value.trim();
+
+    btn.textContent = 'שולח...';
+    btn.disabled = true;
+
+    const data = new FormData();
+    data.append('שם',    name);
+    data.append('טלפון', phone);
+    data.append('מייל',  email);
+    data.append('_subject', 'ליד חדש מהאתר – ניר יפרח CFP');
+    data.append('_captcha', 'false');
+    data.append('_template', 'table');
+
+    try {
+      const res = await fetch('https://formsubmit.co/ajax/a8cb2c9c9e2127e13dce32b01b07692e', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: data
+      });
+      if (res.ok) {
+        btn.style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+      } else {
+        btn.textContent = 'שגיאה — נסו שוב';
+        btn.disabled = false;
+      }
+    } catch (err) {
+      btn.textContent = 'שגיאה — נסו שוב';
+      btn.disabled = false;
+    }
+  }
+</script>
+</body>
+</html>

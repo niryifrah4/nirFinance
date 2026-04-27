@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>בדקו כמה אתם שולטים בפיננסים שלכם — ניר יפרח CFP</title>
+  <meta property="og:title" content="בדקו כמה אתם שולטים בפיננסים שלכם">
+  <meta property="og:description" content="שאלון קצר של 2 דקות שחושף את התמונה האמיתית של המצב הפיננסי שלכם">
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <!-- Meta Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init','952357363915643');
+    fbq('track','PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=952357363915643&ev=PageView&noscript=1"/></noscript>
+  <style>
+    :root {
+      --forest:   #1d4339;
+      --forest2:  #16342d;
+      --lime:     #adfe7a;
+      --bg:       #eaefe6;
+      --card:     #ffffff;
+      --text:     #16342d;
+      --muted:    #5a7a6e;
+      --border:   #c4d2bc;
+      --red:      #c0392b;
+      --yellow:   #d4a017;
+      --green:    #27915a;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Heebo', Arial, sans-serif;
+      direction: rtl;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── MAIN WRAP ── */
+    .page-wrap {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 16px 16px 48px;
+    }
+
+    /* ── INTRO SCREEN ── */
+    #introScreen {
+      max-width: 540px;
+      width: 100%;
+      text-align: center;
+      padding: 16px 0;
+    }
+    .intro-emoji { font-size: 52px; margin-bottom: 20px; }
+    .intro-tag {
+      display: inline-block;
+      font-size: 11px; font-weight: 900; letter-spacing: 4px;
+      text-transform: uppercase;
+      padding: 5px 16px; border-radius: 6px;
+      background: var(--forest);
+      color: var(--lime);
+      margin-bottom: 18px;
+    }
+    .intro-title {
+      font-size: clamp(28px, 6vw, 44px);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-bottom: 14px;
+      color: var(--forest2);
+    }
+    .intro-title .lime { color: var(--forest); }
+    .intro-sub {
+      font-size: 17px;
+      color: var(--muted);
+      line-height: 1.65;
+      margin-bottom: 32px;
+      max-width: 440px;
+      margin-left: auto; margin-right: auto;
+    }
+
+    /* Name + job form in intro */
+    .intro-form { text-align: right; }
+    .intro-form label {
+      display: block;
+      font-size: 14px; font-weight: 700;
+      color: var(--text);
+      margin-bottom: 7px;
+    }
+    .intro-form input[type="text"] {
+      width: 100%;
+      padding: 15px 18px;
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      font-family: 'Heebo', sans-serif;
+      font-size: 16px;
+      background: var(--card);
+      color: var(--text);
+      outline: none;
+      direction: rtl;
+      transition: border-color .2s, box-shadow .2s;
+      margin-bottom: 14px;
+    }
+    .intro-form input[type="text"]::placeholder { color: var(--muted); opacity: 0.6; }
+    .intro-form input[type="text"]:focus { border-color: var(--forest); box-shadow: 0 0 0 3px rgba(29,67,57,0.08); }
+
+    /* Employment chips */
+    .emp-chips { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 28px; }
+    .emp-chip {
+      flex: 1;
+      min-width: 120px;
+      padding: 13px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      cursor: pointer;
+      text-align: center;
+      font-size: 15px; font-weight: 700;
+      color: var(--muted);
+      background: var(--card);
+      transition: all .2s;
+      user-select: none;
+    }
+    .emp-chip:hover { border-color: var(--forest); color: var(--forest); }
+    .emp-chip.selected { border-color: var(--forest); background: var(--forest); color: var(--lime); }
+
+    .btn-start {
+      width: 100%;
+      background: var(--forest);
+      color: var(--lime);
+      font-family: 'Heebo', sans-serif;
+      font-size: 17px; font-weight: 900;
+      padding: 17px;
+      border: none; border-radius: 12px;
+      cursor: pointer;
+      transition: opacity .2s;
+    }
+    .btn-start:hover { opacity: 0.87; }
+
+    .q-count-preview {
+      font-size: 13px; color: var(--muted);
+      text-align: center; margin-top: 14px;
+    }
+
+    /* ── QUIZ SCREEN ── */
+    #quizScreen { display: none; width: 100%; max-width: 560px; }
+
+    /* Progress */
+    .prog-wrap { margin-bottom: 28px; }
+    .prog-meta { display: flex; justify-content: space-between; margin-bottom: 8px; }
+    .prog-lbl { font-size: 13px; font-weight: 700; color: var(--text); }
+    .prog-cnt { font-size: 13px; color: var(--muted); }
+    .prog-bar { height: 5px; background: var(--border); border-radius: 99px; overflow: hidden; }
+    .prog-fill { height: 100%; background: var(--forest); border-radius: 99px; transition: width .4s ease; }
+
+    /* Question card */
+    .q-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px 28px;
+      box-shadow: 0 2px 12px rgba(29,67,57,0.06);
+    }
+    .q-number { font-size: 12px; font-weight: 900; letter-spacing: 3px; color: var(--forest); opacity: 0.55; margin-bottom: 10px; }
+    .q-text { font-size: clamp(18px, 4vw, 22px); font-weight: 900; line-height: 1.35; margin-bottom: 24px; color: var(--forest2); }
+
+    /* Answer options */
+    .answers { display: flex; flex-direction: column; gap: 10px; }
+    .ans-btn {
+      width: 100%;
+      padding: 14px 18px;
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Heebo', sans-serif;
+      font-size: 15px; font-weight: 600;
+      text-align: right;
+      cursor: pointer;
+      transition: all .18s;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .ans-btn:hover { border-color: var(--forest); background: rgba(29,67,57,0.05); color: var(--forest); }
+    .ans-btn.selected { border-color: var(--forest); background: var(--forest); color: #fff; }
+    .ans-btn.correct-flash { border-color: var(--forest) !important; background: rgba(29,67,57,0.08) !important; }
+    .ans-letter {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--border);
+      font-size: 13px; font-weight: 900;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; color: var(--muted);
+    }
+    .ans-btn.selected .ans-letter { background: var(--lime); color: var(--forest); }
+
+    /* Nav */
+    .q-nav { display: flex; justify-content: flex-start; margin-top: 20px; gap: 10px; }
+    .btn-back-q {
+      padding: 12px 20px;
+      background: transparent;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      color: var(--muted);
+      font-family: 'Heebo', sans-serif; font-size: 14px; font-weight: 600;
+      cursor: pointer; transition: all .2s;
+    }
+    .btn-back-q:hover { border-color: var(--forest); color: var(--forest); }
+
+    /* ── LEAD CAPTURE SCREEN ── */
+    #leadScreen { display: none; width: 100%; max-width: 520px; }
+    .lead-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px 28px;
+      box-shadow: 0 2px 12px rgba(29,67,57,0.06);
+    }
+    .lead-teaser {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .lead-teaser-icon { font-size: 44px; margin-bottom: 12px; }
+    .lead-teaser h2 { font-size: 22px; font-weight: 900; margin-bottom: 8px; color: var(--forest2); }
+    .lead-teaser p { font-size: 15px; color: var(--muted); line-height: 1.55; }
+    .lead-form { display: flex; flex-direction: column; gap: 12px; }
+    .lead-form input {
+      width: 100%;
+      padding: 14px 18px;
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      font-family: 'Heebo', sans-serif; font-size: 15px;
+      background: var(--bg);
+      color: var(--text); direction: rtl; outline: none;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .lead-form input::placeholder { color: var(--muted); opacity: 0.6; }
+    .lead-form input:focus { border-color: var(--forest); box-shadow: 0 0 0 3px rgba(29,67,57,0.08); }
+    .btn-reveal {
+      width: 100%;
+      background: var(--forest); color: var(--lime);
+      font-family: 'Heebo', sans-serif; font-size: 17px; font-weight: 900;
+      padding: 17px; border: none; border-radius: 12px;
+      cursor: pointer; transition: opacity .2s;
+      margin-top: 4px;
+    }
+    .btn-reveal:hover { opacity: 0.87; }
+    .btn-reveal:disabled { opacity: 0.6; cursor: not-allowed; }
+    .lead-privacy { font-size: 12px; color: var(--muted); opacity: 0.65; text-align: center; margin-top: 12px; }
+
+    /* ── RESULT SCREEN ── */
+    #resultScreen { display: none; width: 100%; max-width: 560px; }
+    .result-card {
+      border-radius: 20px;
+      padding: 36px 28px;
+      text-align: center;
+      background: var(--card);
+      box-shadow: 0 2px 12px rgba(29,67,57,0.06);
+    }
+    .result-card.level-low    { border: 1.5px solid rgba(192,57,43,0.3); }
+    .result-card.level-mid    { border: 1.5px solid rgba(212,160,23,0.35); }
+    .result-card.level-good   { border: 1.5px solid rgba(39,145,90,0.35); }
+
+    .result-emoji { font-size: 58px; margin-bottom: 12px; }
+    .result-score-label { font-size: 13px; font-weight: 700; letter-spacing: 3px; color: var(--muted); margin-bottom: 8px; }
+    .result-score {
+      font-size: clamp(56px, 12vw, 86px);
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .result-score.level-low  { color: var(--red); }
+    .result-score.level-mid  { color: var(--yellow); }
+    .result-score.level-good { color: var(--green); }
+    .result-title { font-size: 24px; font-weight: 900; margin-bottom: 10px; line-height: 1.2; color: var(--forest2); }
+    .result-desc { font-size: 16px; color: var(--muted); line-height: 1.65; margin-bottom: 28px; }
+
+    /* Breakdown */
+    .breakdown { text-align: right; margin-bottom: 28px; }
+    .breakdown-title { font-size: 13px; font-weight: 900; letter-spacing: 2px; color: var(--muted); margin-bottom: 14px; }
+    .breakdown-item {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 10px;
+    }
+    .breakdown-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .breakdown-dot.ok { background: var(--green); }
+    .breakdown-dot.warn { background: var(--yellow); }
+    .breakdown-dot.bad { background: var(--red); }
+    .breakdown-text { font-size: 14px; color: var(--text); flex: 1; line-height: 1.4; }
+
+    /* CTA */
+    .result-cta {
+      background: var(--forest);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+    .result-cta h3 { font-size: 18px; font-weight: 900; margin-bottom: 8px; color: #fff; }
+    .result-cta p { font-size: 14px; color: rgba(255,255,255,0.65); margin-bottom: 18px; line-height: 1.55; }
+    .btn-cta-main {
+      display: block; width: 100%;
+      background: var(--lime); color: var(--forest);
+      font-family: 'Heebo', sans-serif; font-size: 16px; font-weight: 900;
+      padding: 15px; border: none; border-radius: 10px;
+      text-decoration: none; text-align: center;
+      cursor: pointer; transition: opacity .2s;
+    }
+    .btn-cta-main:hover { opacity: 0.87; }
+
+    /* Share */
+    .share-row { display: flex; gap: 10px; justify-content: center; margin-top: 16px; }
+    .btn-share {
+      padding: 11px 20px;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      background: var(--card);
+      color: var(--muted);
+      font-family: 'Heebo', sans-serif; font-size: 14px; font-weight: 600;
+      cursor: pointer; transition: all .2s; text-decoration: none;
+      display: inline-block;
+    }
+    .btn-share:hover { border-color: var(--forest); color: var(--forest); }
+
+    /* Footer */
+    footer {
+      background: rgba(29,67,57,0.06);
+      border-top: 1px solid var(--border);
+      padding: 18px 24px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    footer a { color: var(--forest); text-decoration: none; }
+
+    @media (max-width: 480px) {
+      .q-card, .lead-card, .result-card { padding: 22px 18px; }
+      .emp-chips { gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+
+<div class="page-wrap">
+
+<!-- ══════════ INTRO SCREEN ══════════ -->
+<div id="introScreen">
+  <div class="intro-emoji">💡</div>
+  <div class="intro-tag">שאלון חינמי — 2 דקות</div>
+  <h1 class="intro-title">כמה אתם <span class="lime">באמת שולטים</span><br>בפיננסים שלכם?</h1>
+  <p class="intro-sub">11 שאלות שחושפות את התמונה האמיתית. קבלו ניקוד אישי ותבינו איפה אתם עומדים.</p>
+
+  <div class="intro-form">
+    <label for="userName">מה שמך?</label>
+    <input type="text" id="userName" placeholder="השם שלך..." autocomplete="given-name">
+
+    <label>מה אתה/את?</label>
+    <div class="emp-chips">
+      <div class="emp-chip" data-val="שכיר" onclick="selectEmp(this)">👔 שכיר/ה</div>
+      <div class="emp-chip" data-val="עצמאי" onclick="selectEmp(this)">🏢 עצמאי/ת</div>
+      <div class="emp-chip" data-val="שכיר ועצמאי" onclick="selectEmp(this)">⚡ שניהם</div>
+    </div>
+  </div>
+
+  <button class="btn-start" onclick="startQuiz()">התחילו את הבדיקה ←</button>
+  <p class="q-count-preview">11 שאלות · תוצאה מיידית · ללא עלות</p>
+</div>
+
+<!-- ══════════ QUIZ SCREEN ══════════ -->
+<div id="quizScreen">
+  <div class="prog-wrap">
+    <div class="prog-meta">
+      <span class="prog-lbl" id="qLabel">שאלה 1 מתוך 11</span>
+      <span class="prog-cnt" id="qScore">0 נק׳ מצטבר</span>
+    </div>
+    <div class="prog-bar"><div class="prog-fill" id="progFill" style="width:10%"></div></div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-number" id="qNum">שאלה 1 / 10</div>
+    <div class="q-text" id="qText"></div>
+    <div class="answers" id="qAnswers"></div>
+  </div>
+
+  <div class="q-nav">
+    <button class="btn-back-q" id="backQBtn" onclick="prevQ()" style="display:none">→ חזור</button>
+  </div>
+</div>
+
+<!-- ══════════ LEAD CAPTURE ══════════ -->
+<div id="leadScreen">
+  <div class="lead-card">
+    <div class="lead-teaser">
+      <div class="lead-teaser-icon">🎁</div>
+      <h2>הניקוד שלך מוכן!</h2>
+      <p>הכניסו מייל וקבלו <strong style="color:var(--forest)">את הצ'ק ליסט הפיננסי המלא</strong> במתנה — יחד עם הניתוח האישי שלכם.</p>
+    </div>
+    <div class="lead-form">
+      <input type="email" id="lEmail" placeholder="כתובת המייל שלך" autocomplete="email">
+      <input type="tel" id="lPhone" placeholder="טלפון (לא חובה)" autocomplete="tel">
+      <button class="btn-reveal" id="revealBtn" onclick="submitLead()">שלחו לי את הצ׳ק ליסט + הניקוד ←</button>
+    </div>
+    <p class="lead-privacy">הפרטים שמורים אצלי בלבד 🔒 · הצ'ק ליסט יגיע למייל תוך דקה</p>
+  </div>
+</div>
+
+<!-- ══════════ RESULT SCREEN ══════════ -->
+<div id="resultScreen">
+  <div class="result-card" id="resultCard">
+    <div class="result-emoji" id="resultEmoji"></div>
+    <div class="result-score-label">הניקוד שלך</div>
+    <div class="result-score" id="resultScore"></div>
+    <div class="result-title" id="resultTitle"></div>
+    <p class="result-desc" id="resultDesc"></p>
+
+    <div class="breakdown" id="breakdown"></div>
+
+    <div class="result-cta" id="resultCta">
+      <h3 id="ctaTitle"></h3>
+      <p id="ctaText"></p>
+      <a href="/#contact" class="btn-cta-main">קבעו שיחת אפיון ללא עלות ←</a>
+    </div>
+  </div>
+
+  <div style="text-align:center; margin-top:16px; margin-bottom:8px;">
+    <a href="https://bit.ly/fchecklist" target="_blank"
+       style="display:inline-block; padding:13px 28px; background:var(--card); border:1.5px solid var(--border); color:var(--forest); border-radius:12px; font-weight:700; font-size:15px; text-decoration:none;">
+      🎁 קבלו את הצ׳ק ליסט הפיננסי
+    </a>
+  </div>
+
+  <div class="share-row">
+    <button class="btn-share" onclick="shareResult()">📤 שתפו את התוצאה</button>
+    <a href="/" class="btn-share">← חזרה לאתר</a>
+  </div>
+</div>
+
+</div><!-- /page-wrap -->
+
+<footer>
+  <a href="/">niryifrahcfp.co.il</a> &nbsp;·&nbsp; © 2025 ניר יפרח CFP — כל הזכויות שמורות
+</footer>
+
+<script>
+  /* ── State ── */
+  let userName = '';
+  let userEmp  = '';
+  let currentQ = 0;
+  let answers  = [];   // {qi, score, text}
+  let totalScore = 0;
+  let leadPhone = '';
+  let leadEmail = '';
+
+  /* ── Questions bank ──
+     score: points for BEST answer (lower options give fewer points)
+     Each option: [text, points]
+  */
+  const questions = [
+    {
+      text: 'האם אתם יודעים כמה כסף נכנס ויוצא לכם בחודש הממוצע?',
+      options: [
+        ['כן — יש לי תמונה ברורה לגמרי', 10],
+        ['בערך — אני מכיר את הסדר גודל', 5],
+        ['לא ממש — אני לא עוקב', 2],
+        ['בכלל לא יודע', 0],
+      ]
+    },
+    {
+      text: 'האם אתם מחזיקים כסף בעו״ש שלא עובד? יש לכם כסף פנוי שתרצו להשקיע והוא לא מושקע?',
+      options: [
+        ['לא — כל הכסף עובד ומושקע', 10],
+        ['יש קצת בעו״ש אבל זה מכוון', 5],
+        ['כן — יש כסף שיושב ולא עושה כלום', 2],
+        ['יש הרבה בעו״ש ואני לא יודע מה לעשות עם זה', 0],
+      ]
+    },
+    {
+      text: 'האם יש לכם קרן חירום (3–6 חודשי הוצאות) בצד?',
+      options: [
+        ['כן — 6 חודשים ומעלה', 10],
+        ['כן — 1–3 חודשים', 6],
+        ['חלקי — פחות מחודש', 3],
+        ['לא', 0],
+      ]
+    },
+    {
+      text: 'האם אתם חוסכים / משקיעים באופן קבוע בכל חודש?',
+      options: [
+        ['כן — יש הוראת קבע לחיסכון/השקעה', 10],
+        ['לפעמים — כשנשאר משהו בסוף החודש', 5],
+        ['לא — אין לי עודפים', 2],
+        ['לא מכיר את האפשרויות שלי', 0],
+      ]
+    },
+    {
+      text: 'האם אתם יודעים מה קורה מבחינה פנסיונית? פנסיה, ביטוחי מנהלים, קופות גמל?',
+      options: [
+        ['כן — אני מכיר כל מוצר, סכום ותנאים', 10],
+        ['חלקי — יש לי מושג כללי אבל לא על הכל', 5],
+        ['לא — אני יודע שמשהו קיים אבל לא מה בדיוק', 2],
+        ['בכלל לא — לא בדקתי מעולם', 0],
+      ]
+    },
+    {
+      text: 'האם אתם יודעים מה הכיסויים הביטוחיים שיש לכם?',
+      options: [
+        ['כן — אני מכיר כל פוליסה ומה היא מכסה', 10],
+        ['חלקי — יודע בערך אבל לא בפרטים', 5],
+        ['לא — אני משלם אבל לא יודע מה מקבל', 2],
+        ['לא — אין לי ביטוחים בכלל', 0],
+      ]
+    },
+    {
+      text: 'האם בדקתם בשנה האחרונה את האפשרות למחזור משכנתא ללא עלות? (במידה ויש משכנתא)',
+      options: [
+        ['כן — בדקנו ואף מיחזרנו', 10],
+        ['לא — יש משכנתא אבל לא בדקנו', 2],
+        ['אין לנו משכנתא', 8],
+        ['מה זה מחזור משכנתא?', 0],
+      ]
+    },
+    {
+      text: 'האם אתם עובדים עם תכנית מסודרת להגשמת כל היעדים והמטרות שלכם?',
+      options: [
+        ['כן — יש תכנית כתובה עם יעדים ותאריכים', 10],
+        ['חלקי — יש תכנית כללית אבל לא מפורטת', 5],
+        ['לא — יש מטרות בראש אבל אין תכנית', 2],
+        ['לא — אין לי מטרות מוגדרות', 0],
+      ]
+    },
+    {
+      text: 'האם אתם מרגישים מספיק בטוחים מבחינה פיננסית?',
+      options: [
+        ['כן — אני רגוע ויציב', 10],
+        ['ברוב הזמן — עם כמה חששות', 5],
+        ['לא ממש — יש חרדה פיננסית', 2],
+        ['בכלל לא — זה מקור לחץ קבוע אצלי', 0],
+      ]
+    },
+    {
+      text: 'האם הייתם אי פעם בייעוץ פיננסי מקצועי?',
+      options: [
+        ['כן — ויש לי תכנית עדכנית', 10],
+        ['כן — אבל לפני הרבה שנים', 5],
+        ['לא — אבל אני רוצה', 3],
+        ['לא — ולא ממש חשבתי על זה', 0],
+      ]
+    },
+    {
+      text: 'אם מחר תצטרכו 50,000 ₪ — מה היה קורה?',
+      options: [
+        ['לא בעיה — יש לי נגיש', 10],
+        ['אולי — אצטרך לחשב', 5],
+        ['קשה — הייתי צריך הלוואה', 2],
+        ['בעיה רצינית', 0],
+      ]
+    },
+  ];
+
+  /* ── Employment select ── */
+  function selectEmp(el) {
+    document.querySelectorAll('.emp-chip').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    userEmp = el.dataset.val;
+  }
+
+  /* ── Start quiz ── */
+  function startQuiz() {
+    const nameVal = document.getElementById('userName').value.trim();
+    if (!nameVal) { document.getElementById('userName').focus(); return; }
+    if (!userEmp) { alert('בחרו סוג תעסוקה כדי להמשיך'); return; }
+    userName = nameVal;
+
+    document.getElementById('introScreen').style.display = 'none';
+    document.getElementById('quizScreen').style.display  = 'block';
+    renderQ();
+  }
+
+  /* ── Render current question ── */
+  function renderQ() {
+    const q = questions[currentQ];
+    const letters = ['א', 'ב', 'ג', 'ד'];
+
+    document.getElementById('qLabel').textContent = `שאלה ${currentQ + 1} מתוך ${questions.length}`;
+    document.getElementById('qNum').textContent   = `שאלה ${currentQ + 1} / ${questions.length}`;
+    document.getElementById('qText').textContent  = q.text;
+    document.getElementById('progFill').style.width = `${((currentQ + 1) / questions.length) * 100}%`;
+    document.getElementById('qScore').textContent = `${totalScore} נק׳ עד כה`;
+    document.getElementById('backQBtn').style.display = currentQ > 0 ? 'block' : 'none';
+
+    const container = document.getElementById('qAnswers');
+    container.innerHTML = '';
+
+    q.options.forEach((opt, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'ans-btn';
+      if (answers[currentQ] !== undefined && answers[currentQ].idx === i) btn.classList.add('selected');
+
+      btn.innerHTML = `<span class="ans-letter">${letters[i]}</span><span>${opt[0]}</span>`;
+      btn.onclick = () => selectAnswer(i, opt[1], opt[0]);
+      container.appendChild(btn);
+    });
+  }
+
+  function selectAnswer(idx, score, text) {
+    // Update score (subtract old answer if exists)
+    if (answers[currentQ] !== undefined) {
+      totalScore -= answers[currentQ].score;
+    }
+    answers[currentQ] = { idx, score, text };
+    totalScore += score;
+
+    // Visual feedback
+    document.querySelectorAll('.ans-btn').forEach((b, i) => {
+      b.classList.toggle('selected', i === idx);
+    });
+
+    // Auto-advance after short delay
+    setTimeout(() => {
+      if (currentQ < questions.length - 1) {
+        currentQ++;
+        renderQ();
+      } else {
+        showLead();
+      }
+    }, 320);
+  }
+
+  function prevQ() {
+    if (currentQ > 0) {
+      if (answers[currentQ] !== undefined) {
+        totalScore -= answers[currentQ].score;
+        answers[currentQ] = undefined;
+      }
+      currentQ--;
+      renderQ();
+    }
+  }
+
+  /* ── Lead capture ── */
+  function showLead() {
+    document.getElementById('quizScreen').style.display = 'none';
+    document.getElementById('leadScreen').style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  async function submitLead() {
+    const email = document.getElementById('lEmail').value.trim();
+    const phone = document.getElementById('lPhone').value.trim();
+    if (!email) { alert('אנא הכניסו כתובת מייל'); return; }
+
+    leadEmail = email;
+    leadPhone = phone;
+
+    const btn = document.getElementById('revealBtn');
+    btn.textContent = 'שולח...';
+    btn.disabled = true;
+
+    const scoreMax = questions.length * 10;
+    const pct = Math.round((totalScore / scoreMax) * 100);
+
+    let summary = '';
+    questions.forEach((q, i) => {
+      const ans = answers[i];
+      summary += `ש${i+1}: ${q.text} | תשובה: ${ans ? ans.text : '—'} (${ans ? ans.score : 0} נק׳)\n`;
+    });
+
+    const checklistUrl = 'https://niryifrahcfp.co.il/CheckList26.pdf';
+
+    // ── 1. שליחה לניר עם כל פרטי הליד ──
+    const dataToNir = new FormData();
+    dataToNir.append('שם', userName);
+    dataToNir.append('עיסוק', userEmp);
+    dataToNir.append('מייל', email);
+    dataToNir.append('טלפון', phone || '—');
+    dataToNir.append('ניקוד', `${pct}% (${totalScore}/${scoreMax})`);
+    dataToNir.append('תשובות', summary);
+    dataToNir.append('_subject', `📋 ליד חדש מהשאלון — ${userName} | ניקוד ${pct}%`);
+    dataToNir.append('_captcha', 'false');
+    dataToNir.append('_template', 'table');
+
+    // ── 2. מייל auto-reply ללקוח עם הצ'ק ליסט ──
+    const dataToUser = new FormData();
+    dataToUser.append('name', userName);
+    dataToUser.append('email', email);
+    dataToUser.append('_subject', `הצ׳ק ליסט הפיננסי שלך מניר יפרח CFP 🎁`);
+    dataToUser.append('_captcha', 'false');
+    dataToUser.append('_template', 'box');
+    dataToUser.append('_replyto', email);
+    dataToUser.append('message',
+      `שלום ${userName}!\n\n` +
+      `תודה שמילאת את השאלון — קיבלת ניקוד של ${pct}%.\n\n` +
+      `🎁 הנה הצ׳ק ליסט הפיננסי המלא שהבטחתי:\n${checklistUrl}\n\n` +
+      `לחצו על הקישור להורדה.\n\n` +
+      `אם תרצו לדבר על התוצאות ולהבין מה לשפר — אשמח לשיחת אפיון קצרה ללא עלות.\n\n` +
+      `ניר יפרח CFP\nniryifrahcfp.co.il`
+    );
+
+    try {
+      // שליחה לניר
+      await fetch('https://formsubmit.co/ajax/a8cb2c9c9e2127e13dce32b01b07692e', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: dataToNir
+      });
+      // שליחה ללקוח
+      await fetch('https://formsubmit.co/ajax/' + encodeURIComponent(email), {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: dataToUser
+      }).catch(() => {}); // לא קריטי אם נכשל
+    } catch(_) {}
+
+    if (typeof fbq === 'function') fbq('track', 'Lead');
+    showResult(pct);
+  }
+
+  /* ── Show result ── */
+  function showResult(pct) {
+    if (pct === undefined || isNaN(pct)) return;
+    document.getElementById('leadScreen').style.display  = 'none';
+    document.getElementById('resultScreen').style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    const card   = document.getElementById('resultCard');
+    const emoji  = document.getElementById('resultEmoji');
+    const score  = document.getElementById('resultScore');
+    const title  = document.getElementById('resultTitle');
+    const desc   = document.getElementById('resultDesc');
+    const ctaTit = document.getElementById('ctaTitle');
+    const ctaTxt = document.getElementById('ctaText');
+
+    // Determine level
+    let level, levelClass, emo;
+    if (pct >= 70) {
+      level = 'good'; emo = '💪';
+    } else if (pct >= 40) {
+      level = 'mid'; emo = '⚠️';
+    } else {
+      level = 'low'; emo = '🆘';
+    }
+
+    card.className  = `result-card level-${level}`;
+    emoji.textContent = emo;
+    score.className = `result-score level-${level}`;
+    score.textContent = `${pct}%`;
+
+    const firstName = userName.split(' ')[0];
+
+    const results = {
+      low: {
+        title: `${firstName}, יש עבודה לעשות`,
+        desc: `הניקוד שלכם מצביע על כך שאין לכם תמונה ברורה של המצב הפיננסי — וזה בסדר גמור, זה בדיוק למה אני כאן. אנשים רבים מגיעים אליי עם אותו מצב, ויוצאים עם תכנית ברורה.`,
+        ctaTitle: 'הרגע הנכון לפעול הוא עכשיו',
+        ctaText: 'שיחת אפיון של 30 דקות תיתן לכם תמונה ראשונית ותכנית פעולה — ללא עלות וללא התחייבות.',
+      },
+      mid: {
+        title: `${firstName}, אתם על הדרך הנכונה`,
+        desc: `יש לכם בסיס, אבל יש פערים שעלולים לעלות לכם ביוקר בטווח הארוך. עם מספר תיקונים נכונים אפשר לשפר את התמונה משמעותית.`,
+        ctaTitle: 'בואו נסגור את הפערים',
+        ctaText: 'שיחת אפיון קצרה תראה לנו יחד מה צריך לחזק — ואיפה יש לכם פוטנציאל שלא מנוצל.',
+      },
+      good: {
+        title: `${firstName}, אתם במצב טוב — אבל...`,
+        desc: `הניקוד שלכם מראה שאתם מודעים ועוקבים. אבל גם אנשים עם בסיס טוב מגלים בשיחת ייעוץ פרצות שלא ידעו שיש — בביטוחים, בפנסיה, בניצול נכסים.`,
+        ctaTitle: 'שווה לבדוק שלא פספסתם כלום',
+        ctaText: 'שיחה של 30 דקות יכולה לחסוך עשרות אלפי שקלים — גם למי שחושב שהכל בסדר.',
+      },
+    };
+
+    const r = results[level];
+    title.textContent = r.title;
+    desc.textContent  = r.desc;
+    ctaTit.textContent = r.ctaTitle;
+    ctaTxt.textContent = r.ctaText;
+
+    // Breakdown
+    const breakdown = document.getElementById('breakdown');
+    breakdown.innerHTML = '<div class="breakdown-title">איפה אתם חזקים ואיפה יש לשפר</div>';
+
+    const categories = [
+      { label: 'תזרים ותכנון', qi: [0, 7, 8] },
+      { label: 'חיסכון והשקעות', qi: [1, 2, 9] },
+      { label: 'פנסיה וביטוחים', qi: [3, 4] },
+      { label: 'נדל"ן ותכנון עתיד', qi: [5, 6] },
+    ];
+
+    categories.forEach(cat => {
+      const catAnswers = cat.qi.map(i => answers[i]);
+      const catMax  = cat.qi.length * 10;
+      const catScore = catAnswers.reduce((s, a) => s + (a ? a.score : 0), 0);
+      const catPct   = Math.round((catScore / catMax) * 100);
+
+      let dotClass = catPct >= 70 ? 'ok' : catPct >= 40 ? 'warn' : 'bad';
+      let statusText = catPct >= 70 ? 'טוב' : catPct >= 40 ? 'יש מה לשפר' : 'דורש טיפול';
+
+      const item = document.createElement('div');
+      item.className = 'breakdown-item';
+      item.innerHTML = `
+        <div class="breakdown-dot ${dotClass}"></div>
+        <div class="breakdown-text"><strong>${cat.label}</strong> — ${statusText} (${catPct}%)</div>
+      `;
+      breakdown.appendChild(item);
+    });
+  }
+
+  function shareResult() {
+    const scoreMax = questions.length * 10;
+    const pct = Math.round((totalScore / scoreMax) * 100);
+    const text = `בדקתי כמה אני שולט בפיננסים שלי — קיבלתי ${pct}% 💡 מעניין לבדוק? niryifrahcfp.co.il/qos`;
+    if (navigator.share) {
+      navigator.share({ text, url: 'https://niryifrahcfp.co.il/qos' }).catch(() => {});
+    } else {
+      navigator.clipboard.writeText(text).then(() => alert('הטקסט הועתק! שתפו עם חברים 😊'));
+    }
+  }
+</script>
+
+</body>
+</html>
