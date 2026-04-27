@@ -276,6 +276,8 @@
 
       <!-- Numbers flow -->
       <div>
+        <!-- Label above numbers -->
+        <div style="font-size:13px; font-weight:700; color:rgba(255,255,255,0.45); text-align:center; margin-bottom:10px; letter-spacing:0.5px;">אם אתם מרוויחים:</div>
         <!-- 25K → 300K -->
         <div style="display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:10px;">
           <div style="text-align:center;">
@@ -322,56 +324,44 @@
     <div class="ad-cta-target">→ אתר</div>
   </div>
 
-  <!-- AD 4 · Trust / photo → אתר -->
+  <!-- AD 4 · BDO-style typography → אתר -->
   <div class="ad-wrap">
     <div class="ad-label">04</div>
-    <div class="ad" style="background:#0d1f18; overflow:hidden; position:relative;">
+    <div class="ad" style="background:#102a22; display:flex; flex-direction:column; justify-content:space-between; padding:28px 26px 26px;">
 
-      <!-- Full photo -->
-      <div style="position:absolute; inset:0;">
-        <img src="/DSC03313-Enhanced-NR-Edit.jpg" style="width:100%; height:100%; object-fit:cover; object-position:center top; opacity:0.55; mix-blend-mode:luminosity;">
+      <!-- Profile top — photo + name attached together -->
+      <div style="display:flex; align-items:center; justify-content:space-between;">
+        <div>
+          <div style="font-size:15px; font-weight:900; color:#fff; line-height:1.15;">ניר יפרח</div>
+          <div style="font-size:11px; font-weight:600; color:rgba(173,254,122,0.8);">תכנון פיננסי אישי ומשפחתי</div>
+        </div>
+        <div style="width:42px; height:42px; border-radius:50%; overflow:hidden; border:2px solid rgba(173,254,122,0.5); flex-shrink:0;">
+          <img src="/Nir.jpg" style="width:100%; height:100%; object-fit:cover; object-position:center top;">
+        </div>
       </div>
-      <!-- Gradient overlay: transparent top → dark bottom -->
-      <div style="position:absolute; inset:0; background:linear-gradient(to bottom, rgba(13,31,24,0.1) 0%, rgba(13,31,24,0.5) 45%, rgba(13,31,24,0.97) 72%, #0d1f18 100%);"></div>
 
-      <!-- Content -->
-      <div style="position:absolute; bottom:0; left:0; right:0; padding:24px 24px 24px;">
-
-        <!-- Pain -->
-        <div style="font-size:13px; font-weight:700; color:#ff7b3a; letter-spacing:0.5px; margin-bottom:12px;">
-          מרוויחים. חוסכים קצת. אבל אין תכנית.
+      <!-- Main typography block -->
+      <div>
+        <div style="font-size:40px; font-weight:900; color:#fff; line-height:1.05; letter-spacing:-1px; margin-bottom:18px;">
+          רוצים<br>
+          להתחיל<br>
+          להשקיע?
         </div>
-
-        <!-- Headline / Dream -->
-        <div style="font-size:30px; font-weight:900; color:#fff; line-height:1.1; letter-spacing:-0.5px; margin-bottom:14px;">
-          כל שנה בלי תכנית<br>
-          היא שנה שאי<br>
-          אפשר <span style="color:#adfe7a;">להחזיר.</span>
+        <div style="font-size:22px; font-weight:700; color:rgba(255,255,255,0.85); line-height:1.3; margin-bottom:6px;">
+          קודם תלמדו לנהל<br>
+          את הכסף שלכם.
         </div>
-
-        <!-- Action -->
-        <div style="font-size:14px; font-weight:600; color:rgba(255,255,255,0.6); line-height:1.55; margin-bottom:6px;">
-          שיחת אפיון של 30 דקות.<br>
-          יוצאים עם תמונה ברורה וכיוון לפעולה.
-        </div>
-
-        <!-- Line + profile -->
-        <div style="height:1px; background:rgba(255,255,255,0.12); margin:14px 0 12px;"></div>
-        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:16px;">
-          <div>
-            <div style="font-size:14px; font-weight:900; color:#fff; line-height:1.15;">ניר יפרח</div>
-            <div style="font-size:10px; font-weight:600; color:rgba(173,254,122,0.8);">תכנון פיננסי אישי ומשפחתי</div>
-          </div>
-          <div style="width:38px; height:38px; border-radius:50%; overflow:hidden; border:2px solid rgba(173,254,122,0.45); flex-shrink:0;">
-            <img src="/Nir.jpg" style="width:100%; height:100%; object-fit:cover; object-position:center top;">
-          </div>
-        </div>
-
-        <!-- CTA -->
-        <button style="width:100%; background:#ff7b3a; color:#fff; font-family:'Heebo',sans-serif; font-size:15px; font-weight:900; padding:14px; border-radius:10px; border:none; cursor:pointer; text-align:center;">
-          קבעו שיחת אפיון ←
-        </button>
+        <!-- Red scribble under last line -->
+        <svg viewBox="0 0 230 14" style="width:72%; height:14px; display:block;" preserveAspectRatio="none">
+          <path d="M3,9 C40,4 95,12 145,7 C190,3 220,10 228,6" stroke="#e8372a" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+          <path d="M6,12 C50,9 108,13 162,10 C200,8 222,12 227,10" stroke="#e8372a" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.55"/>
+        </svg>
       </div>
+
+      <!-- CTA -->
+      <button style="width:100%; background:#adfe7a; color:#102a22; font-family:'Heebo',sans-serif; font-size:15px; font-weight:900; padding:14px; border-radius:10px; border:none; cursor:pointer; text-align:center;">
+        קבעו שיחת אפיון ←
+      </button>
 
     </div>
     <div class="ad-cta-target">→ אתר</div>
