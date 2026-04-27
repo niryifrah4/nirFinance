@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>מיני קמפיין שאלון — ניר יפרח</title>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Heebo', sans-serif;
+      direction: rtl;
+      background: #0e0e0e;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 60px 24px 80px;
+      gap: 56px;
+    }
+
+    .page-title { text-align: center; }
+    .page-title h1 { font-size: 11px; color: rgba(255,255,255,0.22); font-weight: 600; letter-spacing: 4px; text-transform: uppercase; }
+    .page-title p  { font-size: 10px; color: rgba(255,255,255,0.12); letter-spacing: 2px; margin-top: 5px; }
+
+    .ads-row { display: flex; gap: 32px; justify-content: center; flex-wrap: wrap; }
+    .ad-wrap { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+    .ad-num  { font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.2); letter-spacing: 2.5px; }
+
+    .ad {
+      width: 320px; height: 568px;
+      border-radius: 20px; overflow: hidden;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.85);
+      display: flex; flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .dark  { background: #102a22; padding: 24px 22px 22px; }
+    .light { background: #f0ebe0; padding: 24px 22px 22px; }
+
+    .prof { display: flex; align-items: center; gap: 9px; }
+    .prof .av { width: 38px; height: 38px; border-radius: 50%; overflow: hidden; flex-shrink: 0; }
+    .prof .av img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+    .prof.d .av { border: 2px solid rgba(173,254,122,0.45); }
+    .prof.l .av { border: 2px solid rgba(16,42,34,0.25); }
+    .prof.d .pn { font-size: 13px; font-weight: 900; color: #fff; line-height: 1.1; }
+    .prof.d .pt { font-size: 9.5px; font-weight: 600; color: rgba(173,254,122,0.8); margin-top: 1px; }
+    .prof.l .pn { font-size: 13px; font-weight: 900; color: #102a22; line-height: 1.1; }
+    .prof.l .pt { font-size: 9.5px; font-weight: 600; color: rgba(16,42,34,0.5); margin-top: 1px; }
+
+    .btn { width: 100%; font-family: 'Heebo', sans-serif; font-size: 15px; font-weight: 900; padding: 14px; border-radius: 12px; border: none; cursor: pointer; text-align: center; }
+    .btn-lime { background: #adfe7a; color: #102a22; }
+    .btn-dark { background: #102a22; color: #adfe7a; }
+
+    /* campaign info */
+    .campaign-info {
+      background: rgba(173,254,122,0.06);
+      border: 1px solid rgba(173,254,122,0.15);
+      border-radius: 16px;
+      padding: 24px 32px;
+      max-width: 700px;
+      width: 100%;
+      text-align: center;
+    }
+    .campaign-info h2 { font-size: 13px; font-weight: 700; color: #adfe7a; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
+    .campaign-info table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .campaign-info td { padding: 7px 12px; color: rgba(255,255,255,0.6); text-align: right; }
+    .campaign-info td:first-child { color: rgba(255,255,255,0.3); font-weight: 600; text-align: left; }
+    .campaign-info tr:not(:last-child) td { border-bottom: 1px solid rgba(255,255,255,0.05); }
+  </style>
+</head>
+<body>
+
+<div class="page-title">
+  <h1>מיני קמפיין · שאלון פיננסי</h1>
+  <p>2 מודעות · טראפיק לשאלון · nirfinancfp.co.il/shalon</p>
+</div>
+
+<!-- ═══ 2 ADS ═══ -->
+<div class="ads-row">
+
+  <!-- AD A · ₪3M -->
+  <div class="ad-wrap">
+    <div class="ad-num">A</div>
+    <div class="ad dark">
+
+      <div class="prof d">
+        <div class="av"><img src="/NirBlack.jpg" alt=""></div>
+        <div><div class="pn">ניר יפרח</div><div class="pt">תכנון פיננסי אישי ומשפחתי</div></div>
+      </div>
+
+      <div style="text-align:center;">
+        <div style="font-size:16px; font-weight:700; color:rgba(255,255,255,0.65); line-height:1.4; margin-bottom:12px;">
+          בעשור הקרוב<br>אתם הולכים להרוויח
+        </div>
+        <div style="font-size:72px; font-weight:900; color:#adfe7a; line-height:1; letter-spacing:-3px; margin-bottom:14px;">₪3M</div>
+        <div style="display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:18px;">
+          <div style="font-size:13px; font-weight:700; color:rgba(255,255,255,0.45);">₪25K בחודש</div>
+          <div style="font-size:11px; color:rgba(173,254,122,0.4);">·</div>
+          <div style="font-size:13px; font-weight:700; color:rgba(255,255,255,0.45);">₪300K בשנה</div>
+        </div>
+        <svg viewBox="0 0 260 12" style="width:75%; height:12px; display:block; margin:0 auto 18px;" preserveAspectRatio="none">
+          <path d="M3,8 C50,3 120,10 180,6 C220,3 248,9 258,5" stroke="#e8372a" stroke-width="3" fill="none" stroke-linecap="round"/>
+        </svg>
+        <div style="font-size:22px; font-weight:900; color:#fff; line-height:1.25; margin-bottom:10px;">
+          כמה מהם<br>ישרתו את<br><span style="color:#adfe7a;">המטרות שלכם?</span>
+        </div>
+        <div style="font-size:12px; font-weight:600; color:rgba(255,255,255,0.3); letter-spacing:0.5px;">גלו תוך 3 דקות</div>
+      </div>
+
+      <button class="btn btn-lime">לשאלון האישי לחצו ←</button>
+    </div>
+  </div>
+
+  <!-- AD B · 11 שאלות -->
+  <div class="ad-wrap">
+    <div class="ad-num">B</div>
+    <div class="ad light">
+
+      <div class="prof l">
+        <div class="av"><img src="/NirBlack.jpg" alt=""></div>
+        <div><div class="pn">ניר יפרח</div><div class="pt">תכנון פיננסי אישי ומשפחתי</div></div>
+      </div>
+
+      <div style="text-align:center;">
+        <div style="font-size:11px; font-weight:700; color:rgba(16,42,34,0.35); letter-spacing:3.5px; text-transform:uppercase; margin-bottom:20px;">
+          שאלון אישי · בחינם
+        </div>
+        <div style="font-size:80px; font-weight:900; color:#102a22; line-height:0.9; letter-spacing:-4px; margin-bottom:8px;">
+          11
+        </div>
+        <div style="font-size:28px; font-weight:900; color:#102a22; line-height:1.1; letter-spacing:-0.5px; margin-bottom:16px;">
+          שאלות פיננסיות<br>שיגידו לכם
+        </div>
+        <div style="font-size:16px; font-weight:600; color:rgba(16,42,34,0.6); line-height:1.6; margin-bottom:18px;">
+          בדיוק איפה אתם עומדים<br>ומה צריך לשפר.
+        </div>
+        <div style="display:inline-flex; gap:16px; font-size:11px; font-weight:700; color:rgba(16,42,34,0.35); letter-spacing:0.5px;">
+          <span>3 דקות</span>
+          <span>·</span>
+          <span>ללא התחייבות</span>
+        </div>
+      </div>
+
+      <button class="btn btn-dark">לשאלון האישי לחצו ←</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══ CAMPAIGN INFO ═══ -->
+<div class="campaign-info">
+  <h2>הגדרות קמפיין</h2>
+  <table>
+    <tr><td>מטרה</td><td>Traffic → nirfinancfp.co.il/shalon</td></tr>
+    <tr><td>קהל</td><td>ישראל · גיל 35–65 · עברית · פיננסים אישיים, תכנון כלכלי, פרישה</td></tr>
+    <tr><td>תקציב</td><td>₪20/יום · 3 ימים = ₪60 סה״כ</td></tr>
+    <tr><td>Placements</td><td>Advantage+ · Horizontal מבוטל</td></tr>
+    <tr><td>CTA</td><td>Learn More</td></tr>
+    <tr><td>UTM</td><td>?utm_source=meta&utm_campaign=shalon-jun2025</td></tr>
+  </table>
+</div>
+
+</body>
+</html>

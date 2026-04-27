@@ -1,20 +1,7 @@
 import { useState } from "react";
 import SectionFrame from "../components/SectionFrame";
 import { siteContent } from "../data/siteContent";
-
-function renderTextWithLineBreaks(text: string) {
-    const sentences = text
-        .split(/(?<=\.)\s*/g)
-        .map((sentence) => sentence.trim())
-        .filter(Boolean);
-
-    return sentences.map((sentence, index) => (
-        <span key={`${sentence}-${index}`}>
-            {sentence}
-            {index < sentences.length - 1 ? <br /> : null}
-        </span>
-    ));
-}
+import { renderLines } from "../utils/renderLines";
 
 export default function AboutSection() {
     const [imageFailed, setImageFailed] = useState(false);
@@ -22,16 +9,16 @@ export default function AboutSection() {
     return (
         <SectionFrame id="about" variant="dark">
             <div className="grid items-center gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12">
-                <div className="mx-auto w-full max-w-md">
+                <div className="mx-auto w-[60%] sm:w-[55%] lg:w-full lg:max-w-md">
                     {!imageFailed ? (
                         <img
                             src={siteContent.about.imageSrc}
                             alt={siteContent.about.name}
-                            className="aspect-[4/5] w-full rounded-[2rem] border border-white/10 object-cover shadow-[0_20px_60px_rgba(0,0,0,0.22)]"
+                            className="aspect-[4/5] w-full rounded-3xl object-cover shadow-[0_20px_60px_rgba(0,0,0,0.22)]"
                             onError={() => setImageFailed(true)}
                         />
                     ) : (
-                        <div className="flex aspect-[4/5] w-full items-center justify-center rounded-[2rem] border border-dashed border-white/15 bg-black/10">
+                        <div className="flex aspect-[4/5] w-full items-center justify-center rounded-3xl border border-dashed border-white/15 bg-black/10">
                             <div className="text-center" dir="rtl">
                                 <p className="text-2xl font-bold text-white">כאן תיכנס התמונה</p>
                                 <p className="mt-2 text-sm text-[var(--sand)]">public/Nir.jpg</p>
@@ -49,32 +36,26 @@ export default function AboutSection() {
                         {siteContent.about.name}
                     </h2>
 
-                    {siteContent.about.badges.length ? (
-                        <div className="mt-5 flex flex-wrap items-center justify-center gap-2 lg:justify-start">
-                            {siteContent.about.badges.map((badge) => (
-                                <span
-                                    key={badge}
-                                    className="rounded-full bg-white/8 px-4 py-2 text-sm font-medium text-[var(--sand)]"
+                    <div className="mt-6 space-y-3">
+                        {siteContent.about.paragraphs.map((paragraph) => {
+                            const isHighlight = paragraph.startsWith("##highlight## ");
+                            const text = isHighlight ? paragraph.replace("##highlight## ", "") : paragraph;
+                            return (
+                                <p
+                                    key={paragraph}
+                                    className={`text-base leading-8 sm:text-lg ${
+                                        isHighlight
+                                            ? "font-bold text-[var(--lime)]"
+                                            : "text-[var(--sand)]"
+                                    }`}
                                 >
-                                    {badge}
-                                </span>
-                            ))}
-                        </div>
-                    ) : null}
-
-                    <div className="mt-6 space-y-4">
-                        {siteContent.about.paragraphs.map((paragraph) => (
-                            <p key={paragraph} className="text-base leading-8 text-[var(--sand)] sm:text-lg">
-                                {renderTextWithLineBreaks(paragraph)}
-                            </p>
-                        ))}
+                                    {renderLines(text)}
+                                </p>
+                            );
+                        })}
                     </div>
 
-                    <div className="mt-8 border-t border-white/10 pt-6">
-                        <p className="text-lg font-bold leading-8 text-[var(--lime)] sm:text-[1.15rem]">
-                            {renderTextWithLineBreaks(siteContent.about.quote)}
-                        </p>
-                    </div>
+
                 </div>
             </div>
         </SectionFrame>

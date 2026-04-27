@@ -4,279 +4,294 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>מודעות ממומנות — ניר יפרח CFP</title>
-  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
       font-family: 'Heebo', sans-serif;
       direction: rtl;
-      background: #111;
-      padding: 56px 24px 80px;
+      background: #0e0e0e;
+      padding: 60px 24px 100px;
     }
-    .page-title { text-align: center; margin-bottom: 12px; }
-    .page-title h1 { font-size: 13px; color: rgba(255,255,255,0.3); font-weight: 500; letter-spacing: 3px; text-transform: uppercase; }
-    .page-title .dims { font-size: 11px; color: rgba(255,255,255,0.18); letter-spacing: 1.5px; margin-top: 6px; }
+
+    .page-title { text-align: center; margin-bottom: 8px; }
+    .page-title h1 { font-size: 11px; color: rgba(255,255,255,0.25); font-weight: 600; letter-spacing: 4px; text-transform: uppercase; }
+    .page-title .dims { font-size: 10px; color: rgba(255,255,255,0.13); letter-spacing: 2px; margin-top: 5px; }
 
     .section-label {
-      text-align: center; margin: 52px 0 28px;
+      text-align: center; margin: 56px 0 30px;
       display: flex; align-items: center; justify-content: center; gap: 16px;
     }
     .section-label::before, .section-label::after {
-      content: ''; flex: 1; max-width: 160px; height: 1px; background: rgba(255,255,255,0.1);
+      content: ''; flex: 1; max-width: 180px; height: 1px; background: rgba(255,255,255,0.07);
     }
     .section-label span {
-      font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase;
-      padding: 5px 14px; border-radius: 999px; border: 1px solid;
+      font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+      padding: 5px 16px; border-radius: 999px; border: 1px solid;
     }
-    .section-label.questionnaire span { color: #adfe7a; border-color: rgba(173,254,122,0.3); background: rgba(173,254,122,0.07); }
-    .section-label.website span { color: #ff7b3a; border-color: rgba(255,123,58,0.3); background: rgba(255,123,58,0.07); }
+    .section-label.q span  { color: #adfe7a; border-color: rgba(173,254,122,0.25); background: rgba(173,254,122,0.06); }
+    .section-label.w span  { color: #ff9f6b; border-color: rgba(255,123,58,0.25); background: rgba(255,123,58,0.06); }
 
-    .ads-row { display: flex; gap: 32px; justify-content: center; align-items: flex-start; flex-wrap: wrap; }
+    .ads-row { display: flex; gap: 28px; justify-content: center; align-items: flex-start; flex-wrap: wrap; }
+
     .ad-wrap { display: flex; flex-direction: column; align-items: center; gap: 10px; }
-    .ad-label { font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.22); letter-spacing: 2px; text-transform: uppercase; }
-    .ad-cta-target { font-size: 10px; color: rgba(255,255,255,0.2); letter-spacing: 1px; }
+    .ad-num  { font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.18); letter-spacing: 2.5px; }
+    .ad-dest { font-size: 9px; color: rgba(255,255,255,0.16); letter-spacing: 1.5px; margin-top: 2px; }
 
-    /* Story 9:16 → 320×568 preview */
-    .ad { width: 320px; height: 568px; border-radius: 18px; overflow: hidden; position: relative; box-shadow: 0 24px 64px rgba(0,0,0,0.7); }
-
-    /* Profile block — dark version */
-    .profile-dark { display: flex; align-items: center; gap: 10px; }
-    .profile-dark .pic {
-      width: 40px; height: 40px; border-radius: 50%; overflow: hidden;
-      border: 2px solid rgba(173,254,122,0.5); flex-shrink: 0;
+    /* ad card */
+    .ad {
+      width: 320px; height: 568px;
+      border-radius: 20px; overflow: hidden;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+      display: flex; flex-direction: column;
+      justify-content: space-between;
     }
-    .profile-dark .pic img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
-    .profile-dark .name { font-size: 14px; font-weight: 900; color: #fff; line-height: 1.1; }
-    .profile-dark .title { font-size: 10px; font-weight: 600; color: rgba(173,254,122,0.85); }
 
-    /* Profile block — light version */
-    .profile-light { display: flex; align-items: center; gap: 10px; }
-    .profile-light .pic {
-      width: 40px; height: 40px; border-radius: 50%; overflow: hidden;
-      border: 2px solid rgba(16,42,34,0.35); flex-shrink: 0;
+    /* ─── PROFILE ─── */
+    .prof {
+      display: flex; align-items: center; gap: 9px;
     }
-    .profile-light .pic img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
-    .profile-light .name { font-size: 14px; font-weight: 900; color: #102a22; line-height: 1.1; }
-    .profile-light .title { font-size: 10px; font-weight: 600; color: rgba(16,42,34,0.55); }
+    .prof .av {
+      width: 38px; height: 38px; border-radius: 50%;
+      overflow: hidden; flex-shrink: 0;
+    }
+    .prof .av img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+    .prof .av.dark  { border: 2px solid rgba(173,254,122,0.45); }
+    .prof .av.light { border: 2px solid rgba(16,42,34,0.3); }
+    .prof .pname { font-size: 13px; font-weight: 900; line-height: 1.1; }
+    .prof .ptitle { font-size: 9.5px; font-weight: 600; margin-top: 1px; }
+    .dark-theme .pname  { color: #fff; }
+    .dark-theme .ptitle { color: rgba(173,254,122,0.8); }
+    .light-theme .pname  { color: #102a22; }
+    .light-theme .ptitle { color: rgba(16,42,34,0.5); }
 
-    /* ─── AD 1 ─── */
-    .ad1 { background: #102a22; display: flex; flex-direction: column; justify-content: space-between; padding: 26px 24px 24px; }
-    .ad1 .headline { font-size: 35px; font-weight: 900; color: #fff; line-height: 1.05; letter-spacing: -0.5px; text-align: center; }
-    .ad1 .sub { font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.68); line-height: 1.5; text-align: center; }
-    .ad1 .cta-btn { width: 100%; background: #adfe7a; color: #102a22; font-family: 'Heebo', sans-serif; font-size: 15px; font-weight: 900; padding: 13px; border-radius: 10px; border: none; cursor: pointer; text-align: center; }
+    /* ─── CTA BUTTON ─── */
+    .btn {
+      width: 100%; font-family: 'Heebo', sans-serif;
+      font-size: 15px; font-weight: 900;
+      padding: 14px; border-radius: 12px;
+      border: none; cursor: pointer; text-align: center;
+      letter-spacing: 0.2px;
+    }
+    .btn-lime  { background: #adfe7a; color: #102a22; }
+    .btn-dark  { background: #102a22; color: #adfe7a; }
 
-    /* ─── AD 2 ─── */
-    .ad2 { background: #102a22; display: flex; flex-direction: column; justify-content: space-between; padding: 26px 24px 24px; }
-    .ad2 .h2 { font-size: 30px; font-weight: 900; color: #fff; line-height: 1.15; letter-spacing: -0.5px; text-align: center; }
-    .ad2 .h2 em { font-style: normal; color: #102a22; background: #adfe7a; padding: 1px 8px; border-radius: 5px; }
-    .ad2 .cta2-btn { background: #adfe7a; color: #102a22; font-family: 'Heebo', sans-serif; font-size: 15px; font-weight: 900; padding: 13px 0; border-radius: 10px; border: none; cursor: pointer; width: 100%; text-align: center; }
+    /* ─── DARK GREEN THEME ─── */
+    .dark-theme { background: #102a22; padding: 24px 22px 22px; }
 
-    /* ─── AD 3 ─── */
-    .ad3 { background: #102a22; }
+    /* ─── LIGHT CREAM THEME ─── */
+    .light-theme { background: #f0ebe0; padding: 24px 22px 22px; }
   </style>
 </head>
 <body>
 
 <div class="page-title">
   <h1>META ADS · NIR YIFRAH CFP</h1>
-  <div class="dims">Story 9:16 · 1080×1920px · Instagram & Facebook</div>
+  <div class="dims">Story 9:16 · 1080×1920 · Instagram & Facebook</div>
 </div>
 
-<!-- ═══════════════════════════════
-     → מניעים לשאלון
-═══════════════════════════════ -->
-<div class="section-label questionnaire"><span>→ מניעים לשאלון</span></div>
+<!-- ══════════════════════════════
+     קמפיין שאלון
+══════════════════════════════ -->
+<div class="section-label q"><span>→ שאלון פיננסי</span></div>
 <div class="ads-row">
 
-  <!-- AD 1 -->
+  <!-- ═══ AD 01 ═══ -->
   <div class="ad-wrap">
-    <div class="ad-label">01</div>
-    <div class="ad ad1">
-      <div class="profile-dark">
-        <div class="pic"><img src="/Nir.jpg" alt=""></div>
-        <div><div class="name">ניר יפרח</div><div class="title">תכנון פיננסי אישי ומשפחתי</div></div>
-      </div>
-      <div class="headline">
-        מקבלים<br>החלטות<br>כלכליות רק<br>על סמך<br>
-        <span style="color:#adfe7a;">תחושת בטן?</span>
-      </div>
-      <div>
-        <div class="sub" style="margin-bottom:14px;">5 דקות שיגידו לכם איפה אתם עומדים מבחינה כלכלית ומה כדאי לשפר כבר עכשיו (:</div>
-        <button class="cta-btn">לשאלון האישי לחצו ←</button>
-      </div>
-    </div>
-    <div class="ad-cta-target">→ שאלון</div>
-  </div>
+    <div class="ad-num">01</div>
+    <div class="ad dark-theme">
 
-  <!-- AD 2 -->
-  <div class="ad-wrap">
-    <div class="ad-label">02</div>
-    <div class="ad ad2">
-      <div class="profile-dark">
-        <div class="pic"><img src="/Nir.jpg" alt=""></div>
-        <div><div class="name">ניר יפרח</div><div class="title">תכנון פיננסי אישי ומשפחתי</div></div>
-      </div>
-      <div class="h2">
-        המשפחה שלכם מתנהלת<br>
-        <em>כמו עסק שצומח</em><br>
-        או שהיא רק <span style="color:#e8372a;">מתנהלת?</span>
-      </div>
-      <div>
-        <div style="font-size:14px; font-weight:600; color:rgba(255,255,255,0.6); line-height:1.5; text-align:center; margin-bottom:14px;">5 דקות שיגידו לכם בדיוק איפה אתם עומדים (:</div>
-        <button class="cta2-btn">לשאלון האישי לחצו ←</button>
-      </div>
-    </div>
-    <div class="ad-cta-target">→ שאלון</div>
-  </div>
-
-  <!-- AD 6 · 11 שאלות — בהיר -->
-  <div class="ad-wrap">
-    <div class="ad-label">06</div>
-    <div class="ad" style="background:#f0ebe0; display:flex; flex-direction:column; justify-content:space-between; padding:26px 26px 24px;">
-
-      <!-- Profile top -->
-      <div class="profile-light">
-        <div class="pic" style="border-color:rgba(16,42,34,0.35);">
-          <img src="/Nir.jpg" alt="" style="width:100%; height:100%; object-fit:cover; object-position:center top;">
-        </div>
+      <div class="prof">
+        <div class="av dark"><img src="/NirBlack.jpg" alt=""></div>
         <div>
-          <div style="font-size:14px; font-weight:900; color:#102a22; line-height:1.1;">ניר יפרח</div>
-          <div style="font-size:10px; font-weight:600; color:rgba(16,42,34,0.5);">תכנון פיננסי אישי ומשפחתי</div>
+          <div class="pname">ניר יפרח</div>
+          <div class="ptitle">תכנון פיננסי אישי ומשפחתי</div>
         </div>
       </div>
 
-      <!-- Main content — simple centered -->
       <div style="text-align:center;">
-        <div style="font-size:32px; font-weight:900; color:#102a22; line-height:1.1; letter-spacing:-0.5px; margin-bottom:16px;">
-          11 שאלות<br>פיננסיות אישיות
+        <div style="font-size:42px; font-weight:900; color:#fff; line-height:1.05; letter-spacing:-1px; margin-bottom:18px;">
+          מקבלים<br>החלטות<br>כלכליות<br>על תחושת<br><span style="color:#adfe7a;">בטן?</span>
         </div>
-        <div style="font-size:18px; font-weight:600; color:rgba(16,42,34,0.72); line-height:1.6; margin-bottom:14px;">
-          שיגידו לכם בדיוק<br>איפה אתם עומדים<br>ומה צריך לשפר.
+        <div style="font-size:14px; font-weight:500; color:rgba(255,255,255,0.55); line-height:1.65;">
+          5 דקות שיגידו לכם<br>בדיוק איפה אתם עומדים.
         </div>
-        <div style="font-size:13px; font-weight:700; color:rgba(16,42,34,0.4); letter-spacing:0.5px;">
+      </div>
+
+      <button class="btn btn-lime">לשאלון האישי לחצו ←</button>
+    </div>
+    <div class="ad-dest">→ שאלון</div>
+  </div>
+
+  <!-- ═══ AD 02 ═══ -->
+  <div class="ad-wrap">
+    <div class="ad-num">02</div>
+    <div class="ad dark-theme">
+
+      <div class="prof">
+        <div class="av dark"><img src="/NirBlack.jpg" alt=""></div>
+        <div>
+          <div class="pname">ניר יפרח</div>
+          <div class="ptitle">תכנון פיננסי אישי ומשפחתי</div>
+        </div>
+      </div>
+
+      <div style="text-align:center;">
+        <div style="font-size:33px; font-weight:900; color:#fff; line-height:1.15; letter-spacing:-0.5px; margin-bottom:18px;">
+          המשפחה שלכם<br>
+          מתנהלת<br>
+          <span style="background:#adfe7a; color:#102a22; padding:2px 10px; border-radius:6px; display:inline-block; margin:4px 0;">כמו עסק שצומח</span><br>
+          או שהיא רק<br>
+          <span style="color:#e8372a;">מתנהלת?</span>
+        </div>
+        <div style="font-size:14px; font-weight:500; color:rgba(255,255,255,0.55); line-height:1.65;">
+          5 דקות שיגידו לכם<br>בדיוק איפה אתם עומדים.
+        </div>
+      </div>
+
+      <button class="btn btn-lime">לשאלון האישי לחצו ←</button>
+    </div>
+    <div class="ad-dest">→ שאלון</div>
+  </div>
+
+  <!-- ═══ AD 06 ═══ -->
+  <div class="ad-wrap">
+    <div class="ad-num">06</div>
+    <div class="ad light-theme">
+
+      <div class="prof">
+        <div class="av light"><img src="/NirBlack.jpg" alt=""></div>
+        <div>
+          <div class="pname">ניר יפרח</div>
+          <div class="ptitle">תכנון פיננסי אישי ומשפחתי</div>
+        </div>
+      </div>
+
+      <div style="text-align:center;">
+        <div style="font-size:13px; font-weight:700; color:rgba(16,42,34,0.4); letter-spacing:3px; text-transform:uppercase; margin-bottom:18px;">שאלון אישי · בחינם</div>
+        <div style="font-size:52px; font-weight:900; color:#102a22; line-height:0.95; letter-spacing:-2px; margin-bottom:14px;">11</div>
+        <div style="font-size:26px; font-weight:900; color:#102a22; line-height:1.1; letter-spacing:-0.5px; margin-bottom:16px;">
+          שאלות פיננסיות<br>שיגידו לכם
+        </div>
+        <div style="font-size:17px; font-weight:600; color:rgba(16,42,34,0.65); line-height:1.55; margin-bottom:14px;">
+          בדיוק איפה אתם עומדים<br>ומה צריך לשפר.
+        </div>
+        <div style="font-size:12px; font-weight:700; color:rgba(16,42,34,0.35); letter-spacing:1px;">
           3 דקות · ללא התחייבות
         </div>
       </div>
 
-      <!-- CTA -->
-      <button style="width:100%; background:#102a22; color:#adfe7a; font-family:'Heebo',sans-serif; font-size:15px; font-weight:900; padding:14px; border-radius:10px; border:none; cursor:pointer; text-align:center;">
-        לשאלון האישי לחצו ←
-      </button>
-
+      <button class="btn btn-dark">לשאלון האישי לחצו ←</button>
     </div>
-    <div class="ad-cta-target">→ שאלון</div>
+    <div class="ad-dest">→ שאלון</div>
   </div>
 
 </div>
 
-<!-- ═══════════════════════════════
-     → מניעים לאתר
-═══════════════════════════════ -->
-<div class="section-label website"><span>→ מניעים לאתר</span></div>
+<!-- ══════════════════════════════
+     קמפיין אתר / שיחת אפיון
+══════════════════════════════ -->
+<div class="section-label w"><span>→ שיחת אפיון</span></div>
 <div class="ads-row">
 
-  <!-- AD 3 · 3M -->
+  <!-- ═══ AD 03 ═══ -->
   <div class="ad-wrap">
-    <div class="ad-label">03</div>
-    <div class="ad ad3" style="display:flex; flex-direction:column; justify-content:space-between; padding:26px 22px 24px;">
+    <div class="ad-num">03</div>
+    <div class="ad dark-theme">
 
-      <!-- Profile top -->
-      <div class="profile-dark">
-        <div class="pic"><img src="/Nir.jpg" alt=""></div>
-        <div><div class="name">ניר יפרח</div><div class="title">תכנון פיננסי אישי ומשפחתי</div></div>
-      </div>
-
-      <!-- Numbers flow -->
-      <div>
-        <div style="font-size:13px; font-weight:700; color:rgba(255,255,255,0.45); text-align:center; margin-bottom:10px; letter-spacing:0.5px;">אם אתם מרוויחים:</div>
-        <div style="display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:10px;">
-          <div style="text-align:center;">
-            <div style="font-size:10px; font-weight:600; color:rgba(255,255,255,0.38); margin-bottom:2px;">בחודש</div>
-            <div style="font-size:26px; font-weight:900; color:#fff; letter-spacing:-1px;">₪25,000</div>
-          </div>
-          <div style="font-size:20px; color:rgba(173,254,122,0.5); font-weight:900; padding-top:12px;">←</div>
-          <div style="text-align:center;">
-            <div style="font-size:10px; font-weight:600; color:rgba(255,255,255,0.38); margin-bottom:2px;">בשנה</div>
-            <div style="font-size:26px; font-weight:900; color:#adfe7a; letter-spacing:-1px;">₪300,000</div>
-          </div>
+      <div class="prof">
+        <div class="av dark"><img src="/NirBlack.jpg" alt=""></div>
+        <div>
+          <div class="pname">ניר יפרח</div>
+          <div class="ptitle">תכנון פיננסי אישי ומשפחתי</div>
         </div>
-        <div style="text-align:center; font-size:18px; color:rgba(173,254,122,0.45); margin-bottom:6px;">↓</div>
-        <div style="text-align:center; margin-bottom:4px;">
-          <div style="font-size:10px; font-weight:600; color:rgba(255,255,255,0.38); margin-bottom:3px;">בעשור</div>
-          <div style="font-size:52px; font-weight:900; color:#adfe7a; letter-spacing:-2px; line-height:1.0;">₪3,000,000</div>
-        </div>
-        <svg viewBox="0 0 270 14" style="width:100%; height:14px; display:block; margin-bottom:14px;" preserveAspectRatio="none">
-          <path d="M3,9 C50,4 110,12 160,7 C210,3 245,10 268,6" stroke="#e8372a" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-          <path d="M8,12 C60,9 125,13 178,10 C218,8 248,12 265,10" stroke="#e8372a" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.5"/>
-        </svg>
-        <div style="font-size:18px; font-weight:900; color:#fff; line-height:1.25; text-align:center; margin-bottom:5px;">
-          כמה מתוכם ישרתו את<br><span style="color:#adfe7a;">החלומות והמטרות שלכם?</span>
-        </div>
-        <div style="font-size:13px; font-weight:700; color:rgba(255,255,255,0.45); text-align:center;">זה דורש תכנית.</div>
-      </div>
-
-      <button style="width:100%; background:#adfe7a; color:#102a22; font-family:'Heebo',sans-serif; font-size:15px; font-weight:900; padding:13px; border-radius:10px; border:none; cursor:pointer; text-align:center;">
-        קבעו שיחת אפיון ←
-      </button>
-    </div>
-    <div class="ad-cta-target">→ אתר</div>
-  </div>
-
-  <!-- AD 4 · BDO typography -->
-  <div class="ad-wrap">
-    <div class="ad-label">04</div>
-    <div class="ad" style="background:#102a22; display:flex; flex-direction:column; justify-content:space-between; padding:26px 26px 24px;">
-
-      <!-- Profile top -->
-      <div class="profile-dark">
-        <div class="pic"><img src="/Nir.jpg" alt=""></div>
-        <div><div class="name">ניר יפרח</div><div class="title">תכנון פיננסי אישי ומשפחתי</div></div>
       </div>
 
       <div style="text-align:center;">
-        <div style="font-size:40px; font-weight:900; color:#fff; line-height:1.05; letter-spacing:-1px; margin-bottom:18px;">
+        <div style="font-size:13px; font-weight:700; color:rgba(255,255,255,0.38); letter-spacing:1px; margin-bottom:10px;">
+          ₪25,000 בחודש שווה
+        </div>
+        <div style="font-size:62px; font-weight:900; color:#adfe7a; line-height:1; letter-spacing:-2px; margin-bottom:6px;">
+          ₪3M
+        </div>
+        <div style="font-size:14px; font-weight:600; color:rgba(255,255,255,0.45); margin-bottom:22px; letter-spacing:0.5px;">
+          בעשור הבא
+        </div>
+        <svg viewBox="0 0 260 12" style="width:80%; height:12px; display:block; margin:0 auto 20px;" preserveAspectRatio="none">
+          <path d="M3,8 C50,3 120,10 180,6 C220,3 248,9 258,5" stroke="#e8372a" stroke-width="3" fill="none" stroke-linecap="round"/>
+        </svg>
+        <div style="font-size:22px; font-weight:900; color:#fff; line-height:1.2; margin-bottom:10px;">
+          כמה מהם<br>ישרתו את<br><span style="color:#adfe7a;">המטרות שלכם?</span>
+        </div>
+        <div style="font-size:13px; font-weight:600; color:rgba(255,255,255,0.4);">גלו איפה אתם עומדים — תוך 3 דקות.</div>
+      </div>
+
+      <button class="btn btn-lime">לשאלון האישי לחצו ←</button>
+    </div>
+    <div class="ad-dest">→ שאלון</div>
+  </div>
+
+  <!-- ═══ AD 04 ═══ -->
+  <div class="ad-wrap">
+    <div class="ad-num">04</div>
+    <div class="ad dark-theme">
+
+      <div class="prof">
+        <div class="av dark"><img src="/NirBlack.jpg" alt=""></div>
+        <div>
+          <div class="pname">ניר יפרח</div>
+          <div class="ptitle">תכנון פיננסי אישי ומשפחתי</div>
+        </div>
+      </div>
+
+      <div style="text-align:center;">
+        <div style="font-size:48px; font-weight:900; color:#fff; line-height:1.0; letter-spacing:-1.5px; margin-bottom:20px;">
           רוצים<br>להתחיל<br>להשקיע?
         </div>
-        <div style="font-size:22px; font-weight:700; color:rgba(255,255,255,0.85); line-height:1.3; margin-bottom:6px;">
-          קודם תלמדו לנהל<br>את הכסף שלכם.
+        <div style="background:rgba(173,254,122,0.1); border:1px solid rgba(173,254,122,0.2); border-radius:12px; padding:14px 16px; margin-bottom:0;">
+          <div style="font-size:18px; font-weight:800; color:#adfe7a; line-height:1.3;">
+            קודם תלמדו<br>לנהל את הכסף שלכם.
+          </div>
         </div>
-        <svg viewBox="0 0 230 14" style="width:72%; height:14px; display:block; margin:0 auto;" preserveAspectRatio="none">
-          <path d="M3,9 C40,4 95,12 145,7 C190,3 220,10 228,6" stroke="#e8372a" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-          <path d="M6,12 C50,9 108,13 162,10 C200,8 222,12 227,10" stroke="#e8372a" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.55"/>
-        </svg>
       </div>
 
-      <button style="width:100%; background:#adfe7a; color:#102a22; font-family:'Heebo',sans-serif; font-size:15px; font-weight:900; padding:14px; border-radius:10px; border:none; cursor:pointer; text-align:center;">
-        קבעו שיחת אפיון ←
-      </button>
+      <button class="btn btn-lime">קבעו שיחת אפיון ←</button>
     </div>
-    <div class="ad-cta-target">→ אתר</div>
+    <div class="ad-dest">→ אתר</div>
   </div>
 
-  <!-- AD 5 · לא חסר כסף -->
+  <!-- ═══ AD 05 ═══ -->
   <div class="ad-wrap">
-    <div class="ad-label">05</div>
-    <div class="ad" style="background:#f0ebe0; display:flex; flex-direction:column; justify-content:space-between; padding:26px 26px 24px;">
+    <div class="ad-num">05</div>
+    <div class="ad light-theme">
 
-      <div class="profile-light">
-        <div class="pic"><img src="/Nir.jpg" alt=""></div>
-        <div><div class="name">ניר יפרח</div><div class="title">תכנון פיננסי אישי ומשפחתי</div></div>
+      <div class="prof">
+        <div class="av light"><img src="/NirBlack.jpg" alt=""></div>
+        <div>
+          <div class="pname">ניר יפרח</div>
+          <div class="ptitle">תכנון פיננסי אישי ומשפחתי</div>
+        </div>
       </div>
 
       <div style="text-align:center;">
-        <div style="font-size:42px; font-weight:900; color:#102a22; line-height:1.05; letter-spacing:-1px; margin-bottom:16px;">
-          לא חסר<br>לכם כסף.<br><span style="color:#adfe7a; background:#102a22; padding:2px 8px; border-radius:6px;">חסרה לכם<br>תכנית.</span>
+        <div style="font-size:44px; font-weight:900; color:#102a22; line-height:1.05; letter-spacing:-1.5px; margin-bottom:16px;">
+          לא חסר<br>לכם כסף.
         </div>
-        <div style="font-size:14px; font-weight:600; color:rgba(16,42,34,0.55); line-height:1.6;">
-          שיחת אפיון של 30 דקות.<br>יוצאים עם תמונה ברורה וכיוון לפעולה.
+        <div style="background:#102a22; border-radius:14px; padding:14px 18px; margin-bottom:20px;">
+          <div style="font-size:38px; font-weight:900; color:#adfe7a; line-height:1.05; letter-spacing:-1px;">
+            חסרה לכם<br>תכנית.
+          </div>
+        </div>
+        <div style="font-size:14px; font-weight:500; color:rgba(16,42,34,0.55); line-height:1.65;">
+          שיחת אפיון של 30 דקות.<br>יוצאים עם תמונה ברורה<br>וכיוון לפעולה.
         </div>
       </div>
 
-      <button style="width:100%; background:#102a22; color:#adfe7a; font-family:'Heebo',sans-serif; font-size:15px; font-weight:900; padding:14px; border-radius:10px; border:none; cursor:pointer; text-align:center;">
-        קבעו שיחת אפיון ←
-      </button>
+      <button class="btn btn-dark">קבעו שיחת אפיון ←</button>
     </div>
-    <div class="ad-cta-target">→ אתר</div>
+    <div class="ad-dest">→ אתר</div>
   </div>
 
 </div>

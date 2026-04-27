@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import Footer from "./components/Footer";
-import Header from "./components/Header";
 import SocialSidebar from "./components/SocialSidebar";
 import HomePage from "./pages/HomePage";
 import LegalPage from "./pages/LegalPage";
@@ -32,8 +31,7 @@ export default function App() {
 
   return (
     <>
-      <Header />
-      {!isLegalPage ? <SocialSidebar /> : null}
+      {false && !isLegalPage ? <SocialSidebar /> : null}
       {isLegalPage ? <LegalPage /> : <HomePage />}
       <Footer />
     </>
