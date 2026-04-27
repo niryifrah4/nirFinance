@@ -3,197 +3,380 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>צ'ק ליסט פרישה — ניר יפרח</title>
-  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <title>צ'ק ליסט פרישה מעבודה — ניר יפרח</title>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
       font-family: 'Heebo', sans-serif;
       direction: rtl;
       background: #f5f0e8;
-      min-height: 100vh;
+      color: #102a22;
+    }
+
+    /* ── HEADER BAR ── */
+    .topbar {
+      background: #102a22;
+      padding: 14px 24px;
       display: flex;
       align-items: center;
-      justify-content: center;
-      padding: 32px 20px;
+      gap: 10px;
     }
-
-    .card {
-      background: #fff;
-      border-radius: 20px;
-      max-width: 480px;
-      width: 100%;
-      overflow: hidden;
-      box-shadow: 0 12px 48px rgba(16,42,34,0.12);
+    .topbar-pic {
+      width: 36px; height: 36px;
+      border-radius: 50%; overflow: hidden;
+      border: 2px solid rgba(173,254,122,0.4);
+      flex-shrink: 0;
     }
+    .topbar-pic img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+    .topbar-name { font-size: 14px; font-weight: 900; color: #fff; line-height: 1.1; }
+    .topbar-title { font-size: 10px; font-weight: 600; color: rgba(173,254,122,0.8); }
 
-    .card-top {
+    /* ── HERO ── */
+    .hero {
       background: #102a22;
-      padding: 36px 32px 30px;
+      padding: 48px 24px 52px;
+      text-align: center;
     }
-
-    .label {
+    .hero-badge {
       display: inline-block;
-      background: rgba(173,254,122,0.15);
+      background: rgba(173,254,122,0.12);
       color: #adfe7a;
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 2px;
       text-transform: uppercase;
-      padding: 4px 12px;
+      padding: 5px 16px;
       border-radius: 999px;
       border: 1px solid rgba(173,254,122,0.25);
-      margin-bottom: 18px;
+      margin-bottom: 24px;
     }
-
-    .card-top h1 {
-      font-size: 32px;
+    .hero h1 {
+      font-size: 38px;
       font-weight: 900;
       color: #fff;
       line-height: 1.1;
-      letter-spacing: -0.5px;
-      margin-bottom: 10px;
+      letter-spacing: -1px;
+      margin-bottom: 14px;
     }
-    .card-top h1 span { color: #adfe7a; }
-
-    .card-top .sub {
-      font-size: 15px;
+    .hero h1 span { color: #adfe7a; }
+    .hero .hero-sub {
+      font-size: 17px;
       font-weight: 500;
       color: rgba(255,255,255,0.65);
+      line-height: 1.6;
+      max-width: 480px;
+      margin: 0 auto 28px;
+    }
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .hero-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.5);
+    }
+    .hero-meta-item .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #adfe7a;
+    }
+
+    /* ── PAIN SECTION ── */
+    .pain {
+      background: #fff;
+      padding: 40px 24px;
+      text-align: center;
+      border-bottom: 1px solid #e8e3da;
+    }
+    .pain h2 {
+      font-size: 24px;
+      font-weight: 900;
+      color: #102a22;
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+    .pain h2 .red { color: #e8372a; }
+    .pain p {
+      font-size: 16px;
+      font-weight: 500;
+      color: rgba(16,42,34,0.6);
+      line-height: 1.65;
+      max-width: 440px;
+      margin: 0 auto;
+    }
+
+    /* ── WHAT'S INSIDE ── */
+    .inside {
+      padding: 40px 24px;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    .inside h3 {
+      font-size: 12px;
+      font-weight: 700;
+      color: rgba(16,42,34,0.38);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .inside-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(16,42,34,0.08);
+    }
+    .inside-item:last-child { border-bottom: none; }
+    .inside-num {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 900;
+      flex-shrink: 0;
+    }
+    .inside-num.red    { background: rgba(232,55,42,0.1);  color: #e8372a; }
+    .inside-num.orange { background: rgba(255,123,58,0.1); color: #ff7b3a; }
+    .inside-num.dark   { background: rgba(16,42,34,0.08);  color: #102a22; }
+    .inside-num.lime   { background: rgba(173,254,122,0.25); color: #102a22; }
+    .inside-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: #102a22;
+      margin-bottom: 3px;
+      line-height: 1.3;
+    }
+    .inside-desc {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(16,42,34,0.5);
       line-height: 1.5;
     }
 
-    .card-body { padding: 28px 32px 32px; }
-
-    .what-inside {
-      margin-bottom: 24px;
+    /* ── CTA BLOCK ── */
+    .cta-block {
+      background: #102a22;
+      padding: 40px 24px;
+      text-align: center;
     }
-    .what-inside h3 {
+    .cta-block h2 {
+      font-size: 26px;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+    .cta-block h2 span { color: #adfe7a; }
+    .cta-block p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: #adfe7a;
+      color: #102a22;
+      font-family: 'Heebo', sans-serif;
+      font-size: 18px;
+      font-weight: 900;
+      padding: 18px 40px;
+      border-radius: 14px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+    .cta-note {
+      margin-top: 12px;
       font-size: 12px;
-      font-weight: 700;
-      color: rgba(16,42,34,0.4);
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      margin-bottom: 14px;
+      color: rgba(255,255,255,0.3);
     }
 
-    .item {
+    /* ── PREVIEW STRIP ── */
+    .preview-strip {
+      background: #fff;
+      padding: 36px 24px;
+      text-align: center;
+      border-top: 1px solid #e8e3da;
+    }
+    .preview-strip h3 {
+      font-size: 13px;
+      font-weight: 700;
+      color: rgba(16,42,34,0.38);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .preview-card {
+      background: #f5f0e8;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: right;
+      border: 1px solid rgba(16,42,34,0.08);
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .preview-row {
       display: flex;
       align-items: flex-start;
       gap: 10px;
-      padding: 8px 0;
-      border-bottom: 1px solid #f0ede6;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(16,42,34,0.06);
     }
-    .item:last-child { border-bottom: none; }
-
-    .item-dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
+    .preview-row:last-child { border-bottom: none; }
+    .preview-check {
+      width: 18px; height: 18px;
+      border: 2px solid rgba(16,42,34,0.2);
+      border-radius: 3px;
       flex-shrink: 0;
-      margin-top: 6px;
+      margin-top: 2px;
     }
-    .item-dot.red    { background: #e8372a; }
-    .item-dot.orange { background: #ff7b3a; }
-    .item-dot.dark   { background: #102a22; }
-    .item-dot.lime   { background: #adfe7a; border: 1px solid rgba(16,42,34,0.15); }
-
-    .item span {
-      font-size: 14px;
+    .preview-text {
+      font-size: 13px;
       font-weight: 600;
       color: #102a22;
       line-height: 1.4;
     }
 
-    .cta-btn {
-      display: block;
-      width: 100%;
-      background: #102a22;
-      color: #adfe7a;
-      font-family: 'Heebo', sans-serif;
-      font-size: 17px;
-      font-weight: 900;
-      padding: 16px;
-      border-radius: 12px;
-      border: none;
-      cursor: pointer;
+    /* ── FOOTER ── */
+    .footer {
+      background: #0d2218;
+      padding: 24px;
       text-align: center;
-      text-decoration: none;
-      margin-bottom: 12px;
-      transition: opacity 0.15s;
     }
-    .cta-btn:hover { opacity: 0.88; }
-
-    .note {
-      text-align: center;
-      font-size: 12px;
-      font-weight: 500;
-      color: rgba(16,42,34,0.35);
-    }
-
-    .profile {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 20px 32px;
-      border-top: 1px solid #f0ede6;
-    }
-    .profile-pic {
-      width: 40px; height: 40px;
-      border-radius: 50%;
-      overflow: hidden;
-      flex-shrink: 0;
-      border: 2px solid rgba(16,42,34,0.12);
-    }
-    .profile-pic img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
-    .profile-name { font-size: 14px; font-weight: 900; color: #102a22; line-height: 1.1; }
-    .profile-title { font-size: 11px; font-weight: 600; color: rgba(16,42,34,0.45); }
+    .footer-name { font-size: 15px; font-weight: 900; color: #adfe7a; margin-bottom: 3px; }
+    .footer-title { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.35); margin-bottom: 12px; }
+    .footer-disc { font-size: 10px; color: rgba(255,255,255,0.2); line-height: 1.5; max-width: 380px; margin: 0 auto; }
   </style>
 </head>
 <body>
 
-<div class="card">
-
-  <div class="card-top">
-    <div class="label">מגנט לידים · בחינם</div>
-    <h1>צ'ק ליסט<br><span>פרישה</span></h1>
-    <div class="sub">מה לעשות לפני שאתה חותם על משהו —<br>ומה אסור לפספס.</div>
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-pic"><img src="/Nir.jpg" alt="ניר יפרח"></div>
+  <div>
+    <div class="topbar-name">ניר יפרח</div>
+    <div class="topbar-title">תכנון פיננסי אישי ומשפחתי</div>
   </div>
+</div>
 
-  <div class="card-body">
-    <div class="what-inside">
-      <h3>מה תמצא בפנים</h3>
-      <div class="item">
-        <div class="item-dot red"></div>
-        <span>השבוע הראשון — מה לעשות מיידית</span>
-      </div>
-      <div class="item">
-        <div class="item-dot orange"></div>
-        <span>הפיצויים — 3 האופציות והשוני ביניהן</span>
-      </div>
-      <div class="item">
-        <div class="item-dot dark"></div>
-        <span>פריסת מס — איך לשלם פחות</span>
-      </div>
-      <div class="item">
-        <div class="item-dot lime"></div>
-        <span>4 דברים שרוב האנשים מפספסים</span>
-      </div>
-    </div>
-
-    <a class="cta-btn" href="/pirisha-checklist.html" target="_blank">
-      להורדת הצ'ק ליסט לחצו ←
-    </a>
-    <div class="note">PDF · קריאה ישירה · ללא הרשמה</div>
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">מגנט לידים · בחינם לגמרי</div>
+  <h1>צ'ק ליסט<br><span>פרישה מעבודה</span></h1>
+  <p class="hero-sub">
+    מה לעשות לפני שאתה חותם על משהו —<br>ומה רוב האנשים מפספסים.
+  </p>
+  <div class="hero-meta">
+    <div class="hero-meta-item"><span class="dot"></span>קריאה של 5 דקות</div>
+    <div class="hero-meta-item"><span class="dot"></span>ללא הרשמה</div>
+    <div class="hero-meta-item"><span class="dot"></span>הורדה מיידית</div>
   </div>
+</div>
 
-  <div class="profile">
-    <div class="profile-pic"><img src="/Nir.jpg" alt="ניר יפרח"></div>
+<!-- PAIN -->
+<div class="pain">
+  <h2>רוב האנשים עוזבים עבודה<br>בלי לדעת שהם <span class="red">מפסידים כסף.</span></h2>
+  <p>
+    כתב סילוק שחתמת בלי לקרוא. פיצויים שמשכת בלי לבדוק את המס.
+    קרן פנסיה שהכיסויים בה נפסקו. ההחלטות שתקבל ב-30 הימים הראשונים — ילוו אותך לעשור הבא.
+  </p>
+</div>
+
+<!-- WHAT'S INSIDE -->
+<div class="inside">
+  <h3>מה יש בצ'ק ליסט</h3>
+
+  <div class="inside-item">
+    <div class="inside-num red">1</div>
     <div>
-      <div class="profile-name">ניר יפרח</div>
-      <div class="profile-title">תכנון פיננסי אישי ומשפחתי</div>
+      <div class="inside-title">השבוע הראשון — מה לעשות מיד</div>
+      <div class="inside-desc">אל תחתום על כתב סילוק, מה זה טופס 161 ולמה הוא קריטי, ואיך להירשם נכון בלשכת התעסוקה.</div>
     </div>
   </div>
 
+  <div class="inside-item">
+    <div class="inside-num orange">2</div>
+    <div>
+      <div class="inside-title">הפיצויים — 3 אופציות ומה נכון לך</div>
+      <div class="inside-desc">משיכה עכשיו, רצף פיצויים, רצף קצבה — ההבדלים, היתרונות, ומה המס שתשלם בכל מסלול.</div>
+    </div>
+  </div>
+
+  <div class="inside-item">
+    <div class="inside-num dark">3</div>
+    <div>
+      <div class="inside-title">פריסת מס — איך לשלם פחות</div>
+      <div class="inside-desc">פריסה אחורה וקדימה, מתי כדאי, ואיך מקטינים את שיעור המס הממוצע.</div>
+    </div>
+  </div>
+
+  <div class="inside-item">
+    <div class="inside-num lime">4</div>
+    <div>
+      <div class="inside-title">4 דברים שאסור לפספס</div>
+      <div class="inside-desc">תיקון 21, הכיסויים הביטוחיים, קרן ההשתלמות, וסעיף 14 — מה הם אומרים ומה עושים.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-block">
+  <h2>הורד את הצ'ק ליסט<br><span>עכשיו — בחינם</span></h2>
+  <p>PDF מוכן להדפסה · קריאה ישירה בנייד · ללא הרשמה</p>
+  <a class="cta-btn" href="/pirisha-checklist.pdf" download="checklist-pirisha-nir-yifrah.pdf">
+    להורדת הצ'ק ליסט לחצו ←
+  </a>
+  <div class="cta-note">* מומלץ לשמור אותו כדי שיהיה זמין כשצריך</div>
+</div>
+
+<!-- PREVIEW -->
+<div class="preview-strip">
+  <h3>טעימה מהתוכן</h3>
+  <div class="preview-card">
+    <div class="preview-row">
+      <div class="preview-check"></div>
+      <div class="preview-text">אל תחתום על "כתב סילוק" לפני בדיקה</div>
+    </div>
+    <div class="preview-row">
+      <div class="preview-check"></div>
+      <div class="preview-text">בקש טופס 161 מהמעסיק</div>
+    </div>
+    <div class="preview-row">
+      <div class="preview-check"></div>
+      <div class="preview-text">בדוק אם כיסויי הפנסיה עדיין פעילים</div>
+    </div>
+    <div class="preview-row">
+      <div class="preview-check"></div>
+      <div class="preview-text">פיצויים — האם למשוך או להשאיר?</div>
+    </div>
+    <div class="preview-row">
+      <div class="preview-check"></div>
+      <div class="preview-text">האם קרן ההשתלמות נזילה?</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-name">ניר יפרח</div>
+  <div class="footer-title">תכנון פיננסי אישי ומשפחתי</div>
+  <div class="footer-disc">
+    התוכן הינו מידע כללי בלבד ואינו מהווה ייעוץ פיננסי, מס או משפטי.
+    להחלטות אישיות מומלץ להתייעץ עם בעל רישיון.
+  </div>
 </div>
 
 </body>
