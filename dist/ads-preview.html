@@ -10,316 +10,407 @@
     body {
       font-family: 'Heebo', sans-serif;
       direction: rtl;
-      background: #f0f0f0;
-      padding: 40px 20px;
+      background: #1a1a1a;
+      padding: 48px 24px 64px;
     }
-
     h1 {
       text-align: center;
-      font-size: 22px;
-      color: #333;
-      margin-bottom: 40px;
-      font-weight: 700;
+      font-size: 14px;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 48px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
     }
-
     .ads-row {
       display: flex;
-      gap: 32px;
+      gap: 28px;
       justify-content: center;
       align-items: flex-start;
       flex-wrap: wrap;
     }
-
     .ad-wrap {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
     }
-
     .ad-label {
-      font-size: 13px;
+      font-size: 11px;
       font-weight: 700;
-      color: #666;
-      letter-spacing: 1px;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 2px;
       text-transform: uppercase;
     }
 
-    /* ── AD CARD ── */
+    /* Story: 9:16 → 320×568 */
     .ad {
       width: 320px;
-      height: 568px; /* 9:16 story ratio */
-      border-radius: 18px;
+      height: 568px;
+      border-radius: 20px;
       overflow: hidden;
       position: relative;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+      box-shadow: 0 32px 80px rgba(0,0,0,0.6);
     }
 
-    /* ══ AD 1 — כסף שלך עובד? ══ */
-    .ad1 {
-      background: #102a22;
-    }
-    .ad1 .photo-circle {
+    /* ══════════════════════════
+       AD 1 — טיפוגרפיה חזקה
+       רקע: ירוק כהה
+       מסר: "המשפחה שלך מנוהלת על תחושות בטן?"
+    ══════════════════════════ */
+    .ad1 { background: #102a22; }
+
+    .ad1 .photo-area {
       position: absolute;
-      top: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 220px;
-      height: 270px;
-      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-      background: rgba(173,254,122,0.12);
+      bottom: 0; left: 0; right: 0;
+      height: 62%;
       overflow: hidden;
-      border: 2px solid rgba(173,254,122,0.2);
     }
-    .ad1 .photo-circle img {
+    .ad1 .photo-area img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center top;
-      filter: grayscale(20%);
+      opacity: 0.5;
+      mix-blend-mode: luminosity;
+    }
+    .ad1 .photo-fade {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom,
+        rgba(16,42,34,1) 0%,
+        rgba(16,42,34,0.6) 40%,
+        rgba(16,42,34,0.85) 100%
+      );
     }
 
-    /* Floating tags */
-    .tag {
+    .ad1 .content {
       position: absolute;
-      font-size: 12px;
-      font-weight: 700;
-      padding: 6px 13px;
-      border-radius: 999px;
-      white-space: nowrap;
-      backdrop-filter: blur(8px);
+      top: 28px; left: 0; right: 0; bottom: 0;
+      padding: 20px 24px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
-    .tag-lime {
-      background: rgba(173,254,122,0.15);
-      border: 1px solid rgba(173,254,122,0.4);
-      color: #adfe7a;
-    }
-    .tag-white {
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.2);
-      color: rgba(255,255,255,0.85);
-    }
-    .tag-orange {
-      background: rgba(255,123,58,0.15);
-      border: 1px solid rgba(255,123,58,0.4);
-      color: #ff7b3a;
-    }
-
-    /* Bottom copy block */
-    .ad-copy {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      padding: 22px 22px 26px;
-    }
-    .ad-copy-sub {
-      font-size: 13px;
-      font-weight: 400;
-      margin-bottom: 8px;
-      line-height: 1.5;
-    }
-    .ad-copy-main {
-      font-size: 22px;
+    .ad1 .headline {
+      font-size: 40px;
       font-weight: 900;
-      line-height: 1.2;
-      margin-bottom: 18px;
+      color: #fff;
+      line-height: 1.0;
+      letter-spacing: -1px;
     }
-    .ad-btn {
-      display: inline-block;
+    .ad1 .headline .orange-hl {
+      background: #ff7b3a;
+      color: #fff;
+      padding: 0 8px;
+      border-radius: 5px;
+    }
+    .ad1 .sub {
+      font-size: 17px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.5;
+      margin-top: 16px;
+    }
+    .ad1 .cta-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .ad1 .cta-btn {
+      background: #adfe7a;
+      color: #102a22;
       font-family: 'Heebo', sans-serif;
       font-size: 15px;
       font-weight: 900;
-      padding: 11px 24px;
+      padding: 13px 28px;
       border-radius: 10px;
-      text-decoration: none;
+      border: none;
       cursor: pointer;
+      white-space: nowrap;
+      width: 100%;
+      text-align: center;
     }
-    .btn-lime { background: #adfe7a; color: #102a22; }
-    .btn-white { background: #fff; color: #102a22; }
-    .btn-forest { background: #102a22; color: #adfe7a; }
 
-    /* ══ AD 1 specifics ══ */
-    .ad1 .ad-copy {
-      background: linear-gradient(to top, rgba(16,42,34,1) 70%, transparent);
-    }
-    .ad1 .ad-copy-sub { color: rgba(255,255,255,0.55); }
-    .ad1 .ad-copy-main { color: #fff; }
-
-    /* ══ AD 2 — אתם מנהלים עסק ══ */
+    /* ══════════════════════════
+       AD 2 — שאלה חדה
+       רקע: קרם
+       מסר: "האם המשפחה שלכם מתנהלת כמו עסק?"
+    ══════════════════════════ */
     .ad2 { background: #e8e2d2; }
-    .ad2 .photo-circle {
+
+    .ad2 .photo-top {
       position: absolute;
-      top: 24px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 230px;
-      height: 290px;
-      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-      background: rgba(16,42,34,0.08);
+      top: 0; left: 0; right: 0;
+      height: 52%;
       overflow: hidden;
-      border: 2px solid rgba(16,42,34,0.12);
     }
-    .ad2 .photo-circle img {
+    .ad2 .photo-top img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center top;
+      object-position: center 15%;
     }
-    .ad2 .ad-copy {
-      background: linear-gradient(to top, #e8e2d2 80%, transparent);
-    }
-    .ad2 .ad-copy-sub { color: rgba(16,42,34,0.55); }
-    .ad2 .ad-copy-main { color: #102a22; }
-    .tag-forest {
-      background: rgba(16,42,34,0.08);
-      border: 1px solid rgba(16,42,34,0.2);
-      color: #102a22;
+    .ad2 .photo-top::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 55%;
+      background: linear-gradient(to bottom, transparent, #e8e2d2);
     }
 
-    /* ══ AD 3 — 50K ══ */
-    .ad3 { background: #102a22; }
-    .ad3 .photo-bg {
+    .ad2 .bottom-content {
       position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 65%;
+      bottom: 0; left: 0; right: 0;
+      padding: 0 22px 26px;
+      height: 52%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 12px;
+    }
+    .ad2 .h2 {
+      font-size: 31px;
+      font-weight: 900;
+      color: #102a22;
+      line-height: 1.1;
+      letter-spacing: -0.5px;
+    }
+    .ad2 .h2 em {
+      font-style: normal;
+      color: #fff;
+      background: #102a22;
+      padding: 1px 8px;
+      border-radius: 5px;
+    }
+    .ad2 .sub2 {
+      font-size: 16px;
+      font-weight: 600;
+      color: rgba(16,42,34,0.65);
+      line-height: 1.45;
+    }
+    .ad2 .cta2-btn {
+      background: #102a22;
+      color: #adfe7a;
+      font-family: 'Heebo', sans-serif;
+      font-size: 15px;
+      font-weight: 900;
+      padding: 13px 0;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      text-align: center;
+      margin-top: 4px;
+    }
+
+    /* ══════════════════════════
+       AD 3 — מספר גדול + דרמה
+       רקע: תמונה מלאה עם overlay
+       מסר: "50,000 ₪"
+    ══════════════════════════ */
+    .ad3 { background: #0d2019; }
+
+    .ad3 .bg-photo {
+      position: absolute;
+      inset: 0;
       overflow: hidden;
     }
-    .ad3 .photo-bg img {
+    .ad3 .bg-photo img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center top;
-      filter: grayscale(30%) brightness(0.75);
+      object-position: center 30%;
+      opacity: 0.35;
+      filter: grayscale(40%);
     }
-    .ad3 .photo-overlay {
+
+    .ad3 .overlay-grad {
       position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 65%;
-      background: linear-gradient(to bottom, rgba(16,42,34,0.2), rgba(16,42,34,0.7));
+      inset: 0;
+      background: linear-gradient(
+        160deg,
+        rgba(13,32,25,0.4) 0%,
+        rgba(13,32,25,0.75) 55%,
+        rgba(13,32,25,0.97) 100%
+      );
     }
-    .ad3 .big-number {
+
+    .ad3 .content3 {
       position: absolute;
-      top: 50px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 72px;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 22px 22px 28px;
+    }
+
+    .ad3 .top3 {}
+    .ad3 .mid3 {
+      text-align: center;
+    }
+    .ad3 .scenario-line {
+      font-size: 17px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 8px;
+    }
+    .ad3 .amount {
+      font-size: 80px;
       font-weight: 900;
       color: #adfe7a;
-      line-height: 1;
-      text-align: center;
-      text-shadow: 0 4px 24px rgba(0,0,0,0.4);
-      white-space: nowrap;
+      line-height: 0.9;
+      letter-spacing: -3px;
     }
-    .ad3 .big-number span {
-      display: block;
-      font-size: 18px;
-      font-weight: 500;
-      color: rgba(255,255,255,0.7);
-      margin-bottom: 4px;
+    .ad3 .amount-sub {
+      font-size: 20px;
+      color: rgba(255,255,255,0.75);
+      font-weight: 600;
+      margin-top: 6px;
     }
-    .ad3 .ad-copy {
-      background: linear-gradient(to top, rgba(16,42,34,1) 75%, transparent);
-    }
-    .ad3 .ad-copy-sub { color: rgba(255,255,255,0.55); }
-    .ad3 .ad-copy-main { color: #fff; }
 
-    /* Logo watermark */
-    .ad-logo {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      font-size: 11px;
-      font-weight: 700;
-      color: rgba(255,255,255,0.5);
-      letter-spacing: 1px;
+    .ad3 .bottom3 {}
+    .ad3 .question3 {
+      font-size: 26px;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 10px;
+      letter-spacing: -0.5px;
     }
-    .ad-logo.dark { color: rgba(16,42,34,0.4); }
+    .ad3 .question3 .hl { color: #adfe7a; }
+    .ad3 .cta3 {
+      background: #adfe7a;
+      color: #102a22;
+      font-family: 'Heebo', sans-serif;
+      font-size: 15px;
+      font-weight: 900;
+      padding: 13px 0;
+      width: 100%;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      display: block;
+      text-align: center;
+    }
+
   </style>
 </head>
 <body>
 
-<h1>מודעות מטא — ניר יפרח CFP</h1>
+<h1>META ADS · NIR YIFRAH CFP</h1>
 
 <div class="ads-row">
 
   <!-- ══ AD 1 ══ -->
   <div class="ad-wrap">
-    <div class="ad-label">מודעה 1 · "הכסף שלך ישן?"</div>
+    <div class="ad-label">01 · תחושות בטן</div>
     <div class="ad ad1">
-      <div class="ad-logo">NIR YIFRAH CFP</div>
-
-      <!-- Photo -->
-      <div class="photo-circle">
-        <img src="/DSC03313-Enhanced-NR-Edit.jpg" alt="ניר יפרח">
+      <div class="photo-area">
+        <img src="/DSC03313-Enhanced-NR-Edit.jpg" alt="">
+        <div class="photo-fade"></div>
       </div>
-
-      <!-- Floating tags -->
-      <div class="tag tag-white" style="top:170px; right:14px;">💤 כסף בעו״ש</div>
-      <div class="tag tag-lime" style="top:220px; left:10px;">📊 בלי תכנית</div>
-      <div class="tag tag-orange" style="top:270px; right:18px;">❓ לאן הכסף הולך?</div>
-
-      <!-- Copy -->
-      <div class="ad-copy">
-        <div class="ad-copy-sub">רוב המשפחות לא יודעות כמה כסף הולך לאיבוד כל חודש.</div>
-        <div class="ad-copy-main">כמה <span style="color:#adfe7a;">אתם</span> מפסידים?</div>
-        <span class="ad-btn btn-lime">גלו עכשיו ←</span>
+      <div class="content">
+        <div>
+          <div class="headline">
+            המשפחה שלכם<br>
+            מנוהלת על<br>
+            <span class="orange-hl">תחושת בטן?</span>
+          </div>
+          <div class="sub">5 דקות. לגלות איפה אתם עומדים, מה אתם מפספסים, ומה צריך לשנות עכשיו.</div>
+        </div>
+        <div class="cta-row">
+          <button class="cta-btn">לשאלון האישי לחצו ←</button>
+        </div>
       </div>
     </div>
   </div>
 
   <!-- ══ AD 2 ══ -->
   <div class="ad-wrap">
-    <div class="ad-label">מודעה 2 · "עסק של מליונים"</div>
+    <div class="ad-label">02 · עסק או תחושה?</div>
     <div class="ad ad2">
-      <div class="ad-logo dark">NIR YIFRAH CFP</div>
-
-      <!-- Photo -->
-      <div class="photo-circle">
-        <img src="/Nir.jpg" alt="ניר יפרח">
+      <div class="photo-top">
+        <img src="/Nir.jpg" alt="">
       </div>
-
-      <!-- Floating tags -->
-      <div class="tag tag-forest" style="top:160px; right:10px;">🏠 משכנתא</div>
-      <div class="tag tag-forest" style="top:205px; left:10px;">👶 חינוך ילדים</div>
-      <div class="tag tag-forest" style="top:255px; right:14px;">📈 השקעות</div>
-      <div class="tag tag-forest" style="top:298px; left:18px;">🧓 פנסיה</div>
-
-      <!-- Copy -->
-      <div class="ad-copy">
-        <div class="ad-copy-sub">אתם מנהלים עסק של מליונים.</div>
-        <div class="ad-copy-main">יש לכם <span style="color:#102a22; background:#adfe7a; padding:0 8px; border-radius:5px;">תכנית?</span></div>
-        <span class="ad-btn btn-forest">לשאלון החינמי ←</span>
+      <div class="bottom-content">
+        <div class="h2">
+          האם המשפחה שלכם<br>
+          מתנהלת <em>כמו עסק</em><br>
+          או שהיא פשוט<br>
+          מתנהלת?
+        </div>
+        <div class="sub2">רוב המשפחות לא יודעות לענות על זה. כדאי לדעת.</div>
+        <button class="cta2-btn">קבעו שיחת אפיון ←</button>
       </div>
     </div>
   </div>
 
   <!-- ══ AD 3 ══ -->
   <div class="ad-wrap">
-    <div class="ad-label">מודעה 3 · "50,000 ₪ מחר"</div>
+    <div class="ad-label">03 · 50K מחר</div>
     <div class="ad ad3">
-      <div class="ad-logo">NIR YIFRAH CFP</div>
-
-      <!-- Full bleed photo -->
-      <div class="photo-bg">
-        <img src="/DSC02977-Edit-2.jpg" alt="ניר יפרח">
+      <div class="bg-photo">
+        <img src="/DSC02977-Edit-2.jpg" alt="">
       </div>
-      <div class="photo-overlay"></div>
+      <div class="overlay-grad"></div>
+      <div class="content3">
+        <div class="top3"></div>
+        <div class="mid3">
+          <div class="scenario-line">אם מחר תצטרכו</div>
+          <div class="amount">50K ₪</div>
+          <div class="amount-sub">כמה זמן היה לכם כסף לחיות?</div>
+        </div>
+        <div class="bottom3">
+          <div class="question3" style="text-align:center;">
+            אין <span class="hl">קרן חירום?</span><br>
+            הגיע הזמן לדבר.
+          </div>
+          <button class="cta3">קבעו שיחת אפיון ←</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
-      <!-- Big number -->
-      <div class="big-number">
-        <span>אם מחר תצטרכו</span>
-        50K ₪
+  <!-- ══ AD 4 ══ -->
+  <div class="ad-wrap">
+    <div class="ad-label">04 · המספרים</div>
+    <div class="ad" style="background:#102a22; display:flex; flex-direction:column; justify-content:space-between; padding:36px 28px 32px;">
+
+      <!-- Top eyebrow -->
+      <div style="font-size:11px; font-weight:700; color:rgba(173,254,122,0.55); letter-spacing:3px; text-transform:uppercase; text-align:center;">אתם מנהלים:</div>
+
+      <!-- Numbers block -->
+      <div>
+        <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:24px;">
+          <div style="display:flex; justify-content:space-between; align-items:baseline;">
+            <span style="font-size:15px; font-weight:500; color:rgba(255,255,255,0.45);">בחודש</span>
+            <span style="font-size:38px; font-weight:900; color:#fff; letter-spacing:-1px;">₪25,000</span>
+          </div>
+          <div style="height:1px; background:rgba(255,255,255,0.08);"></div>
+          <div style="display:flex; justify-content:space-between; align-items:baseline;">
+            <span style="font-size:15px; font-weight:500; color:rgba(255,255,255,0.45);">בשנה</span>
+            <span style="font-size:38px; font-weight:900; color:#adfe7a; letter-spacing:-1px;">₪300,000</span>
+          </div>
+          <div style="height:1px; background:rgba(255,255,255,0.08);"></div>
+          <div style="display:flex; justify-content:space-between; align-items:baseline;">
+            <span style="font-size:15px; font-weight:500; color:rgba(255,255,255,0.45);">בעשור</span>
+            <span style="font-size:44px; font-weight:900; color:#adfe7a; letter-spacing:-2px;">₪3,000,000</span>
+          </div>
+        </div>
+        <div style="font-size:22px; font-weight:900; color:#fff; line-height:1.2; letter-spacing:-0.5px;">
+          איך אתם<br>
+          <span style="color:#ff7b3a;">מנהלים את זה?</span>
+        </div>
       </div>
 
-      <!-- Floating tags -->
-      <div class="tag tag-orange" style="top:230px; right:16px;">🚨 קרן חירום?</div>
-      <div class="tag tag-white" style="top:275px; left:16px;">😰 תחושת בטן</div>
-
-      <!-- Copy -->
-      <div class="ad-copy">
-        <div class="ad-copy-sub">מה היה קורה? בדקו את הציון הפיננסי שלכם.</div>
-        <div class="ad-copy-main">הגיע הזמן <span style="color:#adfe7a;">לדעת</span> איפה אתם עומדים.</div>
-        <span class="ad-btn btn-lime">לשאלון ←</span>
+      <!-- CTA -->
+      <div>
+        <button style="width:100%; background:#adfe7a; color:#102a22; font-family:'Heebo',sans-serif; font-size:16px; font-weight:900; padding:15px; border-radius:10px; border:none; cursor:pointer; text-align:center;">
+          לשאלון האישי לחצו ←
+        </button>
       </div>
+
     </div>
   </div>
 
