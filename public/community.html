@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>מועדון הצמיחה של ניר יפרח 🌱</title>
+  <meta name="description" content="קהילה חינמית לצמיחה כלכלית. כל יום ראשון תובנה פיננסית, כל יום רביעי שאלות ותשובות ישירות עם ניר יפרח.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;800&display=swap" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: 'FbTubic';
+      src: url('/fonts/FbTubicSans/FbTubic-Sans-Bold.otf') format('opentype');
+      font-weight: 700;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'FbTubic';
+      src: url('/fonts/FbTubicSans/FbTubic-Sans-Regular.otf') format('opentype');
+      font-weight: 400;
+      font-display: swap;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --dark:   #0d2b22;
+      --green:  #16342d;
+      --lime:   #adfe7a;
+      --font:   'FbTubic', 'Heebo', Arial, sans-serif;
+    }
+
+    html, body {
+      min-height: 100vh;
+      background: var(--dark);
+      font-family: var(--font);
+      color: #fff;
+      direction: rtl;
+    }
+
+    /* ── Layout ── */
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 24px 56px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* subtle radial glow top-center */
+    .page::before {
+      content: '';
+      position: absolute;
+      top: -120px; left: 50%;
+      transform: translateX(-50%);
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(173,254,122,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 480px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0;
+    }
+
+    /* ── Logo ── */
+    .logo {
+      height: 44px;
+      width: auto;
+      margin-bottom: 32px;
+      opacity: 0.9;
+    }
+
+    /* ── Profile photo ── */
+    .avatar-wrap {
+      position: relative;
+      margin-bottom: 20px;
+    }
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center 15%;
+      border: 3px solid var(--lime);
+      display: block;
+    }
+    .avatar-badge {
+      position: absolute;
+      bottom: -4px; left: 50%;
+      transform: translateX(-50%);
+      background: var(--lime);
+      color: var(--dark);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 10px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    /* ── Eyebrow ── */
+    .eyebrow {
+      font-size: 13px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+    }
+
+    /* ── Headline ── */
+    .headline {
+      font-size: clamp(28px, 6vw, 38px);
+      font-weight: 700;
+      line-height: 1.15;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .headline span {
+      color: var(--lime);
+    }
+
+    .subline {
+      font-size: 16px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.62);
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+
+    /* ── Divider ── */
+    .divider {
+      width: 40px; height: 3px;
+      background: var(--lime);
+      border-radius: 2px;
+      margin-bottom: 28px;
+      opacity: 0.7;
+    }
+
+    /* ── Benefits ── */
+    .benefits {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 36px;
+      text-align: right;
+    }
+    .benefit {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 14px;
+      padding: 14px 16px;
+    }
+    .benefit-icon {
+      font-size: 20px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .benefit-text {
+      flex: 1;
+    }
+    .benefit-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 2px;
+    }
+    .benefit-desc {
+      font-size: 13px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.5;
+    }
+
+    /* ── CTA Button ── */
+    .cta-wrap {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .cta-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      background: var(--lime);
+      color: var(--dark);
+      font-family: var(--font);
+      font-size: 18px;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 18px 32px;
+      border-radius: 50px;
+      box-shadow: 0 12px 32px rgba(173,254,122,0.25);
+      transition: transform 0.15s, box-shadow 0.15s;
+      cursor: pointer;
+    }
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 40px rgba(173,254,122,0.35);
+    }
+    .cta-btn:active {
+      transform: translateY(0);
+    }
+
+    .wa-icon {
+      width: 24px; height: 24px;
+      flex-shrink: 0;
+    }
+
+    .fine-print {
+      font-size: 12px;
+      color: rgba(255,255,255,0.35);
+      text-align: center;
+    }
+
+    /* ── Social proof ── */
+    .social-proof {
+      margin-top: 32px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+    }
+    .social-proof strong {
+      color: rgba(255,255,255,0.7);
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <div class="card">
+
+    <!-- Logo hidden if missing -->
+
+    <!-- Avatar -->
+    <div class="avatar-wrap">
+      <img src="/Nir.jpg" alt="ניר יפרח" class="avatar"
+           onerror="this.src='/DSC03313-Enhanced-NR-Edit.jpg'">
+      <span class="avatar-badge">CFP ✓</span>
+    </div>
+
+    <!-- Text -->
+    <p class="eyebrow">ניר יפרח | מתכנן פיננסי</p>
+
+    <h1 class="headline">
+      <span>מועדון הצמיחה</span><br>של ניר יפרח 🌱
+    </h1>
+
+    <p class="subline">
+      תוכן פיננסי שבועי + גישה ישירה אליי —<br>
+      בלי עלות, בלי התחייבות
+    </p>
+
+    <div class="divider"></div>
+
+    <!-- Benefits -->
+    <div class="benefits">
+      <div class="benefit">
+        <span class="benefit-icon">📅</span>
+        <div class="benefit-text">
+          <div class="benefit-title">כל יום ראשון — תובנה שבועית</div>
+          <div class="benefit-desc">תוכן פיננסי פרקטי שתוכלו ליישם מיד בחיים האמיתיים</div>
+        </div>
+      </div>
+      <div class="benefit">
+        <span class="benefit-icon">💬</span>
+        <div class="benefit-text">
+          <div class="benefit-title">כל יום רביעי — שאלות ותשובות</div>
+          <div class="benefit-desc">שואלים ישירות, ניר עונה — אישי, בלי ז'רגון</div>
+        </div>
+      </div>
+      <div class="benefit">
+        <span class="benefit-icon">🎁</span>
+        <div class="benefit-text">
+          <div class="benefit-title">בונוס הצטרפות</div>
+          <div class="benefit-desc">הצ'ק-ליסט הפיננסי המלא — Google Sheets מוכן לשימוש</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-wrap">
+      <a href="https://chat.whatsapp.com/DtoCJFMvCOY4i5nr2m9IhQ?mode=gi_t"
+         class="cta-btn"
+         target="_blank"
+         rel="noopener noreferrer">
+        <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        הצטרפו לקהילה בוואטסאפ
+      </a>
+      <p class="fine-print">חינמי לגמרי · יוצאים מתי שרוצים</p>
+    </div>
+
+    <!-- Social proof -->
+    <p class="social-proof">
+      כבר מלווה <strong>משפחות ויחידים</strong> לצמיחה כלכלית 🌱
+    </p>
+
+  </div>
+</div>
+</body>
+</html>
