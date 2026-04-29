@@ -3,6 +3,7 @@ import Footer from "./components/Footer";
 import SocialSidebar from "./components/SocialSidebar";
 import HomePage from "./pages/HomePage";
 import LegalPage from "./pages/LegalPage";
+import CommunityPage from "./pages/CommunityPage";
 
 function getCurrentPath() {
   if (typeof window === "undefined") {
@@ -27,7 +28,12 @@ export default function App() {
     };
   }, []);
 
-  const isLegalPage = pathname === "/legal";
+  const isLegalPage     = pathname === "/legal";
+  const isCommunityPage = pathname === "/community";
+
+  if (isCommunityPage) {
+    return <CommunityPage />;
+  }
 
   return (
     <>
