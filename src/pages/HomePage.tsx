@@ -4,6 +4,7 @@ import FAQSection from "../sections/FAQSection";
 import HeroSection from "../sections/HeroSection";
 import PlansSection from "../sections/PlansSection";
 import ProcessSection from "../sections/ProcessSection";
+import ReframeSection from "../sections/ReframeSection";
 import ServicesSection from "../sections/ServicesSection";
 import StatsSection from "../sections/StatsSection";
 import TestimonialsSection from "../sections/TestimonialsSection";
@@ -14,6 +15,7 @@ export default function HomePage() {
         <main>
             <HeroSection />
             <StatsSection />
+            <ReframeSection />
             <VideoSection />
             <ServicesSection />
             <ProcessSection />
