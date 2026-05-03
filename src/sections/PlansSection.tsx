@@ -1,5 +1,3 @@
-import SectionFrame from "../components/SectionFrame";
-
 type Plan = {
     name: string;
     subtitle: string;
@@ -9,17 +7,14 @@ type Plan = {
 
 const plans: Plan[] = [
     {
-        name: "מסלול 3",
-        subtitle: "הליווי המלא",
+        name: "מסלול 1",
+        subtitle: "מתכננים לבד",
         features: [
-            "5 מפגשים פרונטליים / זום",
-            "מיפוי פיננסי מלא",
-            "בניית תכנית טווח ארוך ותכנון הון",
-            "סקירה ופגישה עם סוכן פנסיוני",
+            "קורס תכנון פיננסי מלא",
             "גישה למערכת התכנון",
-            "גישה לקהילה ולקורס הדיגיטלי",
+            "גישה לקהילה",
         ],
-        active: true,
+        active: false,
     },
     {
         name: "מסלול 2",
@@ -33,87 +28,55 @@ const plans: Plan[] = [
         active: false,
     },
     {
-        name: "מסלול 1",
-        subtitle: "מתכננים לבד",
+        name: "מסלול 3",
+        subtitle: "הליווי המלא",
         features: [
-            "קורס תכנון פיננסי מלא",
+            "5 מפגשים פרונטליים / זום",
+            "מיפוי פיננסי מלא",
+            "בניית תכנית טווח ארוך ותכנון הון",
+            "סקירה ופגישה עם סוכן פנסיוני",
             "גישה למערכת התכנון",
-            "גישה לקהילה",
+            "גישה לקהילה ולקורס הדיגיטלי",
         ],
-        active: false,
+        active: true,
     },
 ];
 
 export default function PlansSection() {
     return (
-        <SectionFrame
-            id="plans"
-            title="מסלולים"
-            description="בחרו את הדרך שמתאימה לכם."
-            variant="light"
-        >
-            <div className="grid gap-6 sm:grid-cols-3" dir="rtl">
-                {plans.map((plan) => (
-                    <div
-                        key={plan.name}
-                        className={`relative flex flex-col rounded-2xl border p-7 transition ${
-                            plan.active
-                                ? "border-[#1d4339] bg-[#1d4339] text-white shadow-[0_16px_48px_rgba(22,52,45,0.18)]"
-                                : "border-[#e0e4de] bg-[#f4f6f3] opacity-60"
-                        }`}
-                    >
-                        {/* Badge */}
-                        <div className="mb-4 inline-flex self-start">
-                            <span
-                                className={`rounded-full px-3 py-1 text-xs font-bold tracking-wide ${
-                                    plan.active
-                                        ? "bg-[var(--lime)] text-[#14322b]"
-                                        : "bg-[#dde2da] text-[#8a9e8d]"
-                                }`}
-                            >
-                                {plan.active ? "פעיל" : "בקרוב"}
-                            </span>
-                        </div>
+        <section id="plans" className="packages-section" dir="rtl">
+            <div className="packages-inner">
+                <div className="section-label">בחרו את הדרך שמתאימה לכם</div>
+                <div className="divider" />
+                <h2 className="section-title">המסלולים שלנו</h2>
 
-                        {/* Name */}
-                        <p className={`text-xs font-bold tracking-widest uppercase mb-1 ${plan.active ? "text-[var(--lime)]/70" : "text-[#adb8aa]"}`}>
-                            {plan.name}
-                        </p>
-                        <h3 className={`text-xl font-bold leading-snug ${plan.active ? "text-white" : "text-[#7a8c78]"}`}>
-                            {plan.subtitle}
-                        </h3>
-
-                        {/* Divider */}
-                        <div className={`my-5 h-px ${plan.active ? "bg-white/15" : "bg-[#d8ddd6]"}`} />
-
-                        {/* Features */}
-                        <ul className="flex-1 space-y-3">
-                            {plan.features.map((f) => (
-                                <li key={f} className="flex items-start gap-2.5 text-sm">
-                                    <span className={`mt-0.5 leading-none ${plan.active ? "text-[var(--lime)]" : "text-[#adb8aa]"}`}>✓</span>
-                                    <span className={plan.active ? "text-white/80" : "text-[#8a9e8d]"}>{f}</span>
-                                </li>
-                            ))}
-                        </ul>
-
-                        {/* CTA */}
-                        <div className="mt-7">
+                <div className="packages-grid">
+                    {plans.map((plan) => (
+                        <div
+                            key={plan.name}
+                            className={`package-card${plan.active ? ' package-card--active' : ''}`}
+                        >
+                            <div className={`pkg-badge${plan.active ? ' pkg-badge--active' : ''}`}>
+                                {plan.active ? 'פעיל' : 'בקרוב'}
+                            </div>
+                            <div className="pkg-num">{plan.name}</div>
+                            <div className="pkg-name">{plan.subtitle}</div>
+                            <ul className="pkg-features">
+                                {plan.features.map((f) => (
+                                    <li key={f}>{f}</li>
+                                ))}
+                            </ul>
                             {plan.active ? (
-                                <a
-                                    href="#contact"
-                                    className="block w-full rounded-xl bg-[var(--lime)] py-3 text-center text-sm font-bold !text-[#14322b] transition hover:bg-[#c2ff9a]"
-                                >
+                                <a href="#contact" className="pkg-cta pkg-cta--primary">
                                     קבע שיחת אפיון
                                 </a>
                             ) : (
-                                <div className="block w-full rounded-xl border border-[#d8ddd6] py-3 text-center text-sm font-bold text-[#adb8aa]">
-                                    בקרוב
-                                </div>
+                                <span className="pkg-cta pkg-cta--muted">בקרוב</span>
                             )}
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
-        </SectionFrame>
+        </section>
     );
 }

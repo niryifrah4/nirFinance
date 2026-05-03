@@ -4,6 +4,7 @@ import SocialSidebar from "./components/SocialSidebar";
 import HomePage from "./pages/HomePage";
 import LegalPage from "./pages/LegalPage";
 import CommunityPage from "./pages/CommunityPage";
+import PreviewPage from "./pages/PreviewPage";
 
 function getCurrentPath() {
   if (typeof window === "undefined") {
@@ -30,10 +31,10 @@ export default function App() {
 
   const isLegalPage     = pathname === "/legal";
   const isCommunityPage = pathname === "/community";
+  const isPreviewPage   = pathname === "/preview";
 
-  if (isCommunityPage) {
-    return <CommunityPage />;
-  }
+  if (isCommunityPage) return <CommunityPage />;
+  if (isPreviewPage)   return <PreviewPage />;
 
   return (
     <>
