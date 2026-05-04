@@ -19,28 +19,50 @@ const legalLinks = [
 export default function Footer() {
     return (
         <>
-            <footer className="px-4 pb-6 pt-2">
+            <footer
+                style={{
+                    background: "#16342D",
+                    padding: "24px 16px",
+                }}
+            >
                 <div
-                    className="mx-auto max-w-6xl border-t border-white/10 py-6 text-center text-sm text-white/60"
+                    style={{
+                        maxWidth: "1100px",
+                        margin: "0 auto",
+                        textAlign: "center",
+                        fontSize: "13px",
+                        color: "rgba(255,255,255,0.6)",
+                        fontFamily: "'Heebo', Arial, sans-serif",
+                        display: "flex",
+                        flexWrap: "wrap",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        gap: "10px 14px",
+                    }}
                     dir="rtl"
                 >
-                    <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2">
-                        <span className="font-normal">
-                            © {new Date().getFullYear()} | {siteContent.footer.text}
-                        </span>
+                    <span style={{ fontWeight: 500 }}>
+                        © {new Date().getFullYear()} | {siteContent.footer.text}
+                    </span>
 
-                        {legalLinks.map((link) => (
-                            <div key={link.href} className="flex items-center gap-3">
-                                <span className="text-white/25">•</span>
-                                <a
-                                    href={link.href}
-                                    className="font-medium transition hover:text-white"
-                                >
-                                    {link.label}
-                                </a>
-                            </div>
-                        ))}
-                    </div>
+                    {legalLinks.map((link) => (
+                        <span key={link.href} style={{ display: "inline-flex", alignItems: "center", gap: "10px" }}>
+                            <span style={{ color: "rgba(255,255,255,0.25)" }}>•</span>
+                            <a
+                                href={link.href}
+                                style={{
+                                    color: "rgba(255,255,255,0.7)",
+                                    textDecoration: "none",
+                                    fontWeight: 600,
+                                    transition: "color 0.2s",
+                                }}
+                                onMouseEnter={(e) => { e.currentTarget.style.color = "#ADFE7A"; }}
+                                onMouseLeave={(e) => { e.currentTarget.style.color = "rgba(255,255,255,0.7)"; }}
+                            >
+                                {link.label}
+                            </a>
+                        </span>
+                    ))}
                 </div>
             </footer>
 

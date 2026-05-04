@@ -270,6 +270,8 @@ export default function PreviewPage({ showBanner = true }: { showBanner?: boolea
     const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
 
     const [openFaqIdx, setOpenFaqIdx] = useState<number | null>(0);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const closeMenu = () => setIsMenuOpen(false);
 
     // Contact form
     const [contactValues, setContactValues] = useState<ContactValues>({
@@ -416,25 +418,19 @@ export default function PreviewPage({ showBanner = true }: { showBanner?: boolea
                         gap: "16px",
                     }}
                 >
-                    {/* Logo / name */}
+                    {/* Logo (photo only) */}
                     <a
                         href="#top"
+                        aria-label="לראש הדף"
                         style={{
-                            display: "inline-flex",
-                            alignItems: "center",
-                            gap: "10px",
-                            color: "#16342D",
-                            fontSize: "15px",
-                            fontWeight: 800,
-                            textDecoration: "none",
-                            letterSpacing: "-0.01em",
+                            display: "inline-block",
                             flexShrink: 0,
                         }}
                     >
                         <span style={{
-                            width: 32, height: 32,
+                            width: 36, height: 36,
                             borderRadius: "9999px",
-                            border: "1.5px solid rgba(22,52,45,0.18)",
+                            border: "1.5px solid rgba(22,52,45,0.2)",
                             overflow: "hidden",
                             display: "inline-block",
                         }}>
@@ -449,19 +445,9 @@ export default function PreviewPage({ showBanner = true }: { showBanner?: boolea
                                 }}
                             />
                         </span>
-                        ניר יפרח
-                        <span style={{
-                            fontSize: "10px",
-                            fontWeight: 800,
-                            color: "#16342D",
-                            background: "rgba(173,254,122,0.35)",
-                            padding: "2px 6px",
-                            borderRadius: "4px",
-                            letterSpacing: "0.06em",
-                        }}>CFP®</span>
                     </a>
 
-                    {/* Nav links (hidden on mobile) */}
+                    {/* Desktop nav links (hidden on mobile) */}
                     <nav className="pv-nav-links" style={{
                         display: "flex",
                         gap: "26px",
@@ -494,25 +480,127 @@ export default function PreviewPage({ showBanner = true }: { showBanner?: boolea
                         ))}
                     </nav>
 
-                    {/* CTA button */}
-                    <a
-                        href="#contact"
+                    {/* Right side: CTA + hamburger */}
+                    <div style={{ display: "flex", alignItems: "center", gap: "10px", flexShrink: 0 }}>
+                        {/* CTA button — forest dark, less bright */}
+                        <a
+                            href="#contact"
+                            style={{
+                                background: "#16342D",
+                                color: "#fff",
+                                fontSize: "14px",
+                                fontWeight: 800,
+                                padding: "9px 18px",
+                                borderRadius: "9999px",
+                                textDecoration: "none",
+                                letterSpacing: "-0.01em",
+                                whiteSpace: "nowrap",
+                                transition: "background 0.2s",
+                            }}
+                            onMouseEnter={(e) => { e.currentTarget.style.background = "#0f211b"; }}
+                            onMouseLeave={(e) => { e.currentTarget.style.background = "#16342D"; }}
+                        >
+                            צור קשר
+                        </a>
+
+                        {/* Hamburger (mobile only) */}
+                        <button
+                            type="button"
+                            className="pv-hamburger"
+                            onClick={() => setIsMenuOpen((v) => !v)}
+                            aria-label={isMenuOpen ? "סגור תפריט" : "פתח תפריט"}
+                            aria-expanded={isMenuOpen}
+                            style={{
+                                width: 40, height: 40,
+                                borderRadius: "9999px",
+                                border: "1px solid rgba(22,52,45,0.18)",
+                                background: "transparent",
+                                cursor: "pointer",
+                                display: "flex",
+                                flexDirection: "column",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                gap: "4px",
+                                padding: 0,
+                                transition: "background 0.2s",
+                            }}
+                        >
+                            <span style={{
+                                width: 18, height: 2, background: "#16342D", borderRadius: 2,
+                                transition: "transform 0.2s",
+                                transform: isMenuOpen ? "rotate(45deg) translate(4px, 4px)" : "none",
+                            }} />
+                            <span style={{
+                                width: 18, height: 2, background: "#16342D", borderRadius: 2,
+                                opacity: isMenuOpen ? 0 : 1,
+                                transition: "opacity 0.15s",
+                            }} />
+                            <span style={{
+                                width: 18, height: 2, background: "#16342D", borderRadius: 2,
+                                transition: "transform 0.2s",
+                                transform: isMenuOpen ? "rotate(-45deg) translate(4px, -4px)" : "none",
+                            }} />
+                        </button>
+                    </div>
+                </div>
+
+                {/* Mobile menu dropdown */}
+                {isMenuOpen && (
+                    <div
+                        onClick={closeMenu}
                         style={{
-                            background: "#ADFE7A",
-                            color: "#14322B",
-                            fontSize: "14px",
-                            fontWeight: 900,
-                            padding: "9px 18px",
-                            borderRadius: "9999px",
-                            textDecoration: "none",
-                            letterSpacing: "-0.01em",
-                            whiteSpace: "nowrap",
-                            flexShrink: 0,
+                            position: "fixed",
+                            inset: 0,
+                            top: "60px",
+                            background: "rgba(22,52,45,0.5)",
+                            backdropFilter: "blur(8px)",
+                            zIndex: 99,
+                            animation: "pv-fade 0.2s ease",
                         }}
                     >
-                        צור קשר
-                    </a>
-                </div>
+                        <div
+                            onClick={(e) => e.stopPropagation()}
+                            style={{
+                                background: "#F5F2EC",
+                                padding: "16px",
+                                borderBottom: "1px solid rgba(22,52,45,0.08)",
+                                display: "flex",
+                                flexDirection: "column",
+                                gap: "2px",
+                            }}
+                        >
+                            {[
+                                { href: "#video", label: "הסרטון" },
+                                { href: "#about", label: "מי אני" },
+                                { href: "#planning", label: "מה זה כולל" },
+                                { href: "#process", label: "איך זה עובד" },
+                                { href: "#plans", label: "המסלולים" },
+                                { href: "#faq", label: "שאלות" },
+                                { href: "#contact", label: "צור קשר" },
+                            ].map((link) => (
+                                <a
+                                    key={link.href}
+                                    href={link.href}
+                                    onClick={closeMenu}
+                                    style={{
+                                        display: "block",
+                                        padding: "14px 16px",
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        color: "#16342D",
+                                        textDecoration: "none",
+                                        borderRadius: "10px",
+                                        transition: "background 0.15s",
+                                    }}
+                                    onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(22,52,45,0.06)"; }}
+                                    onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; }}
+                                >
+                                    {link.label}
+                                </a>
+                            ))}
+                        </div>
+                    </div>
+                )}
             </header>
             {/* card hover animations + mobile responsiveness */}
             <style>{`
@@ -617,10 +705,17 @@ export default function PreviewPage({ showBanner = true }: { showBanner?: boolea
                 }
 
                 /* Smaller mobile — under 480px */
+                .pv-hamburger { display: none; }
                 @media (max-width: 1000px) {
                     .pv-nav-links {
                         display: none !important;
                     }
+                    .pv-hamburger {
+                        display: flex !important;
+                    }
+                }
+                .pv-hamburger:hover {
+                    background: rgba(22,52,45,0.06) !important;
                 }
 
                 @media (max-width: 480px) {
@@ -861,7 +956,7 @@ export default function PreviewPage({ showBanner = true }: { showBanner?: boolea
                     <video
                         ref={videoRef}
                         controls={isPlaying}
-                        poster="https://res.cloudinary.com/dtjr9qzet/video/upload/so_3,w_1280,h_720,c_fill,g_face/2_ocxr95.jpg"
+                        poster=""
                         preload="metadata"
                         onPause={handlePause}
                         onEnded={handleEnded}
@@ -890,54 +985,92 @@ export default function PreviewPage({ showBanner = true }: { showBanner?: boolea
                                 flexDirection: "column",
                                 alignItems: "center",
                                 justifyContent: "center",
-                                gap: "20px",
+                                gap: "24px",
                                 background:
-                                    "linear-gradient(180deg, rgba(20,50,43,0.4) 0%, rgba(20,50,43,0.85) 100%)",
+                                    "linear-gradient(160deg, #1d4339 0%, #16342d 100%)",
                                 border: "none",
                                 cursor: "pointer",
                                 transition: "background 0.2s",
                                 padding: "32px 24px",
+                                overflow: "hidden",
                             }}
                         >
-                            {/* Top-right badge */}
+                            {/* lime glow */}
                             <span
+                                aria-hidden="true"
                                 style={{
                                     position: "absolute",
-                                    top: 20,
-                                    right: 20,
-                                    background: "#ADFE7A",
-                                    color: "#14322B",
-                                    padding: "6px 12px",
+                                    width: "60%",
+                                    aspectRatio: "1/1",
                                     borderRadius: "9999px",
-                                    fontSize: "12px",
-                                    fontWeight: 900,
-                                    letterSpacing: "0.04em",
+                                    background:
+                                        "radial-gradient(circle, rgba(173,254,122,0.18) 0%, rgba(173,254,122,0) 70%)",
+                                    pointerEvents: "none",
+                                    top: "50%",
+                                    left: "50%",
+                                    transform: "translate(-50%, -50%)",
+                                }}
+                            />
+
+                            {/* Headline overlay */}
+                            <div
+                                style={{
+                                    textAlign: "center",
+                                    color: "#fff",
+                                    direction: "rtl",
+                                    maxWidth: "640px",
+                                    position: "relative",
+                                    zIndex: 1,
                                 }}
                             >
-                                סרטון של 5 דקות
-                            </span>
+                                <div
+                                    style={{
+                                        fontSize: "11px",
+                                        fontWeight: 800,
+                                        letterSpacing: "0.2em",
+                                        color: "#ADFE7A",
+                                        textTransform: "uppercase",
+                                        marginBottom: "12px",
+                                    }}
+                                >
+                                    סרטון של 5 דקות
+                                </div>
+                                <div
+                                    style={{
+                                        fontSize: "clamp(1.3rem, 3vw, 2.2rem)",
+                                        fontWeight: 900,
+                                        lineHeight: 1.2,
+                                        letterSpacing: "-0.02em",
+                                    }}
+                                >
+                                    איך מנהלים{" "}
+                                    <span style={{ color: "#ADFE7A" }}>עסק של מיליונים</span>
+                                </div>
+                            </div>
 
                             {/* Big play button */}
                             <span
                                 style={{
-                                    width: 96,
-                                    height: 96,
+                                    width: 88,
+                                    height: 88,
                                     borderRadius: "9999px",
                                     background: "#adfe7a",
                                     display: "flex",
                                     alignItems: "center",
                                     justifyContent: "center",
                                     boxShadow:
-                                        "0 16px 48px rgba(173,254,122,0.45), 0 0 0 8px rgba(173,254,122,0.18)",
+                                        "0 16px 48px rgba(173,254,122,0.35), 0 0 0 8px rgba(173,254,122,0.15)",
                                     transition: "transform 0.2s",
                                     flexShrink: 0,
+                                    position: "relative",
+                                    zIndex: 1,
                                 }}
                             >
                                 <svg
                                     viewBox="0 0 24 24"
                                     style={{
-                                        width: 40,
-                                        height: 40,
+                                        width: 36,
+                                        height: 36,
                                         fill: "#14322b",
                                         marginRight: -6,
                                     }}
@@ -947,42 +1080,22 @@ export default function PreviewPage({ showBanner = true }: { showBanner?: boolea
                                 </svg>
                             </span>
 
-                            {/* Headline overlay */}
+                            {/* Sub headline */}
                             <div
                                 style={{
+                                    fontSize: "clamp(0.85rem, 1.3vw, 1rem)",
+                                    fontWeight: 600,
+                                    color: "rgba(255,255,255,0.7)",
+                                    letterSpacing: "-0.005em",
                                     textAlign: "center",
-                                    color: "#fff",
-                                    direction: "rtl",
-                                    maxWidth: "640px",
+                                    position: "relative",
+                                    zIndex: 1,
                                 }}
                             >
-                                <div
-                                    style={{
-                                        fontSize: "clamp(1.4rem, 3vw, 2.2rem)",
-                                        fontWeight: 900,
-                                        lineHeight: 1.2,
-                                        letterSpacing: "-0.02em",
-                                        marginBottom: "8px",
-                                        textShadow: "0 2px 12px rgba(0,0,0,0.5)",
-                                    }}
-                                >
-                                    איך מנהלים{" "}
-                                    <span style={{ color: "#ADFE7A" }}>עסק של מיליונים</span>
-                                </div>
-                                <div
-                                    style={{
-                                        fontSize: "clamp(0.9rem, 1.4vw, 1.05rem)",
-                                        fontWeight: 600,
-                                        color: "rgba(255,255,255,0.85)",
-                                        letterSpacing: "-0.005em",
-                                        textShadow: "0 1px 6px rgba(0,0,0,0.4)",
-                                    }}
-                                >
-                                    בלי ניחושים. בלי תחושת בטן.
-                                </div>
+                                בלי ניחושים. בלי תחושת בטן.
                             </div>
 
-                            {/* hidden — old duration pill (kept for layout balance) */}
+                            {/* legacy hidden */}
                             <span
                                 style={{
                                     display: "none",
