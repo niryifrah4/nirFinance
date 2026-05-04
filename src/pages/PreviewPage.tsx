@@ -665,12 +665,22 @@ export default function PreviewPage({ showBanner = true }: { showBanner?: boolea
 
                 .pv-grid-contact {
                     grid-template-columns: 1fr 1fr;
-                    gap: 56px;
+                    grid-template-areas:
+                        "form title"
+                        "form gift";
+                    gap: 32px 56px;
                 }
+                .pv-contact-title { grid-area: title; }
+                .pv-contact-form  { grid-area: form; align-self: stretch; }
+                .pv-contact-gift  { grid-area: gift; align-self: start; }
                 @media (max-width: 900px) {
                     .pv-grid-contact {
                         grid-template-columns: 1fr !important;
-                        gap: 32px !important;
+                        grid-template-areas:
+                            "title"
+                            "form"
+                            "gift" !important;
+                        gap: 24px !important;
                     }
                 }
                 .pv-input {
@@ -690,6 +700,17 @@ export default function PreviewPage({ showBanner = true }: { showBanner?: boolea
                 .pv-input:focus {
                     border-color: #ADFE7A;
                     background: rgba(255,255,255,0.1);
+                }
+                /* Override Chrome/Safari autofill black text + yellow bg */
+                .pv-input:-webkit-autofill,
+                .pv-input:-webkit-autofill:hover,
+                .pv-input:-webkit-autofill:focus,
+                .pv-input:-webkit-autofill:active {
+                    -webkit-text-fill-color: #fff !important;
+                    -webkit-box-shadow: 0 0 0 1000px rgba(255,255,255,0.06) inset !important;
+                    box-shadow: 0 0 0 1000px rgba(255,255,255,0.06) inset !important;
+                    caret-color: #fff;
+                    transition: background-color 5000s ease-in-out 0s;
                 }
 
                 /* Animated strikethrough — true line-through that works on multi-line text */
@@ -2421,8 +2442,8 @@ export default function PreviewPage({ showBanner = true }: { showBanner?: boolea
                         alignItems: "start",
                     }}
                 >
-                    {/* RIGHT COLUMN (RTL): title + gift box */}
-                    <div>
+                    {/* TITLE BLOCK (mobile: 1st, desktop: top-right) */}
+                    <div className="pv-contact-title">
                         {/* eyebrow */}
                         <div
                             style={{
@@ -2459,7 +2480,7 @@ export default function PreviewPage({ showBanner = true }: { showBanner?: boolea
                                 fontSize: "15px",
                                 color: "rgba(255,255,255,0.7)",
                                 lineHeight: 1.7,
-                                margin: "0 0 28px",
+                                margin: 0,
                                 fontWeight: 500,
                             }}
                         >
@@ -2467,8 +2488,10 @@ export default function PreviewPage({ showBanner = true }: { showBanner?: boolea
                                 "בשיחת האפיון נבין מאיפה אתם מתחילים. לאן אתם רוצים להגיע. ואיך מגיעים לשם בצורה הנכונה ביותר עבורכם.",
                             )}
                         </p>
+                    </div>
 
-                        {/* Gift box */}
+                    {/* GIFT BLOCK (mobile: 3rd, desktop: bottom-right) */}
+                    <div className="pv-contact-gift">
                         <div
                             style={{
                                 background: "rgba(173,254,122,0.06)",
@@ -2553,8 +2576,9 @@ export default function PreviewPage({ showBanner = true }: { showBanner?: boolea
                         </div>
                     </div>
 
-                    {/* LEFT COLUMN (RTL): form */}
+                    {/* FORM (mobile: 2nd, desktop: left, spans 2 rows) */}
                     <form
+                        className="pv-contact-form"
                         onSubmit={handleContactSubmit}
                         style={{
                             background: "rgba(255,255,255,0.04)",
