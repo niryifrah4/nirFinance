@@ -1229,7 +1229,7 @@ export default function PreviewPage({ showBanner = true }: { showBanner?: boolea
                                 fontWeight: 600,
                             }}
                         >
-                            וזה עוד לפני פנסיה, השקעות וירושות עתידיות.
+                            וזה עוד לפני גדילה במשכורות, פנסיה, השקעות וירושות עתידיות.
                         </p>
                     </div>
 
@@ -1239,9 +1239,9 @@ export default function PreviewPage({ showBanner = true }: { showBanner?: boolea
                             textAlign: "center",
                             fontSize: "clamp(1.1rem, 1.55vw, 1.3rem)",
                             color: "#16342D",
-                            lineHeight: 1.55,
+                            lineHeight: 1.4,
                             maxWidth: "680px",
-                            margin: "0 auto 12px",
+                            margin: "0 auto 4px",
                             fontWeight: 600,
                         }}
                     >
