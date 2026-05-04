@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>תודה! · ניר יפרח CFP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Meta Pixel: fire Lead event for ad attribution -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '952357363915643');
+    fbq('track', 'PageView');
+    fbq('track', 'Lead');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=952357363915643&ev=Lead&noscript=1"/></noscript>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: linear-gradient(160deg, #1d4339 0%, #16342d 100%);
+      min-height: 100vh;
+      font-family: 'Heebo', Arial, sans-serif;
+      direction: rtl;
+      position: relative;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .blob1 {
+      position: absolute; right: -8rem; top: 8rem;
+      width: 24rem; height: 24rem; border-radius: 9999px;
+      background: rgba(173,254,122,0.08);
+      filter: blur(100px); pointer-events: none;
+    }
+    .blob2 {
+      position: absolute; bottom: 0; left: -6rem;
+      width: 20rem; height: 20rem; border-radius: 9999px;
+      background: rgba(255,165,59,0.04);
+      filter: blur(100px); pointer-events: none;
+    }
+    main {
+      flex: 1;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 60px 24px 80px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .check {
+      width: 96px; height: 96px;
+      border-radius: 9999px;
+      background: #ADFE7A;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 32px;
+      box-shadow: 0 16px 48px rgba(173,254,122,0.32),
+                  0 0 0 12px rgba(173,254,122,0.12);
+      animation: pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    @keyframes pop {
+      0% { transform: scale(0); opacity: 0; }
+      60% { transform: scale(1.08); opacity: 1; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    h1 {
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      margin-bottom: 18px;
+    }
+    .sub-grey {
+      font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+      color: rgba(255,255,255,0.85);
+      line-height: 1.55;
+      font-weight: 600;
+      margin-bottom: 8px;
+      max-width: 560px;
+    }
+    .sub-lime {
+      font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+      color: #ADFE7A;
+      line-height: 1.55;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      margin-bottom: 36px;
+      max-width: 560px;
+    }
+    .gift-box {
+      background: rgba(173,254,122,0.08);
+      border: 1px solid rgba(173,254,122,0.28);
+      border-radius: 16px;
+      padding: 28px 28px 26px;
+      max-width: 520px;
+      width: 100%;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+    .gift-icon { font-size: 36px; margin-bottom: 12px; line-height: 1; }
+    .gift-eyebrow {
+      font-size: 11px; font-weight: 800;
+      letter-spacing: 0.2em;
+      color: #ADFE7A;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .gift-title {
+      font-size: 17px; color: #fff;
+      line-height: 1.4; margin-bottom: 18px;
+      font-weight: 700; letter-spacing: -0.01em;
+    }
+    .download-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #ADFE7A; color: #14322B;
+      font-size: 15px; font-weight: 900;
+      padding: 13px 28px;
+      border-radius: 9999px;
+      text-decoration: none;
+      letter-spacing: -0.01em;
+      box-shadow: 0 8px 24px rgba(173,254,122,0.3);
+      transition: transform 0.15s, box-shadow 0.2s;
+    }
+    .download-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 32px rgba(173,254,122,0.4);
+    }
+    .gift-note {
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+      margin-top: 16px;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+    .meanwhile-eyebrow {
+      font-size: 11px; font-weight: 800;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .video-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: transparent; color: #fff;
+      padding: 13px 26px;
+      border: 1.5px solid rgba(173,254,122,0.4);
+      border-radius: 9999px;
+      text-decoration: none;
+      font-weight: 700; font-size: 14px;
+      letter-spacing: -0.005em;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .video-btn:hover {
+      background: rgba(173,254,122,0.1);
+      border-color: #ADFE7A;
+    }
+    .home-link {
+      margin-top: 48px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .home-link:hover { color: rgba(255,255,255,0.7); }
+  </style>
+</head>
+<body>
+  <div class="blob1"></div>
+  <div class="blob2"></div>
+
+  <main>
+    <!-- Animated checkmark -->
+    <div class="check">
+      <svg viewBox="0 0 24 24" style="width:48px;height:48px;fill:none;stroke:#14322B;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;" aria-hidden="true">
+        <path d="M4 12.6l5.2 5.2L20 7" />
+      </svg>
+    </div>
+
+    <h1>תודה!</h1>
+
+    <p class="sub-grey">קיבלתי את הפרטים שלכם.</p>
+    <p class="sub-lime">אחזור אליכם בתוך יום עסקים אחד 📞</p>
+
+    <!-- Gift box -->
+    <div class="gift-box">
+      <div class="gift-icon">🎁</div>
+      <div class="gift-eyebrow">המתנה שלי אליכם</div>
+      <p class="gift-title">הצ'ק ליסט הפיננסי המקיף</p>
+
+      <a href="https://bit.ly/fchecklist" target="_blank" rel="noopener noreferrer" class="download-btn">
+        ⬇  הורדת הצ'ק ליסט
+      </a>
+
+      <p class="gift-note">Google Sheets · עדיף לפתוח במחשב</p>
+    </div>
+
+    <div>
+      <p class="meanwhile-eyebrow">בינתיים</p>
+      <a href="/#video" class="video-btn">
+        <svg viewBox="0 0 20 20" style="width:16px;height:16px;fill:currentColor;" aria-hidden="true">
+          <path d="M6.5 5.5v9l7-4.5-7-4.5Z" />
+        </svg>
+        צפו בסרטון של 5 דקות
+      </a>
+    </div>
+
+    <a href="/" class="home-link">← חזרה לדף הבית</a>
+  </main>
+</body>
+</html>

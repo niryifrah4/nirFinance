@@ -336,7 +336,7 @@ export default function PreviewPage({ showBanner = true }: { showBanner?: boolea
             const result = await res.json();
             if (!result.success) throw new Error(result.message || "משהו השתבש בשליחת הטופס.");
             // Redirect to thank-you page (Pixel Lead event fires there)
-            window.location.href = "/thank-you";
+            window.location.href = "/thank-you.html";
             return;
         } catch (err) {
             const message = err instanceof Error ? err.message : "משהו השתבש. נסו שוב.";
