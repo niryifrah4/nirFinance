@@ -949,7 +949,7 @@ export default function PreviewPage({ showBanner = true }: { showBanner?: boolea
                         fontWeight: 500,
                     }}
                 >
-                    {splitAtPeriods("5 דקות. ההבדל בין משפחה שמנחשת לבין משפחה שמתכננת.")}
+                    תוך 5 דקות תבינו את ההבדל בין משפחה שמנהלת למשפחה שמנחשת.
                 </p>
 
                 {/* THE VIDEO — big, central */}
