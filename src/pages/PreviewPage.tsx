@@ -2624,12 +2624,13 @@ export default function PreviewPage({ showBanner = true }: { showBanner?: boolea
                                     color: "rgba(255,255,255,0.7)",
                                 }}
                             >
-                                דואר אלקטרוני
+                                דואר אלקטרוני *
                             </label>
                             <input
                                 id="pv-contact-email"
                                 type="email"
                                 name="email"
+                                required
                                 value={contactValues.email}
                                 onChange={handleContactChange}
                                 placeholder="israel@gmail.com"
