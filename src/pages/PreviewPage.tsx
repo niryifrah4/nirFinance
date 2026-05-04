@@ -271,7 +271,8 @@ export default function PreviewPage({ showBanner = true }: { showBanner?: boolea
     const [openPlanId, setOpenPlanId] = useState<string | null>(null);
     const [notifyEmail, setNotifyEmail] = useState("");
     const [notifyState, setNotifyState] = useState<NotifyState>({ type: "idle" });
-    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+    // Web3Forms key — Nir's own account (frontend-public anyway)
+    const accessKey = "b27001f0-0be2-4e2e-a394-5108ecae4108";
 
     const [openFaqIdx, setOpenFaqIdx] = useState<number | null>(0);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
