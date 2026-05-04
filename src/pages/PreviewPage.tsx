@@ -289,7 +289,7 @@ export default function PreviewPage({ showBanner = true }: { showBanner?: boolea
                     }
                 });
             },
-            { threshold: 0.5 },
+            { threshold: 0.35, rootMargin: "0px 0px -10% 0px" },
         );
         document.querySelectorAll(".pv-cancel").forEach((el) => observer.observe(el));
         return () => observer.disconnect();
@@ -695,16 +695,17 @@ export default function PreviewPage({ showBanner = true }: { showBanner?: boolea
                 /* Animated strikethrough — line draws across when card scrolls into view */
                 .pv-cancel {
                     position: relative;
-                    display: inline;
+                    display: inline-block;
+                    max-width: 100%;
                 }
                 .pv-cancel::after {
                     content: "";
                     position: absolute;
-                    top: 52%;
+                    top: 50%;
                     right: -2px;
                     left: -2px;
                     height: 3px;
-                    background: rgba(229,115,115,0.75);
+                    background: rgba(229,115,115,0.78);
                     border-radius: 2px;
                     transform: scaleX(0);
                     transform-origin: right center;
