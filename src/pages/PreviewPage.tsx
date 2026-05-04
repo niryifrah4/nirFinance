@@ -4,7 +4,7 @@
  * שאר הסקשנים מיועדים למי שדילג על הסרטון
  */
 
-import { Fragment, useRef, useState, type ReactNode } from "react";
+import { Fragment, useEffect, useRef, useState, type ReactNode } from "react";
 
 /** Break a Hebrew sentence into multiple lines after every period. */
 function splitAtPeriods(text: string) {
@@ -276,6 +276,24 @@ export default function PreviewPage({ showBanner = true }: { showBanner?: boolea
     const [openFaqIdx, setOpenFaqIdx] = useState<number | null>(0);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const closeMenu = () => setIsMenuOpen(false);
+
+    // IntersectionObserver to animate strikethrough on Reframe cards
+    useEffect(() => {
+        if (typeof window === "undefined" || !("IntersectionObserver" in window)) return;
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("is-visible");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            },
+            { threshold: 0.5 },
+        );
+        document.querySelectorAll(".pv-cancel").forEach((el) => observer.observe(el));
+        return () => observer.disconnect();
+    }, []);
 
     // Contact form
     const [contactValues, setContactValues] = useState<ContactValues>({
@@ -672,6 +690,29 @@ export default function PreviewPage({ showBanner = true }: { showBanner?: boolea
                 .pv-input:focus {
                     border-color: #ADFE7A;
                     background: rgba(255,255,255,0.1);
+                }
+
+                /* Animated strikethrough — line draws across when card scrolls into view */
+                .pv-cancel {
+                    position: relative;
+                    display: inline;
+                }
+                .pv-cancel::after {
+                    content: "";
+                    position: absolute;
+                    top: 52%;
+                    right: -2px;
+                    left: -2px;
+                    height: 3px;
+                    background: rgba(229,115,115,0.75);
+                    border-radius: 2px;
+                    transform: scaleX(0);
+                    transform-origin: right center;
+                    transition: transform 0.85s cubic-bezier(0.7, 0, 0.3, 1);
+                    pointer-events: none;
+                }
+                .pv-cancel.is-visible::after {
+                    transform: scaleX(1);
                 }
 
                 .pv-pill:hover {
@@ -1242,21 +1283,18 @@ export default function PreviewPage({ showBanner = true }: { showBanner?: boolea
                                     flexDirection: "column",
                                 }}
                             >
-                                {/* "wrong belief" — large, strikethrough */}
+                                {/* "wrong belief" — animated strikethrough on scroll */}
                                 <div
                                     style={{
                                         fontSize: "clamp(1.15rem, 1.5vw, 1.3rem)",
                                         color: "#16342D",
                                         fontWeight: 800,
-                                        textDecoration: "line-through",
-                                        textDecorationColor: "rgba(229,115,115,0.7)",
-                                        textDecorationThickness: "3px",
                                         lineHeight: 1.4,
                                         marginBottom: "18px",
                                         letterSpacing: "-0.015em",
                                     }}
                                 >
-                                    "{r.before}"
+                                    <span className="pv-cancel">"{r.before}"</span>
                                 </div>
 
                                 {/* the truth */}
