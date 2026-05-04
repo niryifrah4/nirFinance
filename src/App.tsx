@@ -5,6 +5,7 @@ import HomePage from "./pages/HomePage";
 import LegalPage from "./pages/LegalPage";
 import CommunityPage from "./pages/CommunityPage";
 import PreviewPage from "./pages/PreviewPage";
+import ThankYouPage from "./pages/ThankYouPage";
 
 function getCurrentPath() {
   if (typeof window === "undefined") {
@@ -32,9 +33,11 @@ export default function App() {
   const isLegalPage     = pathname === "/legal";
   const isCommunityPage = pathname === "/community";
   const isPreviewPage   = pathname === "/preview";
+  const isThankYouPage  = pathname === "/thank-you";
 
   if (isCommunityPage) return <CommunityPage />;
   if (isPreviewPage)   return <PreviewPage />;
+  if (isThankYouPage)  return <ThankYouPage />;
 
   return (
     <>

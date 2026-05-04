@@ -335,10 +335,9 @@ export default function PreviewPage({ showBanner = true }: { showBanner?: boolea
             });
             const result = await res.json();
             if (!result.success) throw new Error(result.message || "משהו השתבש בשליחת הטופס.");
-            const fbq = (window as Window & { fbq?: (...args: unknown[]) => void }).fbq;
-            fbq?.("track", "Lead");
-            setContactStatus({ type: "success", message: "הפרטים נשלחו! ניר יחזור אליכם בתוך יום עסקים." });
-            setContactValues({ name: "", phone: "", email: "" });
+            // Redirect to thank-you page (Pixel Lead event fires there)
+            window.location.href = "/thank-you";
+            return;
         } catch (err) {
             const message = err instanceof Error ? err.message : "משהו השתבש. נסו שוב.";
             setContactStatus({ type: "error", message });
