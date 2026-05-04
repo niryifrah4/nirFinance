@@ -1831,7 +1831,7 @@ export default function PreviewPage({ showBanner = true }: { showBanner?: boolea
                             margin: "0 0 40px",
                         }}
                     >
-                        מה אומרים לקוחות
+                        מה לקוחות אומרים
                     </h2>
 
                     {/* Testimonials carousel */}
