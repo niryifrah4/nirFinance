@@ -1227,31 +1227,18 @@ export default function PreviewPage({ showBanner = true }: { showBanner?: boolea
                                     flexDirection: "column",
                                 }}
                             >
-                                {/* BIG translucent number */}
+                                {/* "wrong belief" — large, strikethrough */}
                                 <div
                                     style={{
-                                        fontSize: "64px",
-                                        fontWeight: 900,
-                                        color: "rgba(22,52,45,0.1)",
-                                        lineHeight: 1,
-                                        marginBottom: "20px",
-                                        letterSpacing: "-0.04em",
-                                    }}
-                                >
-                                    {r.num}
-                                </div>
-
-                                {/* "wrong belief" — strikethrough */}
-                                <div
-                                    style={{
-                                        fontSize: "15px",
-                                        color: "#5C5A54",
-                                        fontWeight: 500,
+                                        fontSize: "clamp(1.15rem, 1.5vw, 1.3rem)",
+                                        color: "#16342D",
+                                        fontWeight: 800,
                                         textDecoration: "line-through",
-                                        textDecorationColor: "rgba(229,115,115,0.65)",
-                                        textDecorationThickness: "2px",
-                                        lineHeight: 1.5,
-                                        marginBottom: "16px",
+                                        textDecorationColor: "rgba(229,115,115,0.7)",
+                                        textDecorationThickness: "3px",
+                                        lineHeight: 1.4,
+                                        marginBottom: "18px",
+                                        letterSpacing: "-0.015em",
                                     }}
                                 >
                                     "{r.before}"
