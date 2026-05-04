@@ -253,8 +253,12 @@ const checklistTags = [
     "השקעות",
 ];
 
+type SafariVideoElement = HTMLVideoElement & {
+    webkitEnterFullscreen?: () => void;
+};
+
 export default function PreviewPage({ showBanner = true }: { showBanner?: boolean } = {}) {
-    const videoRef = useRef<HTMLVideoElement | null>(null);
+    const videoRef = useRef<SafariVideoElement | null>(null);
     const [isPlaying, setIsPlaying] = useState(false);
     const [activeTesti, setActiveTesti] = useState(0);
 
@@ -368,10 +372,20 @@ export default function PreviewPage({ showBanner = true }: { showBanner?: boolea
         const video = videoRef.current;
         if (!video) return;
         try {
+            if (video.requestFullscreen) {
+                await video.requestFullscreen();
+            } else if (video.webkitEnterFullscreen) {
+                video.webkitEnterFullscreen();
+            }
             await video.play();
             setIsPlaying(true);
         } catch {
-            setIsPlaying(false);
+            try {
+                await video.play();
+                setIsPlaying(true);
+            } catch {
+                setIsPlaying(false);
+            }
         }
     };
 
@@ -958,6 +972,7 @@ export default function PreviewPage({ showBanner = true }: { showBanner?: boolea
                         controls={isPlaying}
                         poster=""
                         preload="metadata"
+                        playsInline
                         onPause={handlePause}
                         onEnded={handleEnded}
                         style={{
@@ -1854,7 +1869,7 @@ export default function PreviewPage({ showBanner = true }: { showBanner?: boolea
                             }}
                         >
                             <svg viewBox="0 0 24 24" style={{ width: 18, height: 18, fill: "#16342D" }} aria-hidden="true">
-                                <path d="M15.5 5.5l-7 6.5 7 6.5V5.5z" />
+                                <path d="M8.5 5.5l7 6.5-7 6.5V5.5z" />
                             </svg>
                         </button>
 
@@ -1883,7 +1898,7 @@ export default function PreviewPage({ showBanner = true }: { showBanner?: boolea
                             }}
                         >
                             <svg viewBox="0 0 24 24" style={{ width: 18, height: 18, fill: "#16342D" }} aria-hidden="true">
-                                <path d="M8.5 5.5l7 6.5-7 6.5V5.5z" />
+                                <path d="M15.5 5.5l-7 6.5 7 6.5V5.5z" />
                             </svg>
                         </button>
                     </div>
