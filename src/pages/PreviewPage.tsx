@@ -692,28 +692,16 @@ export default function PreviewPage({ showBanner = true }: { showBanner?: boolea
                     background: rgba(255,255,255,0.1);
                 }
 
-                /* Animated strikethrough — line draws across when card scrolls into view */
+                /* Animated strikethrough — true line-through that works on multi-line text */
                 .pv-cancel {
-                    position: relative;
-                    display: inline-block;
-                    max-width: 100%;
+                    text-decoration: line-through;
+                    text-decoration-color: transparent;
+                    text-decoration-thickness: 3px;
+                    text-decoration-skip-ink: none;
+                    transition: text-decoration-color 0.7s cubic-bezier(0.7, 0, 0.3, 1);
                 }
-                .pv-cancel::after {
-                    content: "";
-                    position: absolute;
-                    top: 50%;
-                    right: -2px;
-                    left: -2px;
-                    height: 3px;
-                    background: rgba(229,115,115,0.78);
-                    border-radius: 2px;
-                    transform: scaleX(0);
-                    transform-origin: right center;
-                    transition: transform 0.85s cubic-bezier(0.7, 0, 0.3, 1);
-                    pointer-events: none;
-                }
-                .pv-cancel.is-visible::after {
-                    transform: scaleX(1);
+                .pv-cancel.is-visible {
+                    text-decoration-color: rgba(229,115,115,0.78);
                 }
 
                 .pv-pill:hover {
@@ -1265,14 +1253,27 @@ export default function PreviewPage({ showBanner = true }: { showBanner?: boolea
                             textAlign: "center",
                             fontSize: "clamp(1.15rem, 1.6vw, 1.35rem)",
                             color: "#c0392b",
-                            lineHeight: 1.45,
+                            lineHeight: 1.4,
                             maxWidth: "680px",
-                            margin: "0 auto 40px",
+                            margin: "0 auto 8px",
                             fontWeight: 800,
                             letterSpacing: "-0.015em",
                         }}
                     >
                         רוב המשפחות פשוט מסתמכות על תחושות בטן.
+                    </p>
+                    <p
+                        style={{
+                            textAlign: "center",
+                            fontSize: "clamp(0.95rem, 1.3vw, 1.1rem)",
+                            color: "#5C5A54",
+                            lineHeight: 1.45,
+                            margin: "0 auto 28px",
+                            fontWeight: 600,
+                            letterSpacing: "-0.005em",
+                        }}
+                    >
+                        ואז מרגישים את זה:
                     </p>
 
                     {/* 3 reframe cards — Services brand pattern (light) */}
@@ -1302,8 +1303,8 @@ export default function PreviewPage({ showBanner = true }: { showBanner?: boolea
                                         fontSize: "clamp(1.15rem, 1.5vw, 1.3rem)",
                                         color: "#16342D",
                                         fontWeight: 800,
-                                        lineHeight: 1.4,
-                                        marginBottom: "18px",
+                                        lineHeight: 1.3,
+                                        marginBottom: "14px",
                                         letterSpacing: "-0.015em",
                                     }}
                                 >
@@ -1315,7 +1316,7 @@ export default function PreviewPage({ showBanner = true }: { showBanner?: boolea
                                     style={{
                                         fontSize: "15px",
                                         color: "#5C5A54",
-                                        lineHeight: 1.8,
+                                        lineHeight: 1.55,
                                         fontWeight: 500,
                                     }}
                                 >
@@ -1758,7 +1759,7 @@ export default function PreviewPage({ showBanner = true }: { showBanner?: boolea
                                     style={{
                                         fontSize: "15px",
                                         color: "#5C5A54",
-                                        lineHeight: 1.8,
+                                        lineHeight: 1.55,
                                         margin: 0,
                                         fontWeight: 500,
                                     }}
