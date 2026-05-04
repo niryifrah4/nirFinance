@@ -1252,14 +1252,26 @@ export default function PreviewPage({ showBanner = true }: { showBanner?: boolea
                             color: "#16342D",
                             lineHeight: 1.55,
                             maxWidth: "680px",
-                            margin: "0 auto 40px",
+                            margin: "0 auto 12px",
                             fontWeight: 600,
                         }}
                     >
                         כשמסתכלים על זה ככה — זה{" "}
-                        <span style={{ fontWeight: 800 }}>דורש ניהול</span>.
-                        <br />
-                        ורוב המשפחות פשוט מסתמכות על תחושות בטן.
+                        <span style={{ fontWeight: 800 }}>דורש תכנון</span>.
+                    </p>
+                    <p
+                        style={{
+                            textAlign: "center",
+                            fontSize: "clamp(1.15rem, 1.6vw, 1.35rem)",
+                            color: "#c0392b",
+                            lineHeight: 1.45,
+                            maxWidth: "680px",
+                            margin: "0 auto 40px",
+                            fontWeight: 800,
+                            letterSpacing: "-0.015em",
+                        }}
+                    >
+                        רוב המשפחות פשוט מסתמכות על תחושות בטן.
                     </p>
 
                     {/* 3 reframe cards — Services brand pattern (light) */}
