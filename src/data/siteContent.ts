@@ -74,7 +74,7 @@ export const siteContent = {
     title: "להתחיל לנהל, להפסיק להתנהל.",
     description: "צפו בסרטון",
     src: "https://res.cloudinary.com/dtjr9qzet/video/upload/v1773334171/2_ocxr95.mp4",
-    poster: "",
+    poster: "/NirBlack.jpg",
   },
 
   services: {

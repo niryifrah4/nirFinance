@@ -1,29 +1,5 @@
-import AboutSection from "../sections/AboutSection";
-import ContactSection from "../sections/ContactSection";
-import FAQSection from "../sections/FAQSection";
-import HeroSection from "../sections/HeroSection";
-import PlansSection from "../sections/PlansSection";
-import ProcessSection from "../sections/ProcessSection";
-import ReframeSection from "../sections/ReframeSection";
-import ServicesSection from "../sections/ServicesSection";
-import StatsSection from "../sections/StatsSection";
-import TestimonialsSection from "../sections/TestimonialsSection";
-import VideoSection from "../sections/VideoSection";
+import PreviewPage from "./PreviewPage";
 
 export default function HomePage() {
-    return (
-        <main>
-            <HeroSection />
-            <StatsSection />
-            <ReframeSection />
-            <VideoSection />
-            <ServicesSection />
-            <ProcessSection />
-            <TestimonialsSection />
-            <PlansSection />
-            <AboutSection />
-            <FAQSection />
-            <ContactSection />
-        </main>
-    );
+    return <PreviewPage showBanner={false} />;
 }
