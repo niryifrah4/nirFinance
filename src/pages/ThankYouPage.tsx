@@ -140,41 +140,86 @@ export default function ThankYouPage() {
                     אחזור אליכם בתוך יום עסקים אחד 📞
                 </p>
 
-                {/* Email reminder box */}
+                {/* Checklist gift — direct download */}
                 <div
                     style={{
-                        background: "rgba(173,254,122,0.06)",
-                        border: "1px solid rgba(173,254,122,0.22)",
-                        borderRadius: "14px",
-                        padding: "22px 28px",
+                        background: "rgba(173,254,122,0.08)",
+                        border: "1px solid rgba(173,254,122,0.28)",
+                        borderRadius: "16px",
+                        padding: "28px 28px 26px",
                         maxWidth: "520px",
                         width: "100%",
                         marginBottom: "40px",
+                        textAlign: "center",
                     }}
                 >
-                    <div style={{ fontSize: 28, marginBottom: 10, lineHeight: 1 }}>📧</div>
-                    <p
+                    <div style={{ fontSize: 36, marginBottom: 12, lineHeight: 1 }}>🎁</div>
+                    <div
                         style={{
-                            fontSize: "15px",
-                            color: "rgba(255,255,255,0.88)",
-                            lineHeight: 1.6,
-                            margin: "0 0 6px",
-                            fontWeight: 500,
+                            fontSize: "11px",
+                            fontWeight: 800,
+                            letterSpacing: "0.2em",
+                            color: "#ADFE7A",
+                            textTransform: "uppercase",
+                            marginBottom: "8px",
                         }}
                     >
-                        שלחתי לכם את <strong style={{ color: "#fff", fontWeight: 700 }}>הצ'ק ליסט הפיננסי המקיף</strong> במייל.
-                        <br />
-                        תבדקו את תיבת הדואר תוך כמה דקות.
+                        המתנה שלי אליכם
+                    </div>
+                    <p
+                        style={{
+                            fontSize: "17px",
+                            color: "#fff",
+                            lineHeight: 1.4,
+                            margin: "0 0 18px",
+                            fontWeight: 700,
+                            letterSpacing: "-0.01em",
+                        }}
+                    >
+                        הצ'ק ליסט הפיננסי המקיף
                     </p>
+
+                    <a
+                        href="https://bit.ly/fchecklist"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                            display: "inline-flex",
+                            alignItems: "center",
+                            gap: "10px",
+                            background: "#ADFE7A",
+                            color: "#14322B",
+                            fontSize: "15px",
+                            fontWeight: 900,
+                            padding: "13px 28px",
+                            borderRadius: "9999px",
+                            textDecoration: "none",
+                            letterSpacing: "-0.01em",
+                            boxShadow: "0 8px 24px rgba(173,254,122,0.3)",
+                            transition: "transform 0.15s, box-shadow 0.2s",
+                        }}
+                        onMouseEnter={(e) => {
+                            e.currentTarget.style.transform = "translateY(-1px)";
+                            e.currentTarget.style.boxShadow = "0 12px 32px rgba(173,254,122,0.4)";
+                        }}
+                        onMouseLeave={(e) => {
+                            e.currentTarget.style.transform = "none";
+                            e.currentTarget.style.boxShadow = "0 8px 24px rgba(173,254,122,0.3)";
+                        }}
+                    >
+                        ⬇  הורדת הצ'ק ליסט
+                    </a>
+
                     <p
                         style={{
                             fontSize: "12px",
                             color: "rgba(255,255,255,0.5)",
-                            margin: "10px 0 0",
+                            margin: "16px 0 0",
                             fontWeight: 500,
+                            lineHeight: 1.5,
                         }}
                     >
-                        אם זה לא הגיע — בדקו גם בתיקיית הספאם.
+                        Google Sheets · עדיף לפתוח במחשב
                     </p>
                 </div>
 
