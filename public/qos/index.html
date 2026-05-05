@@ -775,19 +775,28 @@
 
     const checklistUrl = 'https://niryifrahcfp.co.il/CheckList26.pdf';
 
-    // ── 1. שליחה לניר עם כל פרטי הליד ──
-    const dataToNir = new FormData();
-    dataToNir.append('שם', userName);
-    dataToNir.append('עיסוק', userEmp);
-    dataToNir.append('מייל', email);
-    dataToNir.append('טלפון', phone || '—');
-    dataToNir.append('ניקוד', `${pct}% (${totalScore}/${scoreMax})`);
-    dataToNir.append('תשובות', summary);
-    dataToNir.append('_subject', `📋 ליד חדש מהשאלון — ${userName} | ניקוד ${pct}%`);
-    dataToNir.append('_captcha', 'false');
-    dataToNir.append('_template', 'table');
+    // ── 1. שליחה לניר דרך Web3Forms (אותו account של שאר הטפסים באתר) ──
+    const web3formsPayload = {
+      access_key: 'b27001f0-0be2-4e2e-a394-5108ecae4108',
+      subject: `📋 ליד חדש מהשאלון — ${userName} | ניקוד ${pct}%`,
+      from_name: 'שאלון QOS · niryifrahcfp.co.il',
+      name: userName,
+      email: email,
+      phone: phone || '—',
+      employment: userEmp,
+      score: `${pct}% (${totalScore}/${scoreMax})`,
+      message:
+        `ליד חדש מהשאלון\n\n` +
+        `שם: ${userName}\n` +
+        `עיסוק: ${userEmp}\n` +
+        `מייל: ${email}\n` +
+        `טלפון: ${phone || '—'}\n` +
+        `ניקוד: ${pct}% (${totalScore}/${scoreMax})\n\n` +
+        `── פירוט תשובות ──\n${summary}`,
+      botcheck: '',
+    };
 
-    // ── 2. מייל auto-reply ללקוח עם הצ'ק ליסט ──
+    // ── 2. מייל auto-reply ללקוח עם הצ'ק ליסט (FormSubmit autoresponder) ──
     const dataToUser = new FormData();
     dataToUser.append('name', userName);
     dataToUser.append('email', email);
@@ -805,18 +814,18 @@
     );
 
     try {
-      // שליחה לניר
-      await fetch('https://formsubmit.co/ajax/a8cb2c9c9e2127e13dce32b01b07692e', {
+      // שליחה לניר דרך Web3Forms
+      await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: dataToNir
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(web3formsPayload),
       });
-      // שליחה ללקוח
+      // auto-reply ללקוח דרך FormSubmit (לא קריטי אם נכשל)
       await fetch('https://formsubmit.co/ajax/' + encodeURIComponent(email), {
         method: 'POST',
         headers: { 'Accept': 'application/json' },
         body: dataToUser
-      }).catch(() => {}); // לא קריטי אם נכשל
+      }).catch(() => {});
     } catch(_) {}
 
     if (typeof fbq === 'function') fbq('track', 'Lead');
