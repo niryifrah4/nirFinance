@@ -213,7 +213,7 @@ const processSteps = [
         number: "03",
         title: "מעקב ובקרה",
         description:
-            "תכנון השקעות ופיזור נכסים בהתאם למטרות וליעדים. מעקב שוטף שמבטיח שהתכנית מתעדכנת לפי שינויים בחיים או בשוק. כי תכנית חיה תמיד מנצחת תכנית מהמדף.",
+            "בחירת השקעות ופיזור נכסים בהתאם למטרות וליעדים. מעקב שוטף שמבטיח שהתכנית מתעדכנת לפי שינויים בחיים או בשוק. כי תכנית חיה תמיד מנצחת תכנית מהמדף.",
     },
 ];
 
@@ -464,35 +464,6 @@ export default function PreviewPage({ showBanner = true }: { showBanner?: boolea
                         gap: "16px",
                     }}
                 >
-                    {/* Logo (photo only) */}
-                    <a
-                        href="#top"
-                        aria-label="לראש הדף"
-                        style={{
-                            display: "inline-block",
-                            flexShrink: 0,
-                        }}
-                    >
-                        <span style={{
-                            width: 36, height: 36,
-                            borderRadius: "9999px",
-                            border: "1.5px solid rgba(22,52,45,0.2)",
-                            overflow: "hidden",
-                            display: "inline-block",
-                        }}>
-                            <img
-                                src="/Nir.webp"
-                                alt="ניר יפרח"
-                                style={{
-                                    width: "100%", height: "100%",
-                                    objectFit: "cover",
-                                    objectPosition: "center 20%",
-                                    display: "block",
-                                }}
-                            />
-                        </span>
-                    </a>
-
                     {/* Desktop nav links (hidden on mobile) */}
                     <nav className="pv-nav-links" style={{
                         display: "flex",
