@@ -5,6 +5,11 @@
  */
 
 import { Fragment, useEffect, useRef, useState, type ReactNode } from "react";
+import {
+    captureCampaignParamsFromUrl,
+    formatCampaignParamsForMessage,
+    getCampaignParams,
+} from "../utils/campaign";
 
 /** Break a Hebrew sentence into multiple lines after every period. */
 function splitAtPeriods(text: string) {
@@ -221,9 +226,9 @@ const reframes = [
     },
     {
         num: "02",
-        before: "נחסוך קצת יותר בחודש הבא",
+        before: "החודש היה חודש חריג",
         after:
-            "לנהל חיים כלכליים בלי תכנית זה כמו לטוס בלי נווט. אתם זזים, אבל לא יודעים לאן — ובסוף חוזרים לאותה נקודה.",
+            "זו תכנית חיים שלמה שמתחילה מהבסיס.",
     },
     {
         num: "03",
@@ -278,6 +283,11 @@ export default function PreviewPage({ showBanner = true }: { showBanner?: boolea
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const closeMenu = () => setIsMenuOpen(false);
 
+    // Capture campaign attribution (UTMs + click IDs) on first landing
+    useEffect(() => {
+        captureCampaignParamsFromUrl();
+    }, []);
+
     // IntersectionObserver to animate strikethrough on Reframe cards
     useEffect(() => {
         if (typeof window === "undefined" || !("IntersectionObserver" in window)) return;
@@ -319,6 +329,7 @@ export default function PreviewPage({ showBanner = true }: { showBanner?: boolea
             return;
         }
         setContactStatus({ type: "loading", message: "שולח פרטים..." });
+        const campaign = getCampaignParams();
         try {
             const res = await fetch("https://api.web3forms.com/submit", {
                 method: "POST",
@@ -330,7 +341,8 @@ export default function PreviewPage({ showBanner = true }: { showBanner?: boolea
                     name: contactValues.name,
                     phone: contactValues.phone,
                     email: contactValues.email,
-                    message: `פנייה חדשה מהאתר\n\nשם מלא: ${contactValues.name}\nטלפון: ${contactValues.phone}\nאימייל: ${contactValues.email}`,
+                    message: `פנייה חדשה מהאתר\n\nשם מלא: ${contactValues.name}\nטלפון: ${contactValues.phone}\nאימייל: ${contactValues.email}${formatCampaignParamsForMessage(campaign)}`,
+                    ...campaign,
                     botcheck: "",
                 }),
             });
@@ -361,6 +373,7 @@ export default function PreviewPage({ showBanner = true }: { showBanner?: boolea
             return;
         }
         setNotifyState({ type: "loading" });
+        const campaign = getCampaignParams();
         try {
             const res = await fetch("https://api.web3forms.com/submit", {
                 method: "POST",
@@ -370,14 +383,15 @@ export default function PreviewPage({ showBanner = true }: { showBanner?: boolea
                     subject: `🔔 הרשמה להתראה — ${plan.subtitle}`,
                     from_name: "אתר ניר יפרח",
                     email: notifyEmail,
-                    message: `נרשם להתראה: ${plan.name} — ${plan.subtitle}\nאימייל: ${notifyEmail}`,
+                    message: `נרשם להתראה: ${plan.name} — ${plan.subtitle}\nאימייל: ${notifyEmail}${formatCampaignParamsForMessage(campaign)}`,
+                    ...campaign,
                     botcheck: "",
                 }),
             });
             const result = await res.json();
             if (!result.success) throw new Error(result.message || "שגיאה");
             const fbq = (window as Window & { fbq?: (...args: unknown[]) => void }).fbq;
-            fbq?.("track", "Lead", { content_name: `Notify: ${plan.subtitle}` });
+            fbq?.("trackCustom", "NotifySignup", { content_name: plan.subtitle });
             setNotifyState({ type: "success" });
             setNotifyEmail("");
         } catch (err) {
@@ -467,7 +481,7 @@ export default function PreviewPage({ showBanner = true }: { showBanner?: boolea
                             display: "inline-block",
                         }}>
                             <img
-                                src="/Nir.jpg"
+                                src="/Nir.webp"
                                 alt="ניר יפרח"
                                 style={{
                                     width: "100%", height: "100%",
@@ -872,7 +886,7 @@ export default function PreviewPage({ showBanner = true }: { showBanner?: boolea
                     }}
                 >
                     <img
-                        src="/Nir.jpg"
+                        src="/Nir.webp"
                         alt="ניר יפרח"
                         style={{
                             width: "100%",
@@ -1385,7 +1399,7 @@ export default function PreviewPage({ showBanner = true }: { showBanner?: boolea
                             }}
                         >
                             <img
-                                src="/DSC03313-Enhanced-NR-Edit.jpg"
+                                src="/DSC03313-Enhanced-NR-Edit.webp"
                                 alt="ניר יפרח"
                                 style={{
                                     width: "100%",
