@@ -502,14 +502,14 @@
     <div class="lead-teaser">
       <div class="lead-teaser-icon">🎁</div>
       <h2>הניקוד שלך מוכן!</h2>
-      <p>הכניסו מייל וקבלו <strong style="color:var(--forest)">את הצ'ק ליסט הפיננסי המלא</strong> במתנה — יחד עם הניתוח האישי שלכם.</p>
+      <p>השאירו פרטים וקבלו <strong style="color:var(--forest)">את הצ'ק ליסט הפיננסי המלא</strong> + הניתוח האישי שלכם — מיד בעמוד הבא.</p>
     </div>
     <div class="lead-form">
       <input type="email" id="lEmail" placeholder="כתובת המייל שלך" autocomplete="email">
       <input type="tel" id="lPhone" placeholder="טלפון (לא חובה)" autocomplete="tel">
-      <button class="btn-reveal" id="revealBtn" onclick="submitLead()">שלחו לי את הצ׳ק ליסט + הניקוד ←</button>
+      <button class="btn-reveal" id="revealBtn" onclick="submitLead()">הראו לי את התוצאה ←</button>
     </div>
-    <p class="lead-privacy">הפרטים שמורים אצלי בלבד 🔒 · הצ'ק ליסט יגיע למייל תוך דקה</p>
+    <p class="lead-privacy">הפרטים שמורים אצלי בלבד 🔒 · התוצאה והצ'ק ליסט יוצגו מיד</p>
   </div>
 </div>
 
@@ -773,9 +773,7 @@
       summary += `ש${i+1}: ${q.text} | תשובה: ${ans ? ans.text : '—'} (${ans ? ans.score : 0} נק׳)\n`;
     });
 
-    const checklistUrl = 'https://niryifrahcfp.co.il/CheckList26.pdf';
-
-    // ── 1. שליחה לניר דרך Web3Forms (אותו account של שאר הטפסים באתר) ──
+    // ── שליחה לניר דרך Web3Forms (מקור אמת יחיד לכל הלידים באתר) ──
     const web3formsPayload = {
       access_key: 'b27001f0-0be2-4e2e-a394-5108ecae4108',
       subject: `📋 ליד חדש מהשאלון — ${userName} | ניקוד ${pct}%`,
@@ -796,36 +794,12 @@
       botcheck: '',
     };
 
-    // ── 2. מייל auto-reply ללקוח עם הצ'ק ליסט (FormSubmit autoresponder) ──
-    const dataToUser = new FormData();
-    dataToUser.append('name', userName);
-    dataToUser.append('email', email);
-    dataToUser.append('_subject', `הצ׳ק ליסט הפיננסי שלך מניר יפרח CFP 🎁`);
-    dataToUser.append('_captcha', 'false');
-    dataToUser.append('_template', 'box');
-    dataToUser.append('_replyto', email);
-    dataToUser.append('message',
-      `שלום ${userName}!\n\n` +
-      `תודה שמילאת את השאלון — קיבלת ניקוד של ${pct}%.\n\n` +
-      `🎁 הנה הצ׳ק ליסט הפיננסי המלא שהבטחתי:\n${checklistUrl}\n\n` +
-      `לחצו על הקישור להורדה.\n\n` +
-      `אם תרצו לדבר על התוצאות ולהבין מה לשפר — אשמח לשיחת אפיון קצרה ללא עלות.\n\n` +
-      `ניר יפרח CFP\nniryifrahcfp.co.il`
-    );
-
     try {
-      // שליחה לניר דרך Web3Forms
       await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify(web3formsPayload),
       });
-      // auto-reply ללקוח דרך FormSubmit (לא קריטי אם נכשל)
-      await fetch('https://formsubmit.co/ajax/' + encodeURIComponent(email), {
-        method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: dataToUser
-      }).catch(() => {});
     } catch(_) {}
 
     if (typeof fbq === 'function') fbq('track', 'Lead');
